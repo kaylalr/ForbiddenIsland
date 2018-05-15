@@ -5,6 +5,7 @@
  */
 package citbyui.cit260.model;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Objects;
 /**
  *
@@ -15,6 +16,7 @@ public class Map implements Serializable{
     private double rowCount;
     private double columnCount;
     private String description;
+    private ArrayList<Game> games = new ArrayList<Game>();
     
     public Map() {
     }
@@ -42,6 +44,16 @@ public class Map implements Serializable{
     public void setDescription(String description) {
         this.description = description;
     }
+
+    public ArrayList<Game> getGames() {
+        return games;
+    }
+
+    public void setGames(ArrayList<Game> games) {
+        this.games = games;
+    }
+    
+    
 
     @Override
     public String toString() {

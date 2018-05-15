@@ -4,11 +4,29 @@
  * and open the template in the editor.
  */
 package citbyui.cit260.model;
-
+import java.io.Serializable;
 /**
  *
  * @author mcwis
  */
-public class TreasureLocation {
+public class TreasureLocation implements Serializable{
+    
+    private Treasure Treasure;
+
+    public TreasureLocation() {
+ 
+    }
+
+    public Treasure getTreasure() {
+        return Treasure;
+    }
+
+    public void setTreasure(Treasure Treasure) {
+        this.Treasure = Treasure;
+    }
+    
+    
+    
+    
     
 }

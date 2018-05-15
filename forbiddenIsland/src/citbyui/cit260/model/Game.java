@@ -5,6 +5,7 @@
  */
 package citbyui.cit260.model;
 import java.io.Serializable;
+import java.util.ArrayList;
 /**
  *
  * @author mcwis
@@ -13,7 +14,9 @@ public class Game implements Serializable{
 
     private double turns;
     private double score;
-    private CardType cardtype;
+    private Element elementType;
+    private SpecialAction specialActionType;
+    private ArrayList<Actor> actors = new ArrayList<Actor>();
     
     public Game() {
     }
@@ -33,6 +36,16 @@ public class Game implements Serializable{
     public void setScore(double score) {
         this.score = score;
     }
+
+    public ArrayList<Actor> getActors() {
+        return actors;
+    }
+
+    public void setActors(ArrayList<Actor> actors) {
+        this.actors = actors;
+    }
+    
+    
 
     @Override
     public int hashCode() {

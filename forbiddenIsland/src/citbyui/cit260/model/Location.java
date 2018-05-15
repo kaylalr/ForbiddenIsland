@@ -5,6 +5,7 @@
  */
 package citbyui.cit260.model;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Objects;
 /**
  *
@@ -17,6 +18,7 @@ public class Location implements Serializable{
     private int flooded;
     private int sunken;
     private String displaySymbol;
+    private ArrayList<Actor> actors = new ArrayList<Actor>();
     
     public Location() {
     }
@@ -60,6 +62,16 @@ public class Location implements Serializable{
     public void setDisplaySymbol(String displaySymbol) {
         this.displaySymbol = displaySymbol;
     }
+
+    public ArrayList<Actor> getActors() {
+        return actors;
+    }
+
+    public void setActors(ArrayList<Actor> actors) {
+        this.actors = actors;
+    }
+    
+    
 
     @Override
     public String toString() {

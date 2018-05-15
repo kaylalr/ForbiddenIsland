@@ -15,6 +15,7 @@ public class Treasure implements Serializable{
     private String name;
     private String description;
     private String status;
+    private TreasureLocation TreasureLocation;
     
     public Treasure() {
     }
@@ -42,6 +43,16 @@ public class Treasure implements Serializable{
     public void setStatus(String status) {
         this.status = status;
     }
+
+    public TreasureLocation getTreasureLocation() {
+        return TreasureLocation;
+    }
+
+    public void setTreasureLocation(TreasureLocation TreasureLocation) {
+        this.TreasureLocation = TreasureLocation;
+    }
+    
+    
 
     @Override
     public String toString() {

@@ -5,6 +5,7 @@
  */
 package citbyui.cit260.model;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Objects;
 /**
  *
@@ -15,6 +16,8 @@ public class Actor implements Serializable{
     private String name;
     private double coordinates;
     private String specialAbility;
+    private Location Location;
+    private ArrayList<Player> players = new ArrayList<Player>();
     
     public Actor() {
     }
@@ -42,6 +45,24 @@ public class Actor implements Serializable{
     public void setSpecialAbility(String specialAbility) {
         this.specialAbility = specialAbility;
     }
+
+    public ArrayList<Player> getPlayers() {
+        return players;
+    }
+
+    public void setPlayers(ArrayList<Player> players) {
+        this.players = players;
+    }
+
+    public Location getLocation() {
+        return Location;
+    }
+
+    public void setLocation(Location Location) {
+        this.Location = Location;
+    }
+    
+    
 
     @Override
     public String toString() {
