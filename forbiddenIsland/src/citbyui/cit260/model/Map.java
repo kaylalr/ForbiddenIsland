@@ -6,6 +6,7 @@
 package citbyui.cit260.model;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Objects;
 /**
  *
@@ -17,6 +18,7 @@ public class Map implements Serializable{
     private double columnCount;
     private String description;
     private ArrayList<Game> games = new ArrayList<Game>();
+    private Location location[][];
     
     public Map() {
     }
@@ -52,20 +54,28 @@ public class Map implements Serializable{
     public void setGames(ArrayList<Game> games) {
         this.games = games;
     }
-    
-    
+
+    public Location[][] getLocation() {
+        return location;
+    }
+
+    public void setLocation(Location[][] location) {
+        this.location = location;
+    }
 
     @Override
     public String toString() {
-        return "Map{" + "rowCount=" + rowCount + ", columnCount=" + columnCount + ", description=" + description + '}';
+        return "Map{" + "rowCount=" + rowCount + ", columnCount=" + columnCount + ", description=" + description + ", games=" + games + ", location=" + location + '}';
     }
 
     @Override
     public int hashCode() {
-        int hash = 5;
-        hash = 97 * hash + (int) (Double.doubleToLongBits(this.rowCount) ^ (Double.doubleToLongBits(this.rowCount) >>> 32));
-        hash = 97 * hash + (int) (Double.doubleToLongBits(this.columnCount) ^ (Double.doubleToLongBits(this.columnCount) >>> 32));
-        hash = 97 * hash + Objects.hashCode(this.description);
+        int hash = 7;
+        hash = 29 * hash + (int) (Double.doubleToLongBits(this.rowCount) ^ (Double.doubleToLongBits(this.rowCount) >>> 32));
+        hash = 29 * hash + (int) (Double.doubleToLongBits(this.columnCount) ^ (Double.doubleToLongBits(this.columnCount) >>> 32));
+        hash = 29 * hash + Objects.hashCode(this.description);
+        hash = 29 * hash + Objects.hashCode(this.games);
+        hash = 29 * hash + Arrays.deepHashCode(this.location);
         return hash;
     }
 
@@ -90,11 +100,14 @@ public class Map implements Serializable{
         if (!Objects.equals(this.description, other.description)) {
             return false;
         }
+        if (!Objects.equals(this.games, other.games)) {
+            return false;
+        }
+        if (!Arrays.deepEquals(this.location, other.location)) {
+            return false;
+        }
         return true;
     }
-    
-    
-    
     
     
 }

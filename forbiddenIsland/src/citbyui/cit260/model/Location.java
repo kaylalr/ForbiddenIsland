@@ -70,22 +70,21 @@ public class Location implements Serializable{
     public void setActors(ArrayList<Actor> actors) {
         this.actors = actors;
     }
-    
-    
 
     @Override
     public String toString() {
-        return "Location{" + "row=" + row + ", column=" + column + ", flooded=" + flooded + ", sunken=" + sunken + ", displaySymbol=" + displaySymbol + '}';
+        return "Location{" + "row=" + row + ", column=" + column + ", flooded=" + flooded + ", sunken=" + sunken + ", displaySymbol=" + displaySymbol + ", actors=" + actors + '}';
     }
 
     @Override
     public int hashCode() {
-        int hash = 7;
-        hash = 53 * hash + (int) (Double.doubleToLongBits(this.row) ^ (Double.doubleToLongBits(this.row) >>> 32));
-        hash = 53 * hash + (int) (Double.doubleToLongBits(this.column) ^ (Double.doubleToLongBits(this.column) >>> 32));
-        hash = 53 * hash + this.flooded;
-        hash = 53 * hash + this.sunken;
-        hash = 53 * hash + Objects.hashCode(this.displaySymbol);
+        int hash = 3;
+        hash = 89 * hash + (int) (Double.doubleToLongBits(this.row) ^ (Double.doubleToLongBits(this.row) >>> 32));
+        hash = 89 * hash + (int) (Double.doubleToLongBits(this.column) ^ (Double.doubleToLongBits(this.column) >>> 32));
+        hash = 89 * hash + this.flooded;
+        hash = 89 * hash + this.sunken;
+        hash = 89 * hash + Objects.hashCode(this.displaySymbol);
+        hash = 89 * hash + Objects.hashCode(this.actors);
         return hash;
     }
 
@@ -116,11 +115,13 @@ public class Location implements Serializable{
         if (!Objects.equals(this.displaySymbol, other.displaySymbol)) {
             return false;
         }
+        if (!Objects.equals(this.actors, other.actors)) {
+            return false;
+        }
         return true;
     }
     
     
-    
-    
+
 
 }

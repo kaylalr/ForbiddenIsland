@@ -6,6 +6,7 @@
 package citbyui.cit260.model;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Objects;
 /**
  *
  * @author mcwis
@@ -14,9 +15,9 @@ public class Game implements Serializable{
 
     private double turns;
     private double score;
-    private Element elementType;
-    private SpecialAction specialActionType;
+    private Card cardType;
     private ArrayList<Actor> actors = new ArrayList<Actor>();
+    private Map map;
     
     public Game() {
     }
@@ -44,22 +45,39 @@ public class Game implements Serializable{
     public void setActors(ArrayList<Actor> actors) {
         this.actors = actors;
     }
-    
-    
 
-    @Override
-    public int hashCode() {
-        int hash = 7;
-        hash = 89 * hash + (int) (Double.doubleToLongBits(this.turns) ^ (Double.doubleToLongBits(this.turns) >>> 32));
-        hash = 89 * hash + (int) (Double.doubleToLongBits(this.score) ^ (Double.doubleToLongBits(this.score) >>> 32));
-        return hash;
+    public Card getCardType() {
+        return cardType;
+    }
+
+    public void setCardType(Card cardType) {
+        this.cardType = cardType;
+    }
+
+    public Map getMap() {
+        return map;
+    }
+
+    public void setMap(Map map) {
+        this.map = map;
     }
 
     @Override
     public String toString() {
-        return "Game{" + "turns=" + turns + ", score=" + score + '}';
+        return "Game{" + "turns=" + turns + ", score=" + score + ", cardType=" + cardType + ", actors=" + actors + ", map=" + map + '}';
     }
-    
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 29 * hash + (int) (Double.doubleToLongBits(this.turns) ^ (Double.doubleToLongBits(this.turns) >>> 32));
+        hash = 29 * hash + (int) (Double.doubleToLongBits(this.score) ^ (Double.doubleToLongBits(this.score) >>> 32));
+        hash = 29 * hash + Objects.hashCode(this.cardType);
+        hash = 29 * hash + Objects.hashCode(this.actors);
+        hash = 29 * hash + Objects.hashCode(this.map);
+        return hash;
+    }
+
     @Override
     public boolean equals(Object obj) {
         if (this == obj) {
@@ -78,10 +96,17 @@ public class Game implements Serializable{
         if (Double.doubleToLongBits(this.score) != Double.doubleToLongBits(other.score)) {
             return false;
         }
+        if (this.cardType != other.cardType) {
+            return false;
+        }
+        if (!Objects.equals(this.actors, other.actors)) {
+            return false;
+        }
+        if (!Objects.equals(this.map, other.map)) {
+            return false;
+        }
         return true;
     }
-    
-    
     
     
 }

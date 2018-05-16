@@ -51,20 +51,19 @@ public class Treasure implements Serializable{
     public void setTreasureLocation(TreasureLocation TreasureLocation) {
         this.TreasureLocation = TreasureLocation;
     }
-    
-    
 
     @Override
     public String toString() {
-        return "Treasure{" + "name=" + name + ", description=" + description + ", status=" + status + '}';
+        return "Treasure{" + "name=" + name + ", description=" + description + ", status=" + status + ", TreasureLocation=" + TreasureLocation + '}';
     }
 
     @Override
     public int hashCode() {
         int hash = 5;
-        hash = 31 * hash + Objects.hashCode(this.name);
-        hash = 31 * hash + Objects.hashCode(this.description);
-        hash = 31 * hash + Objects.hashCode(this.status);
+        hash = 89 * hash + Objects.hashCode(this.name);
+        hash = 89 * hash + Objects.hashCode(this.description);
+        hash = 89 * hash + Objects.hashCode(this.status);
+        hash = 89 * hash + Objects.hashCode(this.TreasureLocation);
         return hash;
     }
 
@@ -89,9 +88,11 @@ public class Treasure implements Serializable{
         if (!Objects.equals(this.status, other.status)) {
             return false;
         }
+        if (!Objects.equals(this.TreasureLocation, other.TreasureLocation)) {
+            return false;
+        }
         return true;
     }
-
     
     
     

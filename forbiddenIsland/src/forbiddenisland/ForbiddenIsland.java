@@ -5,12 +5,11 @@
  */
 package forbiddenisland;
 import citbyui.cit260.model.Actor;
-import citbyui.cit260.model.Element;
+import citbyui.cit260.model.Card;
 import citbyui.cit260.model.Game;
 import citbyui.cit260.model.Location;
 import citbyui.cit260.model.Map;
 import citbyui.cit260.model.Player;
-import citbyui.cit260.model.SpecialAction;
 import citbyui.cit260.model.Treasure;
 import citbyui.cit260.model.TreasureLocation;
 /**
@@ -43,11 +42,18 @@ public class ForbiddenIsland {
         /***************************************
          * This is calling on the Element class
          */
-        System.out.println(Element.earth.getElement());
-        System.out.println(Element.fire.getElement());
-        System.out.println(Element.water.getElement());
-        System.out.println(Element.wind.getElement());
-
+        System.out.println(Card.earth.getCardType());
+        System.out.println(Card.earth.getDescription());
+        System.out.println(Card.fire.getCardType());
+        System.out.println(Card.fire.getDescription());
+        System.out.println(Card.water.getCardType());
+        System.out.println(Card.water.getDescription());
+        System.out.println(Card.wind.getCardType());
+        System.out.println(Card.wind.getDescription()); 
+        System.out.println(Card.unfloodTile.getCardType());
+        System.out.println(Card.unfloodTile.getDescription());         
+        System.out.println(Card.helicopter.getCardType());
+        System.out.println(Card.helicopter.getDescription()); 
         /****************************************
          * This is calling on the game class
          */
@@ -109,12 +115,6 @@ public class ForbiddenIsland {
         
         System.out.println( "Name = " + playerOneName + ", Best Score = " + playerOneBestScore);
         
-        /****************************************
-         * Calling on the spacial action class
-         */
-
-        System.out.println(SpecialAction.unfloodTile.getspecialAction());
-        System.out.println(SpecialAction.helicopter.getspecialAction());
         
         /****************************************
          * This is calling on the Tresure Class

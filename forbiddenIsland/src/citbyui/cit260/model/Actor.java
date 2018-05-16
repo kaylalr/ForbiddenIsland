@@ -61,20 +61,20 @@ public class Actor implements Serializable{
     public void setLocation(Location Location) {
         this.Location = Location;
     }
-    
-    
 
     @Override
     public String toString() {
-        return "Actor{" + "name=" + name + ", coordinates=" + coordinates + ", specialAbility=" + specialAbility + '}';
+        return "Actor{" + "name=" + name + ", coordinates=" + coordinates + ", specialAbility=" + specialAbility + ", Location=" + Location + ", players=" + players + '}';
     }
 
     @Override
     public int hashCode() {
-        int hash = 5;
-        hash = 17 * hash + Objects.hashCode(this.name);
-        hash = 17 * hash + (int) (Double.doubleToLongBits(this.coordinates) ^ (Double.doubleToLongBits(this.coordinates) >>> 32));
-        hash = 17 * hash + Objects.hashCode(this.specialAbility);
+        int hash = 3;
+        hash = 67 * hash + Objects.hashCode(this.name);
+        hash = 67 * hash + (int) (Double.doubleToLongBits(this.coordinates) ^ (Double.doubleToLongBits(this.coordinates) >>> 32));
+        hash = 67 * hash + Objects.hashCode(this.specialAbility);
+        hash = 67 * hash + Objects.hashCode(this.Location);
+        hash = 67 * hash + Objects.hashCode(this.players);
         return hash;
     }
 
@@ -99,7 +99,17 @@ public class Actor implements Serializable{
         if (!Objects.equals(this.specialAbility, other.specialAbility)) {
             return false;
         }
+        if (!Objects.equals(this.Location, other.Location)) {
+            return false;
+        }
+        if (!Objects.equals(this.players, other.players)) {
+            return false;
+        }
         return true;
     }
+
+
+    
+    
     
 }
