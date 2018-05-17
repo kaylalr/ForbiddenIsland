@@ -22,6 +22,11 @@ public class Game implements Serializable{
     public Game() {
     }
 
+    public Game(double turns, double score) {
+        this.turns = turns;
+        this.score = score;
+    }
+
     public double getTurns() {
         return turns;
     }

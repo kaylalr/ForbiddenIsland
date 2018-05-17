@@ -20,6 +20,11 @@ public class Player implements Serializable{
     public Player() {
     }
 
+    public Player(String name, double bestScore) {
+        this.name = name;
+        this.bestScore = bestScore;
+    }
+
     public String getName() {
         return name;
     }

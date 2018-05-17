@@ -23,6 +23,14 @@ public class Location implements Serializable{
     public Location() {
     }
 
+    public Location(double row, double column, int flooded, int sunken, String displaySymbol) {
+        this.row = row;
+        this.column = column;
+        this.flooded = flooded;
+        this.sunken = sunken;
+        this.displaySymbol = displaySymbol;
+    }
+
     public double getRow() {
         return row;
     }

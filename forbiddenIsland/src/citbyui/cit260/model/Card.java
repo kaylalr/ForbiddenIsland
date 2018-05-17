@@ -4,12 +4,11 @@
  * and open the template in the editor.
  */
 package citbyui.cit260.model;
-import java.io.Serializable;
 /**
  *
  * @author DD
  */
-public enum Card implements Serializable {
+public enum Card {
     earth("Desc earth", "element"),
     fire("Desc fire", "element"),
     water("Desc water", "element"),
@@ -34,11 +33,8 @@ public enum Card implements Serializable {
     }
 
     @Override
-    public String toString() {
-        return "Card{" + "description=" + description + ", cardType=" + cardType + '}';
+    public static String toString() {
+        return "lol";
+//        return "Card{" + "description=" + description + ", cardType=" + cardType + '}';
     }
-
-
-    
-    
 }

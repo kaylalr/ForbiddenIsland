@@ -22,6 +22,12 @@ public class Actor implements Serializable{
     public Actor() {
     }
 
+    public Actor(String name, double coordinates, String specialAbility) {
+        this.name = name;
+        this.coordinates = coordinates;
+        this.specialAbility = specialAbility;
+    }
+
     public String getName() {
         return name;
     }

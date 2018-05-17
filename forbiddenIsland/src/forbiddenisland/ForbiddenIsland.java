@@ -29,107 +29,62 @@ public class ForbiddenIsland {
          * This is calling on the Actor Class
          */
         
-        Actor actor = new Actor();
-        actor.setName("Jimmy Dude");
-        actor.setCoordinates(0.0);
-        
-        String actorName  = actor.getName();
-        double actorCoordinates = actor.getCoordinates();
-        
-        System.out.println("Name = " + actorName + ", Coordinates = " + actorCoordinates);
+        Actor actor = new Actor("Jimmy Dude", 0.3, "Special Ability");        
+        System.out.println(actor.toString());
         
         
         /***************************************
          * This is calling on the Element class
          */
-        System.out.println(Card.earth.getCardType());
-        System.out.println(Card.earth.getDescription());
-        System.out.println(Card.fire.getCardType());
-        System.out.println(Card.fire.getDescription());
-        System.out.println(Card.water.getCardType());
-        System.out.println(Card.water.getDescription());
-        System.out.println(Card.wind.getCardType());
-        System.out.println(Card.wind.getDescription()); 
-        System.out.println(Card.unfloodTile.getCardType());
-        System.out.println(Card.unfloodTile.getDescription());         
-        System.out.println(Card.helicopter.getCardType());
-        System.out.println(Card.helicopter.getDescription()); 
+        // This works, but I don't know if it's how Brother Jackson wants us to do it.
+        for (Card c: Card.values()) {
+            System.out.println(c);
+        }
+//        System.out.println(Card.earth.getCardType());
+//        System.out.println(Card.earth.getDescription());
+//        System.out.println(Card.fire.getCardType());
+//        System.out.println(Card.fire.getDescription());
+//        System.out.println(Card.water.getCardType());
+//        System.out.println(Card.water.getDescription());
+//        System.out.println(Card.wind.getCardType());
+//        System.out.println(Card.wind.getDescription()); 
+//        System.out.println(Card.unfloodTile.getCardType());
+//        System.out.println(Card.unfloodTile.getDescription());         
+//        System.out.println(Card.helicopter.getCardType());
+//        System.out.println(Card.helicopter.getDescription()); 
         /****************************************
          * This is calling on the game class
          */
-        Game game = new Game();
-        game.setTurns(0.0);
-        game.setScore(7.0);
-      
-        double gameTurns = game.getTurns();
-        double gameScore = game.getScore();
-        
-        System.out.println( "Turns = " + gameTurns + ", Score = " + gameScore);
+        Game game = new Game(0.0, 7.0);        
+        System.out.println(game.toString());
         
         /*****************************************
          *  This calls on the Location Class
          */
         
-        Location location = new Location();
-        location.setRow(1.1);
-        location.setColumn(7.0);
-        
-        location.setFlooded(1);
-        location.setSunken(7); 
-        
-        location.setDisplaySymbol("string");
-        
-        double locationRow = location.getRow();
-        double locationColumn = location.getColumn();
-        int locationFlooded = location.getFlooded();
-        int locationSunken = location.getSunken();
-        String locationDisplaySymbol = location.getDisplaySymbol();
-        
-        System.out.println( "Row = " + locationRow + ", Column = " + locationColumn + ", Flooded = " + locationFlooded + ", Sunken = " + locationSunken + ", Display Symbol = " + locationDisplaySymbol);
+        Location location = new Location(1.1, 7.0, 1, 7, "Symbol");        
+        System.out.println(location.toString());
         
         /***************************************
          * This is calling on the Map class
          */
         
-        Map map = new Map();
-        map.setRowCount(1.1);
-        map.setColumnCount(7.0);
-        
-        map.setDescription("descriptionn");
-
-        double mapRowCount = map.getRowCount();
-        double mapColumnCount = map.getColumnCount();
-        String mapDescription = map.getDescription();
-        
-        System.out.println( "Row Count = " + mapRowCount + ", Column Count = " + mapColumnCount + ", Description = " + mapDescription);
+        Map map = new Map(1.1, 7.0, "description");
+        System.out.println(map.toString());
         
         /***************************************
          * This is calling for the player class
          */
-        Player playerOne = new Player();
-        playerOne.setName("Billy Bob");
-        playerOne.setBestScore(7.0);
-      
-        String playerOneName = playerOne.getName();
-        double playerOneBestScore = playerOne.getBestScore();
-        
-        System.out.println( "Name = " + playerOneName + ", Best Score = " + playerOneBestScore);
+        Player playerOne = new Player("Billy Bob", 7.00);      
+        System.out.println(playerOne.toString());
         
         
         /****************************************
          * This is calling on the Tresure Class
          */
-        Treasure treasure = new Treasure();
-        treasure.setName("Place");
-        treasure.setDescription("Desc");
-        treasure.setStatus("Stat");
+        Treasure treasure = new Treasure("Place", "Desc", "Stat");
+        System.out.println( treasure.toString());       
 
-        String treasureName = treasure.getName();
-        String treasureDescription = treasure.getDescription();
-        String treasureStatus = treasure.getStatus();
-        
-        System.out.println( "Name = " + treasureName + ", Description = " + treasureDescription + ", Status = " + treasureStatus);       
-        
     }
     
 }

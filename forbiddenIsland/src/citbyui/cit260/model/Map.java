@@ -23,6 +23,12 @@ public class Map implements Serializable{
     public Map() {
     }
 
+    public Map(double rowCount, double columnCount, String description) {
+        this.rowCount = rowCount;
+        this.columnCount = columnCount;
+        this.description = description;
+    }
+
     public double getRowCount() {
         return rowCount;
     }

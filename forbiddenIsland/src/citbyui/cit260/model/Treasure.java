@@ -20,6 +20,14 @@ public class Treasure implements Serializable{
     public Treasure() {
     }
 
+    public Treasure(String name, String description, String status) {
+        this.name = name;
+        this.description = description;
+        this.status = status;
+    }
+    
+    
+
     public String getName() {
         return name;
     }
@@ -54,7 +62,7 @@ public class Treasure implements Serializable{
 
     @Override
     public String toString() {
-        return "Treasure{" + "name=" + name + ", description=" + description + ", status=" + status + ", TreasureLocation=" + TreasureLocation + '}';
+        return "Treasure{" + " name=" + name + ", description=" + description + ", status=" + status + ", TreasureLocation=" + TreasureLocation + '}';
     }
 
     @Override
