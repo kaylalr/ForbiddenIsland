@@ -34,7 +34,6 @@ public enum Card {
 
     @Override
     public String toString() {
-        return "lol";
-//        return "Card{" + "description=" + description + ", cardType=" + cardType + '}';
+        return "Card{" + "description=" + description + ", cardType=" + cardType + '}';
     }
 }
