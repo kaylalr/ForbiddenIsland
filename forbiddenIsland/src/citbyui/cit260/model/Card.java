@@ -33,7 +33,7 @@ public enum Card {
     }
 
     @Override
-    public static String toString() {
+    public String toString() {
         return "lol";
 //        return "Card{" + "description=" + description + ", cardType=" + cardType + '}';
     }
