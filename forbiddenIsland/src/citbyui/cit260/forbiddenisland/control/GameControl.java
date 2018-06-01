@@ -12,18 +12,27 @@ package citbyui.cit260.forbiddenisland.control;
 public class GameControl {
 
     
-    public static int getCardsLeft(int player1Cards, int player2Cards){
-        
-        if (player1Cards < 0 || player1Cards > 29){
-            return -1;
+    public static int getTurnsLeft(int player1Turns, int player2Turns){
+       	if (player1Turns < 0 || player1Turns > 20){
+		return -1;
         }
-        if (player2Cards < 0 || player2Cards > 29){
-            return -1;
+
+	if (player2Turns < 0 || player2Turns > 20){
+		return -1;
         }
+	int turnsLeft = 40 - (player1Turns + player2Turns);
+	return turnsLeft;
  
-        int cardsLeft = 30 - (player1Cards + player2Cards);
-        
-        return cardsLeft;
     }
+    
+    public static int getActionsLeft(int playerTurns) {
+		if (playerTurns < 15 || playerTurns > 20) {
+			return -1;
+                }
+
+		int ActionsLeft = (20 - playerTurns)*3;
+		return ActionsLeft;
+    }
+
 
 }
