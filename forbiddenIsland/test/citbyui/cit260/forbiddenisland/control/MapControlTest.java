@@ -30,6 +30,62 @@ public class MapControlTest {
         int expResult = 19;
         int result = MapControl.getTurnsLeft(player1Turns, player2Turns);
         assertEquals(expResult, result);
+        
+        System.out.println("Test 2");
+        player1Turns = 23;
+        player2Turns = 10;
+        expResult = -1;
+        result = MapControl.getTurnsLeft(player1Turns, player2Turns);
+        assertEquals(expResult, result);
+        
+        System.out.println("Test 3");
+        player1Turns = -1;
+        player2Turns = 10;
+        expResult = -1;
+        result = MapControl.getTurnsLeft(player1Turns, player2Turns);
+        assertEquals(expResult, result); 
+        
+        System.out.println("Test 4");
+        player1Turns = 11;
+        player2Turns = 30;
+        expResult = -1;
+        result = MapControl.getTurnsLeft(player1Turns, player2Turns);
+        assertEquals(expResult, result);
+        
+        System.out.println("Test 5");
+        player1Turns = 11;
+        player2Turns = -1;
+        expResult = -1;
+        result = MapControl.getTurnsLeft(player1Turns, player2Turns);
+        assertEquals(expResult, result);
+        
+        System.out.println("Test 6");
+        player1Turns = 0;
+        player2Turns = 10;
+        expResult = 30;
+        result = MapControl.getTurnsLeft(player1Turns, player2Turns);
+        assertEquals(expResult, result);
+        
+        System.out.println("Test 7");
+        player1Turns = 19;
+        player2Turns = 0;
+        expResult = 21;
+        result = MapControl.getTurnsLeft(player1Turns, player2Turns);
+        assertEquals(expResult, result);
+        
+        System.out.println("Test 8");
+        player1Turns = 10;
+        player2Turns = 20;
+        expResult = 10;
+        result = MapControl.getTurnsLeft(player1Turns, player2Turns);
+        assertEquals(expResult, result);
+        
+        System.out.println("Test 9");
+        player1Turns = 20;
+        player2Turns = 10;
+        expResult = 10;
+        result = MapControl.getTurnsLeft(player1Turns, player2Turns);
+        assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
 
     }
