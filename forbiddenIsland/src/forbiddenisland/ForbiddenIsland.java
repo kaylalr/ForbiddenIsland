@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package forbiddenisland;
+import citbyui.cit260.forbiddenisland.view.StartProgramView;
 import citbyui.cit260.model.Actor;
 import citbyui.cit260.model.Card;
 import citbyui.cit260.model.Game;
@@ -83,8 +84,12 @@ public class ForbiddenIsland {
          * This is calling on the Tresure Class
          */
         Treasure treasure = new Treasure("Place", "Desc", "Stat");
-        System.out.println( treasure.toString());       
-
+        System.out.println( treasure.toString());   
+        
+        
+        StartProgramView programView = new StartProgramView();
+        programView.displayStartProgramView();
+            
     }
     
 }
