@@ -14,7 +14,7 @@ public class StartProgramView {
     public StartProgramView() {
     }
     
-    public void displayStartProgramView(){
+    private String getInputs(){
       //DISPLAYS BANNER PAGE
         System.out.println("***************************************************************************");
         System.out.println("*  You are stuck on an island and the only way off is to collect all      *\n"
@@ -37,22 +37,35 @@ public class StartProgramView {
             System.out.println("Error: Please re-enter a valid name: ");
             name = inFile.nextLine();
         } 
-        System.out.println("Hello " + name + "! Enjoy the game!");
+        return name;
+    }
+    
+    private boolean doActions(String name){
+        System.out.println("\n");
+        System.out.println("Welcome to the game " + name + "! We hope you have a lot of fun!"); 
+        System.out.println("\n");
+        
+        System.out.println("Choose a Start option: ");
+        System.out.println("N - Start new game");
+        System.out.println("R - Restart current game");
+        System.out.println("I - View instructions");
+        System.out.println("E - Exit");
+            
+        String[] inputs = new String[1];
+        inputs[0] = "testInput";
+        
+        System.out.println(inputs[0]);
+            
+        return true;
+    }
+    
+    public void displayStartProgramView(){
+        
+        String name = getInputs();
+        doActions(name);
         
     }   
     
         
-//  private String[] getInputs(){
-//        System.out.println("Choose a Start option: ");
-//        System.out.println("N - Start new game");
-//        System.out.println("R - Restart current game");
-//        System.out.println("I - View instructions");
-//        System.out.println("E - Exit");
-//            
-//        String[] inputs = new String[1];
-//        inputs[0] = "testInput";
-//            
-//        return inputs;
-// }
-//        
+        
 }
