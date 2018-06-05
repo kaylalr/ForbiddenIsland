@@ -14,8 +14,9 @@ public class StartProgramView {
     public StartProgramView() {
     }
     
-    private String getInputs(){
-      //DISPLAYS BANNER PAGE
+    public void displayStartProgramView(){
+        
+        //DISPLAYS BANNER PAGE
         System.out.println("***************************************************************************");
         System.out.println("*  You are stuck on an island and the only way off is to collect all      *\n"
                 + "*  the treasure and fly away.  But it’s not as easy as it sounds.  As     *\n"
@@ -24,8 +25,7 @@ public class StartProgramView {
                 + "*  before you become stuck, with no escape.                               *");
         System.out.println("***************************************************************************");
         System.out.println("\n");
-        System.out.println("\n");
-        
+
       //CALLING FOR NAME OF PLAYER
         Scanner inFile;
         inFile = new Scanner(System.in);
@@ -37,34 +37,48 @@ public class StartProgramView {
             System.out.println("Error: Please re-enter a valid name: ");
             name = inFile.nextLine();
         } 
-        return name;
+        //return name;
+        
+        boolean endOfView = false;
+        
+        do{
+            String[] inputs = this.getInputs();
+            if(inputs == null || inputs.equals('E')){
+               endOfView = true;
+            }
+            endOfView = doActions(inputs);
+        }while(endOfView != true);
+        
+        doActions(name);
+    }   
+    
+    private String[] getInputs(){
+      throw new UnsupportedOperationException("Not supported yet.");
     }
     
     private boolean doActions(String name){
+        
+      //DISPLAY WELCOME MESSAGE
         System.out.println("\n");
         System.out.println("Welcome to the game " + name + "! We hope you have a lot of fun!"); 
         System.out.println("\n");
         
+      //DISPLAY MAIN MENU
         System.out.println("Choose a Start option: ");
         System.out.println("N - Start new game");
         System.out.println("R - Restart current game");
         System.out.println("I - View instructions");
         System.out.println("E - Exit");
-            
-        String[] inputs = new String[1];
-        inputs[0] = "testInput";
-        
+      //CREATES AN INPUT STRING    
+        String[] inputs = this.getInputs();
+      
+      //PRINTS OUT INPUT CHOICE
         System.out.println(inputs[0]);
             
         return true;
     }
     
-    public void displayStartProgramView(){
-        
-        String name = getInputs();
-        doActions(name);
-        
-    }   
+    
     
         
         
