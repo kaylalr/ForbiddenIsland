@@ -49,32 +49,61 @@ public class StartProgramView {
             endOfView = doActions(inputs);
         }while(endOfView != true);
         
-        doActions(name);
+//        doActions(name);
     }   
     
     private String[] getInputs(){
-      throw new UnsupportedOperationException("Not supported yet.");
+      System.out.println("**** getInputs() called ***");
+      
+      String[] inputs = new String[1];
+//      inputs[0] = "textInput";
+      
+      System.out.println("");
+      boolean valid = false;
+      
+      while(valid == false) {
+          System.out.println("");
+          Scanner inFile;
+          inFile = new Scanner(System.in);
+          String value = inFile.nextLine().toUpperCase().trim();
+          
+          if (value.length() < 1) {
+              System.out.println("You must enter a non-blank value");
+              valid = false;
+          }
+          else {
+            inputs[0] = value;
+            valid = true;
+          }
+      }
+      
+      return inputs;
     }
     
-    private boolean doActions(String name){
+    private boolean doActions(String[] inputs){
         
-      //DISPLAY WELCOME MESSAGE
-        System.out.println("\n");
-        System.out.println("Welcome to the game " + name + "! We hope you have a lot of fun!"); 
-        System.out.println("\n");
+//      //DISPLAY WELCOME MESSAGE
+//        System.out.println("\n");
+//        System.out.println("Welcome to the game " + name + "! We hope you have a lot of fun!"); 
+//        System.out.println("\n");
+//        
+//      //DISPLAY MAIN MENU
+//        System.out.println("Choose a Start option: ");
+//        System.out.println("N - Start new game");
+//        System.out.println("R - Restart current game");
+//        System.out.println("I - View instructions");
+//        System.out.println("E - Exit");
+//      //CREATES AN INPUT STRING    
+//        String[] inputs = this.getInputs();
+//      
+//      //PRINTS OUT INPUT CHOICE
+//        System.out.println(inputs[0]);
+//            
+//        return true;
+
+        System.out.println("**** doAction() called ***");
+        System.out.println("\tinputs = " + inputs[0]);
         
-      //DISPLAY MAIN MENU
-        System.out.println("Choose a Start option: ");
-        System.out.println("N - Start new game");
-        System.out.println("R - Restart current game");
-        System.out.println("I - View instructions");
-        System.out.println("E - Exit");
-      //CREATES AN INPUT STRING    
-        String[] inputs = this.getInputs();
-      
-      //PRINTS OUT INPUT CHOICE
-        System.out.println(inputs[0]);
-            
         return true;
     }
     

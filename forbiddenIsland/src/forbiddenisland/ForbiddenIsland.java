@@ -87,9 +87,8 @@ public class ForbiddenIsland {
         System.out.println( treasure.toString());   
         
         
-        StartProgramView programView = new StartProgramView();
-        programView.displayStartProgramView();
-            
+        StartProgramView startProgramView = new StartProgramView();
+        startProgramView.displayStartProgramView();
     }
     
 }
