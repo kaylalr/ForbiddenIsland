@@ -32,8 +32,10 @@ public class StartProgramView {
         System.out.println("What is your name: ");
         String name = inFile.nextLine();
         
+        
       //CHECKS FOR VALID INPUT NAME
         while (name.length() < 3 || name.length() > 12){
+            
             System.out.println("Error: Please re-enter a valid name: ");
             name = inFile.nextLine();
         } 
