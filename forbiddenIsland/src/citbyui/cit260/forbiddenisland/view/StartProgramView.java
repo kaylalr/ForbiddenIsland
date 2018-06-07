@@ -4,7 +4,9 @@
  * and open the template in the editor.
  */
 package citbyui.cit260.forbiddenisland.view;
+
 import java.util.Scanner;
+
 /**
  *
  * @author mcwis
@@ -13,34 +15,31 @@ public class StartProgramView {
 
     public StartProgramView() {
     }
-    
-    public void displayStartProgramView(){
-        
+
+    public void displayStartProgramView() {
+
         //return name;
-        
         boolean endOfView = false;
-        
-        do{
+
+        do {
             String[] inputs = this.getInputs();
-            if(inputs == null || inputs.equals('Q')){
-               endOfView = true;
-            }
-            else{
-                endOfView = doActions(inputs);
-            }
+            if (inputs == null || inputs[0].toUpperCase().equals('Q')) {
+                return;
+            } 
             
-        }while(endOfView != true);
-        
+            endOfView = doActions(inputs);         
+
+        } while (endOfView != true);
+
 //        doActions(name);
-    }   
-    
-    private String[] getInputs(){
-      System.out.println("**** getInputs() called ***");
-      
-      String[] inputs = new String[1];
+    }
+
+    private String[] getInputs() {
+
+        String[] inputs = new String[1];
 //      inputs[0] = "textInput";
-      
-      //DISPLAYS BANNER PAGE
+
+        //DISPLAYS BANNER PAGE
         System.out.println("***************************************************************************");
         System.out.println("*  You are stuck on an island and the only way off is to collect all      *\n"
                 + "*  the treasure and fly away.  But it’s not as easy as it sounds.  As     *\n"
@@ -49,54 +48,30 @@ public class StartProgramView {
                 + "*  before you become stuck, with no escape.                               *");
         System.out.println("***************************************************************************");
         System.out.println("\n");
-        
-        
-      boolean valid = false;
-      
-      while(valid == false) {
-        //CREATED SCANNER  
-          Scanner inFile;
-          inFile = new Scanner(System.in);
-          
-        //CALLS FOR NAME  
-          System.out.println("What is your name: ");
-          String value = inFile.nextLine().toUpperCase().trim();
-          
-          
-        //FIND HOW TO ADD QUIT (IN) !!! 
-          if (value.length() > 1){
-              
-            String name = value;
-            while (name.length() < 3 || name.length() > 12){
+
+        boolean valid = false;
+
+        while (valid == false) {
+            //CREATED SCANNER  
+            Scanner inFile;
+            inFile = new Scanner(System.in);
+
+            //CALLS FOR NAME  
+            System.out.println("What is your name: ");
+            String value = inFile.nextLine().trim();
+            
+            if (value.length() < 1 || value.length() > 12) {
                 System.out.println("Error: Please re-enter a valid name: ");
-                name = inFile.nextLine();
-            } 
-            
-            valid = true;
-          }
-      //CHECKS FOR VALID INPUT NAME
-            
-          
-          if (value.length() < 1) {
-              System.out.println("You must enter a non-blank value");
-              valid = false;
-          }
-          else if(value.equals('Q')){
+                continue;
+            }
             inputs[0] = value;
             valid = true;
-          }
-//          else{
-//              System.out.println("ERROR");
-//              valid = false;
-//          }
-          
-      }
-      
-      return inputs;
+        }
+        return inputs;
     }
-    
-    private boolean doActions(String[] inputs){
-        
+
+    private boolean doActions(String[] inputs) {
+
 //      //DISPLAY WELCOME MESSAGE
 //        System.out.println("\n");
 //        System.out.println("Welcome to the game " + name + "! We hope you have a lot of fun!"); 
@@ -115,15 +90,10 @@ public class StartProgramView {
 //        System.out.println(inputs[0]);
 //            
 //        return true;
-
         System.out.println("**** doAction() called ***");
         System.out.println("\tinputs = " + inputs[0]);
-        
+
         return true;
     }
-    
-    
-    
-        
-        
+
 }
