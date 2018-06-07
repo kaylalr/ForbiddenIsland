@@ -16,39 +16,19 @@ public class StartProgramView {
     
     public void displayStartProgramView(){
         
-        //DISPLAYS BANNER PAGE
-        System.out.println("***************************************************************************");
-        System.out.println("*  You are stuck on an island and the only way off is to collect all      *\n"
-                + "*  the treasure and fly away.  But it’s not as easy as it sounds.  As     *\n"
-                + "*  you are collecting the treasure, the island is being flooded!  You     *\n"
-                + "*  need to hurry! Collect all the treasure as fast as you can and leave   *\n"
-                + "*  before you become stuck, with no escape.                               *");
-        System.out.println("***************************************************************************");
-        System.out.println("\n");
-
-      //CALLING FOR NAME OF PLAYER
-        Scanner inFile;
-        inFile = new Scanner(System.in);
-        System.out.println("What is your name: ");
-        String name = inFile.nextLine();
-        
-        
-      //CHECKS FOR VALID INPUT NAME
-        while (name.length() < 3 || name.length() > 12){
-            
-            System.out.println("Error: Please re-enter a valid name: ");
-            name = inFile.nextLine();
-        } 
         //return name;
         
         boolean endOfView = false;
         
         do{
             String[] inputs = this.getInputs();
-            if(inputs == null || inputs.equals('E')){
+            if(inputs == null || inputs.equals('Q')){
                endOfView = true;
             }
-            endOfView = doActions(inputs);
+            else{
+                endOfView = doActions(inputs);
+            }
+            
         }while(endOfView != true);
         
 //        doActions(name);
@@ -60,23 +40,56 @@ public class StartProgramView {
       String[] inputs = new String[1];
 //      inputs[0] = "textInput";
       
-      System.out.println("");
+      //DISPLAYS BANNER PAGE
+        System.out.println("***************************************************************************");
+        System.out.println("*  You are stuck on an island and the only way off is to collect all      *\n"
+                + "*  the treasure and fly away.  But it’s not as easy as it sounds.  As     *\n"
+                + "*  you are collecting the treasure, the island is being flooded!  You     *\n"
+                + "*  need to hurry! Collect all the treasure as fast as you can and leave   *\n"
+                + "*  before you become stuck, with no escape.                               *");
+        System.out.println("***************************************************************************");
+        System.out.println("\n");
+        
+        
       boolean valid = false;
       
       while(valid == false) {
-          System.out.println("");
+        //CREATED SCANNER  
           Scanner inFile;
           inFile = new Scanner(System.in);
+          
+        //CALLS FOR NAME  
+          System.out.println("What is your name: ");
           String value = inFile.nextLine().toUpperCase().trim();
+          
+          
+        //FIND HOW TO ADD QUIT (IN) !!! 
+          if (value.length() > 1){
+              
+            String name = value;
+            while (name.length() < 3 || name.length() > 12){
+                System.out.println("Error: Please re-enter a valid name: ");
+                name = inFile.nextLine();
+            } 
+            
+            valid = true;
+          }
+      //CHECKS FOR VALID INPUT NAME
+            
           
           if (value.length() < 1) {
               System.out.println("You must enter a non-blank value");
               valid = false;
           }
-          else {
+          else if(value.equals('Q')){
             inputs[0] = value;
             valid = true;
           }
+//          else{
+//              System.out.println("ERROR");
+//              valid = false;
+//          }
+          
       }
       
       return inputs;
