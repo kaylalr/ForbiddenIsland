@@ -9,10 +9,10 @@ package citbyui.cit260.forbiddenisland.view;
  *
  * @author DD
  */
-class StartExistingGameView {
+class HelpMenuView {
 
-    void displayStartExistingGameView() {
-        System.out.println("*** displayStartExistingGameView() called");
+    void displayHelpMenuView() {
+        System.out.println("*** displayHelpMenuView() called");
     }
     
 }

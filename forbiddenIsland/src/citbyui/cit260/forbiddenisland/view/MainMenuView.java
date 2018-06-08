@@ -75,9 +75,11 @@ class MainMenuView {
                break;
                case "H":
                    System.out.println("inputs = H");
+                   getHelp();
                break;
                default:
                    System.out.println("Invalid menu option");
+                   return false;
            }
            return true;
        }
@@ -92,5 +94,10 @@ class MainMenuView {
     private void restartNewGame() {
         StartExistingGameView startExistingGameView = new StartExistingGameView(); 
         startExistingGameView.displayStartExistingGameView();
+    }
+
+    private void getHelp() {
+        HelpMenuView helpMenuView = new HelpMenuView();
+        helpMenuView.displayHelpMenuView();
     }
 }
