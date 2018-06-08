@@ -5,6 +5,9 @@
  */
 package citbyui.cit260.forbiddenisland.control;
 
+import citbyui.cit260.model.Player;
+import forbiddenisland.ForbiddenIsland;
+
 /**
  *
  * @author mcwis
@@ -32,6 +35,18 @@ public class GameControl {
 
 		int ActionsLeft = (20 - playerTurns)*3;
 		return ActionsLeft;
+    }
+
+    public static Player savePlayer(String playerName) {
+        
+        if (playerName == null || playerName.length() < 1){
+            return null;
+        }
+        
+        Player player = new Player();
+        ForbiddenIsland.setPlayer(player);
+        
+        return new Player();
     }
 
 

@@ -5,6 +5,9 @@
  */
 package citbyui.cit260.forbiddenisland.view;
 
+import citbyui.cit260.forbiddenisland.view.MainMenuView;
+import citbyui.cit260.forbiddenisland.control.GameControl;
+import citbyui.cit260.model.Player;
 import java.util.Scanner;
 
 /**
@@ -47,7 +50,6 @@ public class StartProgramView {
                 + "*  need to hurry! Collect all the treasure as fast as you can and leave   *\n"
                 + "*  before you become stuck, with no escape.                               *");
         System.out.println("***************************************************************************");
-        System.out.println("\n");
 
         boolean valid = false;
 
@@ -71,12 +73,27 @@ public class StartProgramView {
     }
 
     private boolean doActions(String[] inputs) {
-
-//      //DISPLAY WELCOME MESSAGE
-//        System.out.println("\n");
-//        System.out.println("Welcome to the game " + name + "! We hope you have a lot of fun!"); 
-//        System.out.println("\n");
-//        
+        
+        String playerName = inputs[0];
+        Player player = GameControl.savePlayer(playerName);
+       
+        if (player == null){
+            System.out.println("Could not create the player. " + 
+                               "Enter a different name.");
+            return false;
+        }
+        
+        System.out.println("\n");
+        System.out.println("Welcome to the game " + playerName + "! We hope you have a lot of fun!"); 
+        System.out.println("\n");
+        
+        MainMenuView mainMenuView = new MainMenuView();
+        mainMenuView.displayMainMenuView();
+        
+        return true;
+        
+        
+        
 //      //DISPLAY MAIN MENU
 //        System.out.println("Choose a Start option: ");
 //        System.out.println("N - Start new game");
@@ -84,16 +101,16 @@ public class StartProgramView {
 //        System.out.println("I - View instructions");
 //        System.out.println("E - Exit");
 //      //CREATES AN INPUT STRING    
-//        String[] inputs = this.getInputs();
+////        String[] inputs = this.getInputs();
 //      
 //      //PRINTS OUT INPUT CHOICE
 //        System.out.println(inputs[0]);
-//            
-//        return true;
-        System.out.println("**** doAction() called ***");
-        System.out.println("\tinputs = " + inputs[0]);
 
-        return true;
+     //   System.out.println("**** doAction() called ***");
+   //     System.out.println("\tinputs = " + inputs[0]);
+
     }
+   
+
 
 }
