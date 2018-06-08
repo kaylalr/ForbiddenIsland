@@ -71,6 +71,7 @@ class MainMenuView {
                break;
                case "R":
                    System.out.println("inputs = R");
+                   restartNewGame();
                break;
                case "H":
                    System.out.println("inputs = H");
@@ -86,5 +87,10 @@ class MainMenuView {
         
         GameMenuView gameMenuView = new GameMenuView();
         gameMenuView.displayGameMenuView();
+    }
+
+    private void restartNewGame() {
+        StartExistingGameView startExistingGameView = new StartExistingGameView(); 
+        startExistingGameView.displayStartExistingGameView();
     }
 }
