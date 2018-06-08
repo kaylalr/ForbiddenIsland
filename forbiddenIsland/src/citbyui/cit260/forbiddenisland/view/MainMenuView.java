@@ -5,6 +5,8 @@
  */
 package citbyui.cit260.forbiddenisland.view;
 
+import java.util.Scanner;
+
 /**
  *
  * @author mcwis
@@ -36,7 +38,7 @@ class MainMenuView {
         System.out.println("N - Start new game");
         System.out.println("R - Restart current game");
         System.out.println("I - View instructions");
-        System.out.println("E - Exit");
+        System.out.println("Q - Quit");
         
         boolean valid = false;
         while (valid == false) {
@@ -46,10 +48,10 @@ class MainMenuView {
 
             //CALLS FOR NAME  
             System.out.println("Please choose a main menu item: ");
-            String value = inFile.nextLine().trim();
+            String value = inFile.nextLine().trim().toUpperCase();
             
             if (value.length() < 1 || value.length() > 1) {
-                System.out.println("Error: Please re-enter a valid name: ");
+                System.out.println("Error: Please re-enter menu item: ");
                 continue;
             }
             inputs[0] = value;
@@ -59,7 +61,19 @@ class MainMenuView {
       }
       
        private boolean doActions(String[] inputs) {
-           System.out.println("*** mainMenuView - doActions() called ***");
+           switch(inputs[0]) {
+               case "N":
+                   System.out.println("inputs = N");
+               break;
+               case "R":
+                   System.out.println("inputs = R");
+               break;
+               case "I":
+                   System.out.println("inputs = I");
+               break;
+               default:
+                   System.out.println("Invalid menu option");
+           }
            return true;
        }
 }
