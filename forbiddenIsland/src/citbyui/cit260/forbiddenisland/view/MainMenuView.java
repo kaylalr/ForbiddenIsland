@@ -5,6 +5,9 @@
  */
 package citbyui.cit260.forbiddenisland.view;
 
+import citbyui.cit260.forbiddenisland.control.GameControl;
+import citbyui.cit260.model.Game;
+import forbiddenisland.ForbiddenIsland;
 import java.util.Scanner;
 
 /**
@@ -37,7 +40,7 @@ class MainMenuView {
         System.out.println("Main Menu");
         System.out.println("N - Start new game");
         System.out.println("R - Restart current game");
-        System.out.println("I - View instructions");
+        System.out.println("H - Get Help");
         System.out.println("Q - Quit");
         
         boolean valid = false;
@@ -64,16 +67,24 @@ class MainMenuView {
            switch(inputs[0]) {
                case "N":
                    System.out.println("inputs = N");
+                   startNewGame();
                break;
                case "R":
                    System.out.println("inputs = R");
                break;
-               case "I":
-                   System.out.println("inputs = I");
+               case "H":
+                   System.out.println("inputs = H");
                break;
                default:
                    System.out.println("Invalid menu option");
            }
            return true;
        }
+
+    private void startNewGame() {
+        Game game = GameControl.createNewGame(ForbiddenIsland.getPlayer());
+        
+        GameMenuView gameMenuView = new GameMenuView();
+        gameMenuView.displayGameMenuView();
+    }
 }

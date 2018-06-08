@@ -5,6 +5,7 @@
  */
 package citbyui.cit260.forbiddenisland.control;
 
+import citbyui.cit260.model.Game;
 import citbyui.cit260.model.Player;
 import forbiddenisland.ForbiddenIsland;
 
@@ -47,6 +48,10 @@ public class GameControl {
         ForbiddenIsland.setPlayer(player);
         
         return new Player();
+    }
+
+    public static Game createNewGame(Player player) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 
