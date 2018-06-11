@@ -51,7 +51,7 @@ public class GameControl {
     }
 
     public static Game createNewGame(Player player) {
-        System.out.println("*** createNewGame() called");
+        System.out.println("*** createNewGame() called ***");
         Game game = new Game();
         
         return game;
