@@ -64,40 +64,7 @@ class MainMenuView {
       }
       
        private boolean doActions(String[] inputs) {
-           switch(inputs[0]) {
-               case "N":
-                   System.out.println("inputs = N");
-                   startNewGame();
-               break;
-               case "R":
-                   System.out.println("inputs = R");
-                   restartNewGame();
-               break;
-               case "H":
-                   System.out.println("inputs = H");
-                   getHelp();
-               break;
-               default:
-                   System.out.println("Invalid menu option");
-                   return false;
-           }
+           System.out.println("*** mainMenuView -doActions called ***");
            return true;
        }
-
-    private void startNewGame() {
-        Game game = GameControl.createNewGame(ForbiddenIsland.getPlayer());
-        
-        GameMenuView gameMenuView = new GameMenuView();
-        gameMenuView.displayGameMenuView();
-    }
-
-    private void restartNewGame() {
-        StartExistingGameView startExistingGameView = new StartExistingGameView(); 
-        startExistingGameView.displayStartExistingGameView();
-    }
-
-    private void getHelp() {
-        HelpMenuView helpMenuView = new HelpMenuView();
-        helpMenuView.displayHelpMenuView();
-    }
 }
