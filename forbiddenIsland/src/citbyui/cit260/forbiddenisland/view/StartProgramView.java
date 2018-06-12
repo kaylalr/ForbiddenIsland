@@ -4,7 +4,6 @@
  * and open the template in the editor.
  */
 package citbyui.cit260.forbiddenisland.view;
-
 import citbyui.cit260.forbiddenisland.view.MainMenuView;
 import citbyui.cit260.forbiddenisland.control.GameControl;
 import citbyui.cit260.model.Player;
@@ -28,9 +27,9 @@ public class StartProgramView {
             String[] inputs = this.getInputs();
             if (inputs == null || inputs[0].toUpperCase().equals("Q")) {
                 return;
-            } 
-            
-            endOfView = doActions(inputs);         
+            }
+
+            endOfView = doActions(inputs);
 
         } while (endOfView != true);
 
@@ -61,7 +60,7 @@ public class StartProgramView {
             //CALLS FOR NAME  
             System.out.println("What is your name: ");
             String value = inFile.nextLine().trim();
-            
+
             if (value.length() < 1 || value.length() > 12) {
                 System.out.println("Error: Please re-enter a valid name: ");
                 continue;
@@ -73,44 +72,24 @@ public class StartProgramView {
     }
 
     private boolean doActions(String[] inputs) {
-        
+
         String playerName = inputs[0];
         Player player = GameControl.savePlayer(playerName);
-       
-        if (player == null){
-            System.out.println("Could not create the player. " + 
-                               "Enter a different name.");
+
+        if (player == null) {
+            System.out.println("Could not create the player. "
+                    + "Enter a different name.");
             return false;
         }
-        
+
         System.out.println("\n");
-        System.out.println("Welcome to the game " + playerName + "! We hope you have a lot of fun!"); 
+        System.out.println("Welcome to the game " + playerName + "! We hope you have a lot of fun!");
         System.out.println("\n");
-        
+
         MainMenuView mainMenuView = new MainMenuView();
         mainMenuView.displayMainMenuView();
-        
+
         return true;
-        
-        
-        
-//      //DISPLAY MAIN MENU
-//        System.out.println("Choose a Start option: ");
-//        System.out.println("N - Start new game");
-//        System.out.println("R - Restart current game");
-//        System.out.println("I - View instructions");
-//        System.out.println("E - Exit");
-//      //CREATES AN INPUT STRING    
-////        String[] inputs = this.getInputs();
-//      
-//      //PRINTS OUT INPUT CHOICE
-//        System.out.println(inputs[0]);
-
-     //   System.out.println("**** doAction() called ***");
-   //     System.out.println("\tinputs = " + inputs[0]);
-
     }
-   
-
 
 }

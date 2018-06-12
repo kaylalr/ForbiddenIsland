@@ -4,7 +4,6 @@
  * and open the template in the editor.
  */
 package forbiddenisland;
-import citbyui.cit260.forbiddenisland.view.SpecialAbilityView;
 import citbyui.cit260.forbiddenisland.view.StartProgramView;
 import citbyui.cit260.model.Actor;
 import citbyui.cit260.model.Card;
@@ -32,8 +31,6 @@ public class ForbiddenIsland {
         StartProgramView startProgramView = new StartProgramView();
         startProgramView.displayStartProgramView();
         
-        SpecialAbilityView specialAbilityView = new SpecialAbilityView();
-        specialAbilityView.displaySpecialAbilityView();
     }
 
     public static Game getCurrentGame() {
