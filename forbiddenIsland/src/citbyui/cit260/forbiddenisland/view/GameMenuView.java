@@ -98,6 +98,7 @@ class GameMenuView {
             case "S":
                 
                 break;
+            
         }
         return false;
     }
