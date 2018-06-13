@@ -85,7 +85,8 @@ class GameMenuView {
                 useSpecialAcitonCardView.displayUseSpecialAcitonCardView();
                 break;
             case "V":
-                viewCards();
+                ViewCardsView viewCardsView = new ViewCardsView();
+                viewCardsView.displayViewCardsView (); 
                 break;
             case "E":
 
