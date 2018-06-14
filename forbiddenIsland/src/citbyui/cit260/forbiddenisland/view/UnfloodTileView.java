@@ -39,8 +39,11 @@ class UnfloodTileView {
             
             System.out.println("Please enter coordinates: ");
             String value = inFile.nextLine().trim();
-            
-            if(value.length() < 2 || value.length() > 3){
+            //REQUIRED IF-ELSE STATEMENT
+            if(value.length() >= 2 && value.length() <= 3){
+                System.out.println("You have selected - " + value);
+            }
+            else{
                 System.out.println("Error: Enter a valid coordinate: ");
                 continue;
             }
@@ -53,7 +56,6 @@ class UnfloodTileView {
     }
 
     private boolean doActions(String[] inputs) {
-        System.out.println("You have selected - " + inputs[0]);
  
         return true;
     }
