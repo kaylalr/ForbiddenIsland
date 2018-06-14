@@ -34,7 +34,7 @@ class GameMenuView {
         System.out.println("\nGame Menu\n"
                 + "M – Move\n"
                 + "U – Unflood a tile\n"
-                + "T – Give Treasure Card\n"
+                + "G – Give Treasure Card\n"
                 + "C – Capture Treasure\n"
                 + "A – Use Special Action Card\n"
                 + "V – View Cards\n"

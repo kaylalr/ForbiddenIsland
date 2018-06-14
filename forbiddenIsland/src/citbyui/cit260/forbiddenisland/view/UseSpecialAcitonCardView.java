@@ -35,12 +35,20 @@ class UseSpecialAcitonCardView {
         //CREATED SCANNER  
             Scanner inFile;
             inFile = new Scanner(System.in);
-
-            System.out.println("Where would you like to move? Please enter the coordinates:");
+            // if they have no Special Action cards, display this:
+            System.out.println("You have no Special Action cards.\nWould you like to use a different player's Special Action card?\n"
+                    + "Y - yes\n"
+                    + "N - no\n");
+            // if they do have special action cards, display this:
+            System.out.println("Which Speical Action card woiuld you like to use?\n"
+                    + "You have # Unflood Tile card(s) and # Helicopter card(s)\n"
+                    + "U - Unflood Tile\n"
+                    + "H - Helicopter\n"
+                    + "D - Use different players Special Action card\n");
             String value = inFile.nextLine().trim().toUpperCase();
 
             if (value.length() < 1 || value.length() > 1) {
-                System.out.println("Error: Please re-enter valid coordinates: ");
+                System.out.println("Error: Please re-enter valid option: ");
                 continue;
             }
             inputs[0] = value;
@@ -50,7 +58,20 @@ class UseSpecialAcitonCardView {
     }
 
     private boolean doActions(String[] inputs) {
-        System.out.println("*** UseSpeicalActionCard doAction() called ***");
+        switch(inputs[0]){
+            case "U":
+                System.out.println("use unflood tile card - call unfloodTilesView()");
+                break;
+            case "H":
+                System.out.println("use helicopter card - call helicopterView()?");
+                break;
+            case "D":
+            case "Y":
+                System.out.println("use different player's Special Action card display other players cards");
+                break;
+            default:
+                return true;
+        }
         return true;
     }
     
