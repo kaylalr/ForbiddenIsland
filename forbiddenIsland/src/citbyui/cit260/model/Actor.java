@@ -7,6 +7,7 @@ package citbyui.cit260.model;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Objects;
+import citbyui.cit260.model.Card;
 /**
  *
  * @author mcwis
@@ -17,6 +18,7 @@ public class Actor implements Serializable{
     private double coordinates;
     private String specialAbility;
     private Location Location;
+    private Card cards;
     private ArrayList<Player> players = new ArrayList<Player>();
     
     public Actor() {
@@ -66,6 +68,14 @@ public class Actor implements Serializable{
 
     public void setLocation(Location Location) {
         this.Location = Location;
+    }
+
+    public Card getCards() {
+        return cards;
+    }
+
+    public void setCards(Card cards) {
+        this.cards = cards;
     }
 
     @Override
