@@ -31,7 +31,7 @@ class GameMenuView {
     private String[] getInputs() {
         String[] inputs = new String[1];
 
-        System.out.println("Game Menu\n"
+        System.out.println("\nGame Menu\n"
                 + "M – Move\n"
                 + "U – Unflood a tile\n"
                 + "T – Give Treasure Card\n"
@@ -49,7 +49,7 @@ class GameMenuView {
             Scanner inFile;
             inFile = new Scanner(System.in);
 
-            System.out.println("Please choose a main menu item: ");
+            System.out.println("\nPlease choose a main menu item: ");
             String value = inFile.nextLine().trim().toUpperCase();
 
             if (value.length() < 1 || value.length() > 1) {
