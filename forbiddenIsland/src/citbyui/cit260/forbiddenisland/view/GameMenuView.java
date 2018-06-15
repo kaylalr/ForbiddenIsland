@@ -89,7 +89,7 @@ class GameMenuView {
                 viewCardsView.displayViewCardsView (); 
                 break;
             case "E":
-
+                
                 break;
             case "I":
                 HelpMenuView helpMenuView = new HelpMenuView();

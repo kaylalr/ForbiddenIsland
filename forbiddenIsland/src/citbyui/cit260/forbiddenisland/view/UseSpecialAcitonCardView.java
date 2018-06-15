@@ -28,6 +28,11 @@ class UseSpecialAcitonCardView {
     }
 
     private String[] getInputs() {
+        // test code
+        int SpecialActionCardUnflood = (int)Math.round(Math.random() * 5);
+        int SpecialActionCardHelicopter = (int)Math.round(Math.random() * 5);
+        int total = SpecialActionCardUnflood + SpecialActionCardHelicopter;
+        // end test code
         String[] inputs = new String[1];
         
         boolean valid = false;
@@ -35,16 +40,28 @@ class UseSpecialAcitonCardView {
         //CREATED SCANNER  
             Scanner inFile;
             inFile = new Scanner(System.in);
-            // if they have no Special Action cards, display this:
+            if (total == 0) {
             System.out.println("You have no Special Action cards.\nWould you like to use a different player's Special Action card?\n"
                     + "Y - yes\n"
                     + "N - no\n");
-            // if they do have special action cards, display this:
-            System.out.println("Which Speical Action card woiuld you like to use?\n"
-                    + "You have # Unflood Tile card(s) and # Helicopter card(s)\n"
-                    + "U - Unflood Tile\n"
-                    + "H - Helicopter\n"
-                    + "D - Use different players Special Action card\n");
+            }
+            else {
+            System.out.println("You have " + SpecialActionCardUnflood + " Unflood Tile card(s) and " + SpecialActionCardHelicopter + " Helicopter card(s)\n"
+                    + "Which Speical Action card would you like to use?\n");
+                if(SpecialActionCardUnflood == 0){
+                    System.out.println("H - Helicopter\n"
+                            + "D - Use different players Special Action card\n");
+                }
+                else if(SpecialActionCardHelicopter == 0) {
+                    System.out.println("U - Unflood Tile\n"
+                            + "D - Use different players Special Action card\n");
+                } 
+                else {
+                    System.out.println("U - Unflood Tile\n"
+                            + "H - Helicopter\n"
+                            + "D - Use different players Special Action card\n");
+                }
+            }
             String value = inFile.nextLine().trim().toUpperCase();
 
             if (value.length() < 1 || value.length() > 1) {
