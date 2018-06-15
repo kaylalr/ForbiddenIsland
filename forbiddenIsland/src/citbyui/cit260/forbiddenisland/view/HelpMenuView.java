@@ -110,6 +110,11 @@ class HelpMenuView {
 
     private void howToWin() {
         System.out.println("How to win instruction:");
+        System.out.println("Use your cards to your advantage. You need to use your turns wisely as each \n"
+                + "time you play, you will lose 3 turns.(use or lose) It is upt to you to travel and unflood \n"
+                + "tiles that treasures are on. Make sure you allocate anough turns to collect all treasures \n"
+                + "and make it to the landing pad before you have no more turns left.");
+        
     }
 
     private void howToMove() {
