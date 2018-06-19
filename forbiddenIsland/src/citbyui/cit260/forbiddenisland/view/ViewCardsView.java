@@ -11,7 +11,7 @@ import java.util.Scanner;
  *
  * @author mcwis
  */
-public class ViewCardsView {
+public class ViewCardsView extends View{
 
     void displayViewCardsView() {
         boolean endOfView = false;

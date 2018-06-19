@@ -11,7 +11,7 @@ import java.util.Scanner;
  *
  * @author mcwis
  */
-class HelpMenuView {
+public class HelpMenuView extends View{
 
     void displayHelpMenuView() {
         boolean endOfView = false;

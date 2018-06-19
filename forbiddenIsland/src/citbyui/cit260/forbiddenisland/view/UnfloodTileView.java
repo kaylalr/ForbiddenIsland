@@ -11,7 +11,7 @@ import java.util.Scanner;
  *
  * @author DD
  */
-class UnfloodTileView {
+public class UnfloodTileView extends View{
 
     void displayUnfloodTileView() {
         boolean endOfView = false;

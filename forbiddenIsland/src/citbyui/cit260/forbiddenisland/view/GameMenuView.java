@@ -11,7 +11,7 @@ import java.util.Scanner;
  *
  * @author mcwis
  */
-class GameMenuView {
+public class GameMenuView extends View {
 
     void displayGameMenuView() {
         boolean endOfView = false;

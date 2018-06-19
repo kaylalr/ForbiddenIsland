@@ -11,7 +11,7 @@ import java.util.Scanner;
  *
  * @author DD
  */
-class UseSpecialAcitonCardView {
+public class UseSpecialAcitonCardView extends View{
 
     void displayUseSpecialAcitonCardView() {
         boolean endOfView = false;

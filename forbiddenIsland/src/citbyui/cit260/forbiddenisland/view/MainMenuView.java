@@ -14,7 +14,7 @@ import java.util.Scanner;
  *
  * @author mcwis
  */
-class MainMenuView {
+public class MainMenuView extends View{
 
     void displayMainMenuView() {
         System.out.println("*** displayMainMenuView() called ***");

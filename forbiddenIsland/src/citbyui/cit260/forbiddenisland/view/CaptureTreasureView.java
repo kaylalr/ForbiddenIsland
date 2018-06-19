@@ -11,7 +11,7 @@ import java.util.Scanner;
  *
  * @author DD
  */
-class CaptureTreasureView {
+public class CaptureTreasureView extends View{
 
     void displayCaptureTreasureView() {
         boolean endOfView = false;

@@ -11,7 +11,7 @@ import java.util.Scanner;
  *
  * @author Kayla
  */
-class GiveTreasureCardView {
+public class GiveTreasureCardView extends View{
 
     void displayGiveTreasureCardView() {
         boolean endOfView = false;

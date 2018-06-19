@@ -5,10 +5,63 @@
  */
 package citbyui.cit260.forbiddenisland.view;
 
+import java.util.Scanner;
+
 /**
  *
  * @author mcwis
  */
-public class View {
+public abstract class View implements ViewInterface{
+
+    public View() {
+    }
+    @Override
+    public void display() {
+        System.out.println("*** displayMainMenuView() called ***");
+
+        boolean endOfView = false;
+
+        do {
+            String[] inputs = this.getInputs();
+            if (inputs == null || inputs[0].toUpperCase().equals("Q")) {
+                return;
+            }
+
+            endOfView = doActions(inputs);
+
+        } while (endOfView != true);
+
+    }
+    
+    @Override
+    public String[] getInputs() {
+        String[] inputs = new String[1];
+
+        System.out.println(promptMessage);
+
+        boolean valid = false;
+        while (valid == false) {
+            //CREATED SCANNER  
+            Scanner inFile;
+            inFile = new Scanner(System.in);
+
+            //CALLS FOR NAME  
+            System.out.println("Please choose a main menu item: ");
+            String value = inFile.nextLine().trim().toUpperCase();
+
+            if (value.length() < 1 || value.length() > 1) {
+                System.out.println("Error: Please re-enter menu item: ");
+                continue;
+            }
+            inputs[0] = value;
+            valid = true;
+        }
+        return inputs;
+    }
+
+    private boolean doActions(String[] inputs) {
+        
+        return true;
+    }
     
 }

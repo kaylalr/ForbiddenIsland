@@ -11,7 +11,7 @@ import java.util.Scanner;
  *
  * @author DD
  */
-class MoveMenuView {
+public class MoveMenuView extends View{
 
     void displayMoveMenuView() {
         boolean endOfView = false;

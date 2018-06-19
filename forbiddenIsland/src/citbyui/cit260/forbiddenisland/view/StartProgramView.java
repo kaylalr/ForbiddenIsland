@@ -13,7 +13,7 @@ import java.util.Scanner;
  *
  * @author mcwis
  */
-public class StartProgramView {
+public class StartProgramView extends View{
 
     public StartProgramView() {
     }
