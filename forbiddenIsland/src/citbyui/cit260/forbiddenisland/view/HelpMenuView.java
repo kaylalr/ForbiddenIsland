@@ -90,14 +90,22 @@ class HelpMenuView {
                 toDoOnTurn();
                 break;
             case "I":
-                System.out.println("____:ALL INSTRUCTION:____");
+                System.out.println("____________:ALL INSTRUCTION:____________");
+                System.out.println("\n");
                 howToWin();
+                System.out.println("\n");
                 howToMove();
+                System.out.println("\n");
                 specialActionCards();
+                System.out.println("\n");
                 specialAbilities();
+                System.out.println("\n");
                 treasureCards();
+                System.out.println("\n");
                 floodedTiles();
+                System.out.println("\n");
                 captureTreasure();
+                System.out.println("\n");
                 toDoOnTurn();
                 break;          
             default:
@@ -109,7 +117,7 @@ class HelpMenuView {
     }
 
     private void howToWin() {
-        System.out.println("How to win instruction:");
+        System.out.println("*************************How to win instruction:***************************");
         System.out.println("Use your cards to your advantage. You need to use your turns wisely as each \n"
                 + "time you play, you will lose 3 turns.(use or lose) It is upt to you to travel and unflood \n"
                 + "tiles that treasures are on. Make sure you allocate anough turns to collect all treasures \n"
@@ -118,31 +126,35 @@ class HelpMenuView {
     }
 
     private void howToMove() {
-        System.out.println("How to move instruction:");
+        System.out.println("*************************How to move instruction:***************************");
+        System.out.println("Moving around the board is easy. Every turn you are given 3 actions. One thing you \n"
+                + "can do with those actions is to move. In the Game Menu, you can select (M). You will then be \n"
+                + "presented with four options, move up, down, right, or left. Each time you use a direction, \n"
+                + "you use an action.");
     }
 
     private void specialActionCards() {
-        System.out.println("About special action cards:");
+        System.out.println("*************************About special action cards:************************");
     }
 
     private void specialAbilities() {
-        System.out.println("About special abilities:");
+        System.out.println("*************************About special abilities:***************************");
     }
 
     private void treasureCards() {
-        System.out.println("About treasure cards:");
+        System.out.println("*************************About treasure cards:******************************");
     }
 
     private void floodedTiles() {
-        System.out.println("About flooded tiles:");
+        System.out.println("*************************About flooded tiles:*******************************");
     }
 
     private void captureTreasure() {
-        System.out.println("How to capture treasure:");
+        System.out.println("*************************How to capture treasure:***************************");
     }
 
     private void toDoOnTurn() {
-        System.out.println("What to do on turn:");
+        System.out.println("*************************What to do on turn:********************************");
     }
 
     
