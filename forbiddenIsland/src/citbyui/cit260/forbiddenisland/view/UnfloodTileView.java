@@ -22,12 +22,13 @@ public class UnfloodTileView extends View{
                 return;
             }
 
-            endOfView = doActions(inputs);
+            endOfView = doAction(inputs);
 
         } while (endOfView != true);
     }
     
-        private String[] getInputs() {
+    @Override
+    public String[] getInputs() {
         String[] inputs = new String[1];
         System.out.println("Which tile would you like to unflood? ");
  
@@ -55,7 +56,8 @@ public class UnfloodTileView extends View{
         return inputs;
     }
 
-    private boolean doActions(String[] inputs) {
+    @Override
+    public boolean doAction(String[] inputs) {
  
         return true;
     }

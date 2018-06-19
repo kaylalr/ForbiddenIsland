@@ -22,12 +22,13 @@ public class MoveMenuView extends View{
             if (inputs == null || inputs[0].toUpperCase().equals("Q")) {
                 return;
             }
-            endOfView = doActions(inputs);
+            endOfView = doAction(inputs);
 
         } while (endOfView != true);
     }
 
-    private String[] getInputs() {
+    @Override
+    public String[] getInputs() {
         String[] inputs = new String[1];
         
         boolean valid = false;
@@ -53,7 +54,8 @@ public class MoveMenuView extends View{
         return inputs;
     }
 
-    private boolean doActions(String[] inputs) {
+    @Override
+    public boolean doAction(String[] inputs) {
         switch(inputs[0]){
             case "W":
                 System.out.println("Move Up");

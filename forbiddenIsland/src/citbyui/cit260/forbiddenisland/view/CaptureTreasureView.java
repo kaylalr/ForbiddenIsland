@@ -22,12 +22,13 @@ public class CaptureTreasureView extends View{
                 return;
             }
 
-            endOfView = doActions(inputs);
+            endOfView = doAction(inputs);
 
         } while (endOfView != true);
     }
 
-    private String[] getInputs() {
+    @Override
+    public String[] getInputs() {
         String[] inputs = new String[1];
         System.out.println("Would you like to capture the _______ treasure? ");
 
@@ -55,7 +56,8 @@ public class CaptureTreasureView extends View{
         return inputs;
     }
 
-    private boolean doActions(String[] inputs) {
+    @Override
+    public boolean doAction(String[] inputs) {
         switch (inputs[0]){
             case "Y":
                 System.out.println("Congrats! You have collected the _______ trophy!");

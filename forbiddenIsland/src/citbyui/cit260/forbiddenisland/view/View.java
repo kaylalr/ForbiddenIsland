@@ -15,6 +15,7 @@ public abstract class View implements ViewInterface{
 
     public View() {
     }
+    
     @Override
     public void display() {
         System.out.println("*** displayMainMenuView() called ***");
@@ -27,17 +28,17 @@ public abstract class View implements ViewInterface{
                 return;
             }
 
-            endOfView = doActions(inputs);
+            endOfView = doAction(inputs);
 
         } while (endOfView != true);
 
     }
     
     @Override
-    public String[] getInputs() {
+    public String getInput(String promptMessage) {
         String[] inputs = new String[1];
 
-        System.out.println(promptMessage);
+        //System.out.println(promptMessage);
 
         boolean valid = false;
         while (valid == false) {
@@ -45,23 +46,18 @@ public abstract class View implements ViewInterface{
             Scanner inFile;
             inFile = new Scanner(System.in);
 
-            //CALLS FOR NAME  
-            System.out.println("Please choose a main menu item: ");
+            System.out.println(promptMessage);
+            //System.out.println("Please choose a main menu item: ");
             String value = inFile.nextLine().trim().toUpperCase();
 
             if (value.length() < 1 || value.length() > 1) {
-                System.out.println("Error: Please re-enter menu item: ");
+                System.out.println("Error: Please re-enter value: ");
                 continue;
             }
             inputs[0] = value;
             valid = true;
         }
-        return inputs;
-    }
-
-    private boolean doActions(String[] inputs) {
-        
-        return true;
+        return inputs[0];
     }
     
 }

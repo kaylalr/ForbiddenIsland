@@ -22,12 +22,13 @@ public class UseSpecialAcitonCardView extends View{
             if (inputs == null || inputs[0].toUpperCase().equals("Q")) {
                 return;
             }
-            endOfView = doActions(inputs);
+            endOfView = doAction(inputs);
 
         } while (endOfView != true);
     }
 
-    private String[] getInputs() {
+    @Override
+    public String[] getInputs() {
         // test code
         int SpecialActionCardUnflood = (int)Math.round(Math.random() * 5);
         int SpecialActionCardHelicopter = (int)Math.round(Math.random() * 5);
@@ -74,7 +75,8 @@ public class UseSpecialAcitonCardView extends View{
         return inputs;
     }
 
-    private boolean doActions(String[] inputs) {
+    @Override
+    public boolean doAction(String[] inputs) {
         switch(inputs[0]){
             case "U":
                 System.out.println("use unflood tile card - call unfloodTilesView()");

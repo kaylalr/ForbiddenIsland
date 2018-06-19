@@ -22,13 +22,14 @@ public class GameMenuView extends View {
             if (inputs == null || inputs[0].toUpperCase().equals("Q")) {
                 return;
             }
-            endOfView = doActions(inputs);
+            endOfView = doAction(inputs);
 
         } while (endOfView != true);
 
     }
 
-    private String[] getInputs() {
+    @Override
+    public String[] getInputs() {
         String[] inputs = new String[1];
 
         System.out.println("\nGame Menu\n"
@@ -62,7 +63,8 @@ public class GameMenuView extends View {
         return inputs;
     }
 
-    private boolean doActions(String[] inputs) {
+    @Override
+    public boolean doAction(String[] inputs) {
         switch (inputs[0]) {
             case "M":
                 MoveMenuView moveMenuView = new MoveMenuView();
@@ -74,7 +76,7 @@ public class GameMenuView extends View {
                 break;
             case "G":
                 GiveTreasureCardView giveTreasureCardView = new GiveTreasureCardView();
-                giveTreasureCardView.displayGiveTreasureCardView();
+                //giveTreasureCardView.displayGiveTreasureCardView();
                 break;
             case "C":
                 CaptureTreasureView captureTreasureView = new CaptureTreasureView();

@@ -27,13 +27,14 @@ public class MainMenuView extends View{
                 return;
             }
 
-            endOfView = doActions(inputs);
+            endOfView = doAction(inputs);
 
         } while (endOfView != true);
 
     }
 
-    private String[] getInputs() {
+    @Override
+    public String[] getInputs() {
         String[] inputs = new String[1];
 
         System.out.println("Main Menu");
@@ -62,7 +63,8 @@ public class MainMenuView extends View{
         return inputs;
     }
 
-    private boolean doActions(String[] inputs) {
+    @Override
+    public boolean doAction(String[] inputs) {
         switch (inputs[0]) {
             case "N":
                 System.out.println("Inputs = N");
@@ -93,7 +95,7 @@ public class MainMenuView extends View{
     
     private void restartNewGame(){
         StartExistingGameView startExistingGameView = new StartExistingGameView();
-        startExistingGameView.displayStartExistingGameView();
+        //startExistingGameView.displayStartExistingGameView();
     }
     
     private void getHelp(){

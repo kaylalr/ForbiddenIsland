@@ -22,12 +22,13 @@ public class ViewCardsView extends View{
                 return;
             }
 
-            endOfView = doActions(inputs);
+            endOfView = doAction(inputs);
 
         } while (endOfView != true);
     }
 
-    private String[] getInputs() {
+    @Override
+    public String[] getInputs() {
         String[] inputs = new String[1];
         int p1UnfloodCardsInHand = 2;
         int p2UnfloodCardsInHand = 3;
@@ -66,7 +67,8 @@ public class ViewCardsView extends View{
         return inputs;
     }
 
-    private boolean doActions(String[] inputs) {
+    @Override
+    public boolean doAction(String[] inputs) {
  
         return true;
     }
