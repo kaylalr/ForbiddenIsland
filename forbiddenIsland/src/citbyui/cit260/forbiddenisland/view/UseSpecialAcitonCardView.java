@@ -33,45 +33,73 @@ public class UseSpecialAcitonCardView extends View{
         int SpecialActionCardUnflood = (int)Math.round(Math.random() * 5);
         int SpecialActionCardHelicopter = (int)Math.round(Math.random() * 5);
         int total = SpecialActionCardUnflood + SpecialActionCardHelicopter;
-        // end test code
         String[] inputs = new String[1];
-        
-        boolean valid = false;
-        while (valid == false) {
-        //CREATED SCANNER  
-            Scanner inFile;
-            inFile = new Scanner(System.in);
-            if (total == 0) {
-            System.out.println("You have no Special Action cards.\nWould you like to use a different player's Special Action card?\n"
+                    if (total == 0) {
+                        inputs[0] = this.getInput("You have no Special Action cards.\nWould you like to use a different player's Special Action card?\n"
                     + "Y - yes\n"
-                    + "N - no\n");
+                    + "N - no\n"); 
+//            System.out.println("You have no Special Action cards.\nWould you like to use a different player's Special Action card?\n"
+//                    + "Y - yes\n"
+//                    + "N - no\n");
             }
             else {
-            System.out.println("You have " + SpecialActionCardUnflood + " Unflood Tile card(s) and " + SpecialActionCardHelicopter + " Helicopter card(s)\n"
+            inputs[0] = this.getInput("You have " + SpecialActionCardUnflood + " Unflood Tile card(s) and " + SpecialActionCardHelicopter + " Helicopter card(s)\n"
                     + "Which Speical Action card would you like to use?\n");
                 if(SpecialActionCardUnflood == 0){
-                    System.out.println("H - Helicopter\n"
+                    
+                    inputs[0] = this.getInput("H - Helicopter\n"
                             + "D - Use different players Special Action card\n");
                 }
                 else if(SpecialActionCardHelicopter == 0) {
-                    System.out.println("U - Unflood Tile\n"
+                    inputs[0] = this.getInput("U - Unflood Tile\n"
                             + "D - Use different players Special Action card\n");
                 } 
                 else {
-                    System.out.println("U - Unflood Tile\n"
+                    inputs[0] = this.getInput("U - Unflood Tile\n"
                             + "H - Helicopter\n"
                             + "D - Use different players Special Action card\n");
                 }
             }
-            String value = inFile.nextLine().trim().toUpperCase();
+        
+        // end test code
 
-            if (value.length() < 1 || value.length() > 1) {
-                System.out.println("Error: Please re-enter valid option: ");
-                continue;
-            }
-            inputs[0] = value;
-            valid = true;
-        }
+//        
+//        boolean valid = false;
+//        while (valid == false) {
+//        //CREATED SCANNER  
+//            Scanner inFile;
+//            inFile = new Scanner(System.in);
+//            if (total == 0) {
+//            System.out.println("You have no Special Action cards.\nWould you like to use a different player's Special Action card?\n"
+//                    + "Y - yes\n"
+//                    + "N - no\n");
+//            }
+//            else {
+//            System.out.println("You have " + SpecialActionCardUnflood + " Unflood Tile card(s) and " + SpecialActionCardHelicopter + " Helicopter card(s)\n"
+//                    + "Which Speical Action card would you like to use?\n");
+//                if(SpecialActionCardUnflood == 0){
+//                    System.out.println("H - Helicopter\n"
+//                            + "D - Use different players Special Action card\n");
+//                }
+//                else if(SpecialActionCardHelicopter == 0) {
+//                    System.out.println("U - Unflood Tile\n"
+//                            + "D - Use different players Special Action card\n");
+//                } 
+//                else {
+//                    System.out.println("U - Unflood Tile\n"
+//                            + "H - Helicopter\n"
+//                            + "D - Use different players Special Action card\n");
+//                }
+//            }
+//            String value = inFile.nextLine().trim().toUpperCase();
+//
+//            if (value.length() < 1 || value.length() > 1) {
+//                System.out.println("Error: Please re-enter valid option: ");
+//                continue;
+//            }
+//            inputs[0] = value;
+//            valid = true;
+//        }
         return inputs;
     }
 

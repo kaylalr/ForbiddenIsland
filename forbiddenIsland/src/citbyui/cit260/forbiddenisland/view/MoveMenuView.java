@@ -11,52 +11,59 @@ import java.util.Scanner;
  *
  * @author DD
  */
-public class MoveMenuView extends View{
+public class MoveMenuView extends View {
 
-    void displayMoveMenuView() {
-        boolean endOfView = false;
-
-        do {
-            String[] inputs = getInputs();
-
-            if (inputs == null || inputs[0].toUpperCase().equals("Q")) {
-                return;
-            }
-            endOfView = doAction(inputs);
-
-        } while (endOfView != true);
-    }
-
+//    void displayMoveMenuView() {
+//        boolean endOfView = false;
+//
+//        do {
+//            String[] inputs = getInputs();
+//
+//            if (inputs == null || inputs[0].toUpperCase().equals("Q")) {
+//                return;
+//            }
+//            endOfView = doAction(inputs);
+//
+//        } while (endOfView != true);
+//    }
     @Override
     public String[] getInputs() {
         String[] inputs = new String[1];
-        
-        boolean valid = false;
-        while (valid == false) {
-        //CREATED SCANNER  
-            Scanner inFile;
-            inFile = new Scanner(System.in);
-
-            System.out.println("\nWhere would you like to move?\n"
+        inputs[0] = this.getInput("\nWhere would you like to move?\n"
                     + "W - move up\n"
                     + "A - move left\n"
                     + "S - move down\n"
                     + "D - move right\n");
-            String value = inFile.nextLine().trim().toUpperCase();
-
-            if (value.length() < 1 || value.length() > 1) {
-                System.out.println("Error: Please re-enter valid coordinates: ");
-                continue;
-            }
-            inputs[0] = value;
-            valid = true;
-        }
+//        boolean valid = false;
+//        while (valid == false) {
+//            //CREATED SCANNER  
+//            Scanner inFile;
+//            inFile = new Scanner(System.in);
+//            
+//            System.out.println("\nWhere would you like to move?\n"
+//                    + "W - move up\n"
+//                    + "A - move left\n"
+//                    + "S - move down\n"
+//                    + "D - move right\n");
+//            String value = inFile.nextLine().trim().toUpperCase();
+//
+//            if (value.length() < 1 || value.length() > 1) {
+//                System.out.println("Error: Please re-enter valid coordinates: ");
+//                continue;
+//            }
+//            inputs[0] = value;
+//            valid = true;
+//        }
         return inputs;
     }
 
     @Override
     public boolean doAction(String[] inputs) {
-        switch(inputs[0]){
+        if (inputs[0].length() > 12) {
+            System.out.println("Error: Please re-enter name: ");
+            return false;
+        }
+        switch (inputs[0]) {
             case "W":
                 System.out.println("Move Up");
                 break;
@@ -72,5 +79,5 @@ public class MoveMenuView extends View{
         }
         return true;
     }
-    
+
 }
