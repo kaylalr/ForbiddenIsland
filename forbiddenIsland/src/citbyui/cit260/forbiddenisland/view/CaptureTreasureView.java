@@ -17,7 +17,6 @@ public class CaptureTreasureView extends View{
     public String[] getInputs() {
         String[] inputs = new String[1];
 
-        //DISPLAYS BANNER PAGE
         System.out.println("Would you like to capture the ________ treasure?\n"
                 + "Trophies left: #\n"
                 + "Y - Yes\n"

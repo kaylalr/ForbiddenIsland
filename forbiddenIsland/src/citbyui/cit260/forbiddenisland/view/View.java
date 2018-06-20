@@ -18,7 +18,6 @@ public abstract class View implements ViewInterface{
     
     @Override
     public void display() {
-        System.out.println("*** displayView() called ***");
 
         boolean endOfView = false;
 

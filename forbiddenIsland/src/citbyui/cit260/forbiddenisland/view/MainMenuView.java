@@ -37,34 +37,48 @@ public class MainMenuView extends View{
     public String[] getInputs() {
         String[] inputs = new String[1];
 
-        System.out.println("Main Menu");
-        System.out.println("N - Start new game");
-        System.out.println("R - Restart current game");
-        System.out.println("H - Get Help");
-        System.out.println("Q - Quit");
+        System.out.println("Main Menu\n"
+                + "N - Start new game\n"
+                + "R - Restart current game\n"
+                + "H - Get help\n"
+                + "Q - Quit\n");
 
-        boolean valid = false;
-        while (valid == false) {
-            //CREATED SCANNER  
-            Scanner inFile;
-            inFile = new Scanner(System.in);
-
-            //CALLS FOR NAME  
-            System.out.println("Please choose a main menu item: ");
-            String value = inFile.nextLine().trim().toUpperCase();
-
-            if (value.length() < 1 || value.length() > 1) {
-                System.out.println("Error: Please re-enter menu item: ");
-                continue;
-            }
-            inputs[0] = value;
-            valid = true;
-        }
+        inputs[0] = this.getInput("\nPlease choose a main menu item: ");
         return inputs;
+//        String[] inputs = new String[1];
+//
+//        System.out.println("Main Menu");
+//        System.out.println("N - Start new game");
+//        System.out.println("R - Restart current game");
+//        System.out.println("H - Get Help");
+//        System.out.println("Q - Quit");
+//
+//        boolean valid = false;
+//        while (valid == false) {
+//            //CREATED SCANNER  
+//            Scanner inFile;
+//            inFile = new Scanner(System.in);
+//
+//            //CALLS FOR NAME  
+//            System.out.println("Please choose a main menu item: ");
+//            String value = inFile.nextLine().trim().toUpperCase();
+//
+//            if (value.length() < 1 || value.length() > 1) {
+//                System.out.println("Error: Please re-enter menu item: ");
+//                continue;
+//            }
+//            inputs[0] = value;
+//            valid = true;
+//        }
+//        return inputs;
     }
 
     @Override
     public boolean doAction(String[] inputs) {
+        if (inputs[0].length() > 1) {
+                System.out.println("Error: Please re-enter value: ");
+                return false;
+            }
         switch (inputs[0]) {
             case "N":
                 System.out.println("Inputs = N");
@@ -90,7 +104,7 @@ public class MainMenuView extends View{
         Game game = GameControl.createNewGame(ForbiddenIsland.getPlayer());
         
         GameMenuView gameMenuView = new GameMenuView();
-        gameMenuView.displayGameMenuView();
+        gameMenuView.display();
     }
     
     private void restartNewGame(){
@@ -100,7 +114,7 @@ public class MainMenuView extends View{
     
     private void getHelp(){
         HelpMenuView helpMenuView = new HelpMenuView();
-        helpMenuView.displayHelpMenuView();
+        helpMenuView.display();
     }
     
     

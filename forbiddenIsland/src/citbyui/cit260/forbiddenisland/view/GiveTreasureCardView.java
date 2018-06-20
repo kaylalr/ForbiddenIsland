@@ -75,6 +75,20 @@ public class GiveTreasureCardView extends View{
 
     @Override
     public String[] getInputs() {
+        String[] inputs = new String[1];
+
+//        System.out.println("Which card(s) would you like to give?\n"
+//                + "E - Earth Stone #\n"
+//                + "S - Statue of the Wind\n"
+//                + "C - Crystal of Fire #\n"
+//                + "O - Ocean's Chalice #\n");
+
+        inputs[0] = this.getInput("Which card(s) would you like to give?\n"
+                + "E - Earth Stone #\n"
+                + "S - Statue of the Wind\n"
+                + "C - Crystal of Fire #\n"
+                + "O - Ocean's Chalice #\n");
+        return inputs;
         //(boolean player1, boolean player2, int totalEarth, int totalWind, int totalFire, int totalWater, int p1Earth, int p2Earth, int p1Wind, int p2Wind, int p1Fire, int p2Fire, int p1Water, int p2Water) {
         // test code
 
@@ -113,24 +127,15 @@ public class GiveTreasureCardView extends View{
 //            valid = true;
 //        }
 //        return inputs;
-        String[] inputs = new String[1];
-//      inputs[0] = "textInput";
-
-        //DISPLAYS BANNER PAGE
-        System.out.println("***************************************************************************");
-        System.out.println("*  You are stuck on an island and the only way off is to collect all      *\n"
-                + "*  the treasure and fly away.  But it’s not as easy as it sounds.  As     *\n"
-                + "*  you are collecting the treasure, the island is being flooded!  You     *\n"
-                + "*  need to hurry! Collect all the treasure as fast as you can and leave   *\n"
-                + "*  before you become stuck, with no escape.                               *");
-        System.out.println("***************************************************************************");
-
-        inputs[0] = this.getInput("What is your name?");
-        return inputs;
+        
     }
 
     @Override
     public boolean doAction(String[] inputs) {
+        if (inputs[0].length() > 1) {
+                System.out.println("Error: Please re-enter value: ");
+                return false;
+            }
         //(String[] inputs, boolean player1, boolean player2, int totalEarth, int totalWind, int totalFire, int totalWater, int p1Earth, int p2Earth, int p1Wind, int p2Wind, int p1Fire, int p2Fire, int p1Water, int p2Water) {
 //        switch (inputs[0]) {
 //            case "E":
