@@ -18,7 +18,7 @@ public abstract class View implements ViewInterface{
     
     @Override
     public void display() {
-        System.out.println("*** displayMainMenuView() called ***");
+        System.out.println("*** displayView() called ***");
 
         boolean endOfView = false;
 
@@ -50,7 +50,7 @@ public abstract class View implements ViewInterface{
             //System.out.println("Please choose a main menu item: ");
             String value = inFile.nextLine().trim().toUpperCase();
 
-            if (value.length() < 1 || value.length() > 1) {
+            if (value.length() < 1) {
                 System.out.println("Error: Please re-enter value: ");
                 continue;
             }

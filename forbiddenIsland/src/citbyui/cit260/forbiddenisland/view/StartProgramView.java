@@ -52,6 +52,8 @@ public class StartProgramView extends View{
         System.out.println("***************************************************************************");
 
         inputs[0] = this.getInput("What is your name?");
+        
+        
 //        boolean valid = false;
 //
 //        while (valid == false) {
@@ -76,9 +78,15 @@ public class StartProgramView extends View{
     @Override
     public boolean doAction(String[] inputs) {
 
+        
+        
         String playerName = inputs[0];
+        if (playerName.length() > 12) {
+                System.out.println("Error: Please re-enter name: ");
+                return false;
+            }
         Player player = GameControl.savePlayer(playerName);
-
+        
         if (player == null) {
             System.out.println("Could not create the player. "
                     + "Enter a different name.");

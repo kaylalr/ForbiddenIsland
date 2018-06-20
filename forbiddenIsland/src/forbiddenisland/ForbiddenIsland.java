@@ -29,7 +29,7 @@ public class ForbiddenIsland {
         // TODO code application logic here
         
         StartProgramView startProgramView = new StartProgramView();
-        //startProgramView.displayStartProgramView();
+        startProgramView.display();
         
     }
 
