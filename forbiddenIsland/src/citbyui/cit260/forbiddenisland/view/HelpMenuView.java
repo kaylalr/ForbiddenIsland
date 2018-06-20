@@ -12,60 +12,65 @@ import java.util.Scanner;
  * @author mcwis
  */
 public class HelpMenuView extends View{
-
-    void displayHelpMenuView() {
-        boolean endOfView = false;
-        
-        do{
-            String[] inputs = getInputs();
-            
-            if(inputs == null || inputs[0].toUpperCase().equals("Q")){
-                return;
-            }
-            endOfView = doAction(inputs);
-            
-        }while(endOfView != true);
-        
-    }
     
     @Override
     public String[] getInputs() {
         String[] inputs = new String[1];
 
-        System.out.println("Help Menu");
-        System.out.println("W - How to Win");
-        System.out.println("M - How to Move");
-        System.out.println("S - Special Action Cards");
-        System.out.println("A - Special Abilities");
-        System.out.println("T - Treasure Cards");
-        System.out.println("F - Flooded Tiles");
-        System.out.println("C - Capture Treasure");
-        System.out.println("Y - What to do on Your Turn");
-        System.out.println("I - View All Instructions");
-        System.out.println("Q - Quit");
+        System.out.println("Help Menu\n"
+                + "W - How to Win\n"
+                + "M - How to Move\n"
+                + "S - Special Action Cards\n"
+                + "A - Special Abilities\n"
+                + "T - Treasure Cards\n"
+                + "F - Flooded Tiles\n"
+                + "C - Capture Treasure\n"
+                + "Y - What to do on Your Turn\n"
+                + "I - View All Instructions\n"
+                + "Q - Quit\n");
 
-        boolean valid = false;
-        while (valid == false) {
-            //CREATED SCANNER  
-            Scanner inFile;
-            inFile = new Scanner(System.in);
-
-            //CALLS FOR NAME  
-            System.out.println("Please choose a main menu item: ");
-            String value = inFile.nextLine().trim().toUpperCase();
-
-            if (value.length() < 1 || value.length() > 1) {
-                System.out.println("Error: Please re-enter menu item: ");
-                continue;
-            }
-            inputs[0] = value;
-            valid = true;
-        }
+        inputs[0] = this.getInput("Please choose a help menu item: ");
         return inputs;
+//        String[] inputs = new String[1];
+//
+//        System.out.println("Help Menu");
+//        System.out.println("W - How to Win");
+//        System.out.println("W - How to Win");
+//        System.out.println("S - Special Action Cards");
+//        System.out.println("A - Special Abilities");
+//        System.out.println("T - Treasure Cards");
+//        System.out.println("F - Flooded Tiles");
+//        System.out.println("C - Capture Treasure");
+//        System.out.println("Y - What to do on Your Turn");
+//        System.out.println("I - View All Instructions");
+//        System.out.println("Q - Quit");
+//
+//        boolean valid = false;
+//        while (valid == false) {
+//            //CREATED SCANNER  
+//            Scanner inFile;
+//            inFile = new Scanner(System.in);
+//
+//            //CALLS FOR NAME  
+//            System.out.println("Please choose a main menu item: ");
+//            String value = inFile.nextLine().trim().toUpperCase();
+//
+//            if (value.length() < 1 || value.length() > 1) {
+//                System.out.println("Error: Please re-enter menu item: ");
+//                continue;
+//            }
+//            inputs[0] = value;
+//            valid = true;
+//        }
+//        return inputs;
     }
     
     @Override
     public boolean doAction(String[] inputs) {
+        if (inputs[0].length() > 1) {
+                System.out.println("Error: Please re-enter value: ");
+                return false;
+            }
         switch (inputs[0]) {
             case "W":
                 howToWin();

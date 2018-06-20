@@ -13,21 +13,6 @@ import java.util.Scanner;
  */
 public class GameMenuView extends View {
 
-    void displayGameMenuView() {
-        boolean endOfView = false;
-
-        do {
-            String[] inputs = getInputs();
-
-            if (inputs == null || inputs[0].toUpperCase().equals("Q")) {
-                return;
-            }
-            endOfView = doAction(inputs);
-
-        } while (endOfView != true);
-
-    }
-
     @Override
     public String[] getInputs() {
         String[] inputs = new String[1];
@@ -44,47 +29,68 @@ public class GameMenuView extends View {
                 + "S – Save Game\n"
                 + "Q – Quit");
 
-        boolean valid = false;
-        while (valid == false) {
-            //CREATED SCANNER  
-            Scanner inFile;
-            inFile = new Scanner(System.in);
-
-            System.out.println("\nPlease choose a main menu item: ");
-            String value = inFile.nextLine().trim().toUpperCase();
-
-            if (value.length() < 1 || value.length() > 1) {
-                System.out.println("Error: Please re-enter menu item: ");
-                continue;
-            }
-            inputs[0] = value;
-            valid = true;
-        }
+        inputs[0] = this.getInput("\nPlease choose a main menu item: ");
         return inputs;
+        
+//        String[] inputs = new String[1];
+//
+//        System.out.println("\nGame Menu\n"
+//                + "M – Move\n"
+//                + "U – Unflood a tile\n"
+//                + "G – Give Treasure Card\n"
+//                + "C – Capture Treasure\n"
+//                + "A – Use Special Action Card\n"
+//                + "V – View Cards\n"
+//                + "E – End Turn\n"
+//                + "I – View Instructions\n"
+//                + "S – Save Game\n"
+//                + "Q – Quit");
+//
+//        boolean valid = false;
+//        while (valid == false) {
+//            //CREATED SCANNER  
+//            Scanner inFile;
+//            inFile = new Scanner(System.in);
+//
+//            System.out.println("\nPlease choose a main menu item: ");
+//            String value = inFile.nextLine().trim().toUpperCase();
+//
+//            if (value.length() < 1 || value.length() > 1) {
+//                System.out.println("Error: Please re-enter menu item: ");
+//                continue;
+//            }
+//            inputs[0] = value;
+//            valid = true;
+//        }
+//        return inputs;
     }
 
     @Override
     public boolean doAction(String[] inputs) {
+        if (inputs[0].length() > 1) {
+                System.out.println("Error: Please re-enter value: ");
+                return false;
+            }
         switch (inputs[0]) {
             case "M":
                 MoveMenuView moveMenuView = new MoveMenuView();
-                moveMenuView.displayMoveMenuView();
+                moveMenuView.display();
                 break;
             case "U":
                 UnfloodTileView unfloodTileView = new UnfloodTileView();
-                unfloodTileView.displayUnfloodTileView();
+                unfloodTileView.display();
                 break;
             case "G":
                 GiveTreasureCardView giveTreasureCardView = new GiveTreasureCardView();
-                //giveTreasureCardView.displayGiveTreasureCardView();
+                giveTreasureCardView.display();
                 break;
             case "C":
                 CaptureTreasureView captureTreasureView = new CaptureTreasureView();
-                captureTreasureView.displayCaptureTreasureView();
+                captureTreasureView.display();
                 break;
             case "A":
                 UseSpecialAcitonCardView useSpecialAcitonCardView = new UseSpecialAcitonCardView();
-                useSpecialAcitonCardView.displayUseSpecialAcitonCardView();
+                useSpecialAcitonCardView.display();
                 break;
             case "V":
                 ViewCardsView viewCardsView = new ViewCardsView();
@@ -95,7 +101,7 @@ public class GameMenuView extends View {
                 break;
             case "I":
                 HelpMenuView helpMenuView = new HelpMenuView();
-                helpMenuView.displayHelpMenuView();
+                helpMenuView.display();
                 break;
             case "S":
                 
