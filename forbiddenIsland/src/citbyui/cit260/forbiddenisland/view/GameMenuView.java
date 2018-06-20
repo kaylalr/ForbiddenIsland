@@ -94,7 +94,7 @@ public class GameMenuView extends View {
                 break;
             case "V":
                 ViewCardsView viewCardsView = new ViewCardsView();
-                viewCardsView.displayViewCardsView (); 
+                viewCardsView.display(); 
                 break;
             case "E":
                 
