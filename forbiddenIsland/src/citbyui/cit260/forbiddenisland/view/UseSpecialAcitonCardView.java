@@ -13,19 +13,19 @@ import java.util.Scanner;
  */
 public class UseSpecialAcitonCardView extends View{
 
-    void displayUseSpecialAcitonCardView() {
-        boolean endOfView = false;
-
-        do {
-            String[] inputs = getInputs();
-
-            if (inputs == null || inputs[0].toUpperCase().equals("Q")) {
-                return;
-            }
-            endOfView = doAction(inputs);
-
-        } while (endOfView != true);
-    }
+//    void displayUseSpecialAcitonCardView() {
+//        boolean endOfView = false;
+//
+//        do {
+//            String[] inputs = getInputs();
+//
+//            if (inputs == null || inputs[0].toUpperCase().equals("Q")) {
+//                return;
+//            }
+//            endOfView = doAction(inputs);
+//
+//        } while (endOfView != true);
+//    }
 
     @Override
     public String[] getInputs() {
@@ -77,6 +77,11 @@ public class UseSpecialAcitonCardView extends View{
 
     @Override
     public boolean doAction(String[] inputs) {
+        
+        if(inputs[0].length() > 1){
+            System.out.println("ERROR: Please ReEnter a valid input...");
+            return false;
+        }
         switch(inputs[0]){
             case "U":
                 System.out.println("use unflood tile card - call unfloodTilesView()");

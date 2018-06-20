@@ -90,7 +90,7 @@ public class StartProgramView extends View{
         System.out.println("\n");
 
         MainMenuView mainMenuView = new MainMenuView();
-        mainMenuView.displayMainMenuView();
+        mainMenuView.display();
 
         return true;
     }
