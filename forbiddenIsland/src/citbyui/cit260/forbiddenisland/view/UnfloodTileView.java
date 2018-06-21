@@ -11,19 +11,23 @@ import java.util.Scanner;
  *
  * @author DD
  */
-public class UnfloodTileView extends View{
-    
+public class UnfloodTileView extends View {
+
     @Override
     public String[] getInputs() {
-        String[] inputs = new String[1];
-        inputs[0] = this.getInput("Which tile would you like to unflood? ");  
+        String[] inputs = new String[2];
+        System.out.println("Which tile would you like to unflood? ");
+        inputs[0] = this.getInput("Row:");
+        inputs[1] = this.getInput("Column:");
+       
+
         return inputs;
     }
 
     @Override
     public boolean doAction(String[] inputs) {
-        
+        System.out.println("You have chosen Row - " + inputs[0] + ", and Column - " + inputs[1]);
         return true;
     }
-    
+
 }
