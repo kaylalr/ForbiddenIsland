@@ -31,38 +31,6 @@ public class GameMenuView extends View {
 
         inputs[0] = this.getInput("\nPlease choose a main menu item: ");
         return inputs;
-        
-//        String[] inputs = new String[1];
-//
-//        System.out.println("\nGame Menu\n"
-//                + "M – Move\n"
-//                + "U – Unflood a tile\n"
-//                + "G – Give Treasure Card\n"
-//                + "C – Capture Treasure\n"
-//                + "A – Use Special Action Card\n"
-//                + "V – View Cards\n"
-//                + "E – End Turn\n"
-//                + "I – View Instructions\n"
-//                + "S – Save Game\n"
-//                + "Q – Quit");
-//
-//        boolean valid = false;
-//        while (valid == false) {
-//            //CREATED SCANNER  
-//            Scanner inFile;
-//            inFile = new Scanner(System.in);
-//
-//            System.out.println("\nPlease choose a main menu item: ");
-//            String value = inFile.nextLine().trim().toUpperCase();
-//
-//            if (value.length() < 1 || value.length() > 1) {
-//                System.out.println("Error: Please re-enter menu item: ");
-//                continue;
-//            }
-//            inputs[0] = value;
-//            valid = true;
-//        }
-//        return inputs;
     }
 
     @Override

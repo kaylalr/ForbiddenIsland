@@ -10,10 +10,6 @@ package citbyui.cit260.forbiddenisland.view;
  * @author mcwis
  */
 public class StartExistingGameView extends View{
-
-//    void displayStartExistingGameView() {
-//        System.out.println("*** display displayStartExistingGameView() ***");
-//    }
     
     @Override
     public String[] getInputs() {

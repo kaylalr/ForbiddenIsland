@@ -18,29 +18,10 @@ public class StartProgramView extends View{
     public StartProgramView() {
     }
 
-//    public void displayStartProgramView() {
-//
-//        //return name;
-//        boolean endOfView = false;
-//
-//        do {
-//            String[] inputs = this.getInputs();
-//            if (inputs == null || inputs[0].toUpperCase().equals("Q")) {
-//                return;
-//            }
-//
-//            endOfView = doActions(inputs);
-//
-//        } while (endOfView != true);
-//
-////        doActions(name);
-//    }
-
     @Override
     public String[] getInputs() {
 
         String[] inputs = new String[1];
-//      inputs[0] = "textInput";
 
         //DISPLAYS BANNER PAGE
         System.out.println("***************************************************************************");
@@ -52,26 +33,6 @@ public class StartProgramView extends View{
         System.out.println("***************************************************************************");
 
         inputs[0] = this.getInput("What is your name?");
-        
-        
-//        boolean valid = false;
-//
-//        while (valid == false) {
-//            //CREATED SCANNER  
-//            Scanner inFile;
-//            inFile = new Scanner(System.in);
-//
-//            //CALLS FOR NAME  
-//            System.out.println("What is your name: ");
-//            String value = inFile.nextLine().trim();
-//
-//            if (value.length() < 1 || value.length() > 12) {
-//                System.out.println("Error: Please re-enter a valid name: ");
-//                continue;
-//            }
-//            inputs[0] = value;
-//            valid = true;
-//        }
         return inputs;
     }
 

@@ -9,7 +9,7 @@ import java.util.Scanner;
 
 /**
  *
- * @author DD
+ * @author Kayla
  */
 public class CaptureTreasureView extends View{
 
@@ -24,31 +24,6 @@ public class CaptureTreasureView extends View{
 
         inputs[0] = this.getInput("Please enter Y or N:");
         return inputs;
-//        String[] inputs = new String[1];
-//        System.out.println("Would you like to capture the _______ treasure? ");
-//
-//        boolean valid = false;
-//        while (valid == false) {
-//
-//            Scanner inFile;
-//            inFile = new Scanner(System.in);
-//
-//            System.out.println("How many trophies are left: ");
-//            System.out.println("Please enter Y or N: ");
-//            System.out.println("Y - Yes: ");
-//            System.out.println("N - No: ");
-//            System.out.println("Q - return to previous menu");
-//            String value = inFile.nextLine().trim().toUpperCase();
-//
-//            if (value.length() < 1 || value.length() > 1) {
-//                System.out.println("Error: Please enter either Y or N: ");
-//                continue;
-//            }
-//
-//            inputs[0] = value;
-//            valid = true;
-//        }
-//        return inputs;
     }
 
     @Override

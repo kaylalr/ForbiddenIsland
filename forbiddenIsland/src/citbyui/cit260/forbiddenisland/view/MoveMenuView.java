@@ -13,48 +13,40 @@ import java.util.Scanner;
  */
 public class MoveMenuView extends View {
 
-//    void displayMoveMenuView() {
-//        boolean endOfView = false;
-//
-//        do {
-//            String[] inputs = getInputs();
-//
-//            if (inputs == null || inputs[0].toUpperCase().equals("Q")) {
-//                return;
-//            }
-//            endOfView = doAction(inputs);
-//
-//        } while (endOfView != true);
-//    }
     @Override
     public String[] getInputs() {
-        String[] inputs = new String[1];
-        inputs[0] = this.getInput("\nWhere would you like to move?\n"
+        String[] inputs = new String[2];
+        // test code
+        int turn = (int)Math.ceil(Math.random()*2);
+        if (turn == 1) {
+            inputs[0] = this.getInput("\nWhere would you like to move?\n"
                     + "W - move up\n"
                     + "A - move left\n"
                     + "S - move down\n"
-                    + "D - move right\n");
-//        boolean valid = false;
-//        while (valid == false) {
-//            //CREATED SCANNER  
-//            Scanner inFile;
-//            inFile = new Scanner(System.in);
-//            
-//            System.out.println("\nWhere would you like to move?\n"
+                    + "D - move right\n"
+                    + "Q - up and to the left\n"
+                    + "E - up and to the right\n"
+                    + "Z - down and to the left\n"
+                    + "C - down and to the right\n");
+        }
+        else {
+            inputs[0] = this.getInput("\nWhere would you like to move?\n"
+                    + "W - move up\n"
+                    + "A - move left\n"
+                    + "S - move down\n"
+                    + "D - move right\n"
+                    + "F - Fly\n");
+        }
+        return inputs;
+        // end test code
+        // origional code
+//        inputs[0] = this.getInput("\nWhere would you like to move?\n"
 //                    + "W - move up\n"
 //                    + "A - move left\n"
 //                    + "S - move down\n"
-//                    + "D - move right\n");
-//            String value = inFile.nextLine().trim().toUpperCase();
-//
-//            if (value.length() < 1 || value.length() > 1) {
-//                System.out.println("Error: Please re-enter valid coordinates: ");
-//                continue;
-//            }
-//            inputs[0] = value;
-//            valid = true;
-//        }
-        return inputs;
+//                    + "D - move right\n"
+//                    + "F - Fly\n");
+//        return inputs;
     }
 
     @Override
@@ -76,6 +68,27 @@ public class MoveMenuView extends View {
             case "D":
                 System.out.println("Move Right");
                 break;
+            case "Q":
+                System.out.println("move up and to the left");
+                break;
+            case "E":
+                System.out.println("Move up and to the right");
+                break;
+            case "Z":
+                System.out.println("Move down and to the left");
+                break;
+            case "C":
+                System.out.println("Move down and to the right");
+                break;
+            case "F":
+                System.out.println("Where would you like to fly?");
+                inputs[0] = this.getInput("Please enter row:");
+                inputs[1] = this.getInput("Please enter column:");
+                System.out.println("\nYou have moved to " + inputs[0] + "," + inputs[1]);
+                break;
+            default:
+                System.out.println("Please enter a valid input.");
+                return false;
         }
         return true;
     }

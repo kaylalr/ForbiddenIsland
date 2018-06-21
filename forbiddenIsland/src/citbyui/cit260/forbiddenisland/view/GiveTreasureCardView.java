@@ -61,17 +61,6 @@ public class GiveTreasureCardView extends View{
 //            totalWater = p1Water + p2Water;
 //        } while (totalWater > 5);
 //        // end test code
-//        do {
-//            String[] inputs = getInputs(player1, player2, totalEarth, totalWind, totalFire, totalWater, p1Earth, p2Earth, p1Wind, p2Wind, p1Fire, p2Fire, p1Water, p2Water);
-//
-//            if (inputs == null || inputs[0].toUpperCase().equals("Q")) {
-//                return;
-//            }
-//            endOfView = doAction(inputs)
-//            //endOfView = doAction(inputs, player1, player2, totalEarth, totalWind, totalFire, totalWater, p1Earth, p2Earth, p1Wind, p2Wind, p1Fire, p2Fire, p1Water, p2Water);
-//
-//        } while (endOfView != true);
-//    }
 
     @Override
     public String[] getInputs() {

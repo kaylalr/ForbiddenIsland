@@ -13,20 +13,6 @@ import java.util.Scanner;
  */
 public class ViewCardsView extends View{
 
-//    void displayViewCardsView() {
-//        boolean endOfView = false;
-//
-//        do {
-//            String[] inputs = this.getInputs();
-//            if (inputs == null || inputs[0].toUpperCase().equals("Q")) {
-//                return;
-//            }
-//
-//            endOfView = doAction(inputs);
-//
-//        } while (endOfView != true);
-//    }
-
     @Override
     public String[] getInputs() {
         String[] inputs = new String[1];
@@ -53,11 +39,6 @@ public class ViewCardsView extends View{
             inFile = new Scanner(System.in);
             inputs[0] = this.getInput("Press (Q) to return to game menu:");
             String value = inFile.nextLine().trim();
-//            
-//            if(value.length() < 1 || value.length() > 1){
-//                System.out.println("Error: Enter any key to return to game menu: ");
-//                continue;
-//            }
             
             inputs[0] = value;
             valid = true;

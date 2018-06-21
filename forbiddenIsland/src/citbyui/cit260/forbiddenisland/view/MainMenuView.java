@@ -16,23 +16,6 @@ import java.util.Scanner;
  */
 public class MainMenuView extends View{
 
-    void displayMainMenuView() {
-        System.out.println("*** displayMainMenuView() called ***");
-
-        boolean endOfView = false;
-
-        do {
-            String[] inputs = this.getInputs();
-            if (inputs == null || inputs[0].toUpperCase().equals("Q")) {
-                return;
-            }
-
-            endOfView = doAction(inputs);
-
-        } while (endOfView != true);
-
-    }
-
     @Override
     public String[] getInputs() {
         String[] inputs = new String[1];
@@ -45,32 +28,6 @@ public class MainMenuView extends View{
 
         inputs[0] = this.getInput("\nPlease choose a main menu item: ");
         return inputs;
-//        String[] inputs = new String[1];
-//
-//        System.out.println("Main Menu");
-//        System.out.println("N - Start new game");
-//        System.out.println("R - Restart current game");
-//        System.out.println("H - Get Help");
-//        System.out.println("Q - Quit");
-//
-//        boolean valid = false;
-//        while (valid == false) {
-//            //CREATED SCANNER  
-//            Scanner inFile;
-//            inFile = new Scanner(System.in);
-//
-//            //CALLS FOR NAME  
-//            System.out.println("Please choose a main menu item: ");
-//            String value = inFile.nextLine().trim().toUpperCase();
-//
-//            if (value.length() < 1 || value.length() > 1) {
-//                System.out.println("Error: Please re-enter menu item: ");
-//                continue;
-//            }
-//            inputs[0] = value;
-//            valid = true;
-//        }
-//        return inputs;
     }
 
     @Override
