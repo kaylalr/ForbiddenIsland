@@ -31,18 +31,7 @@ public class ViewCardsView extends View{
         System.out.println("|  You have " + p2UnfloodCardsInHand + " unFlood cards in hand. |");
         System.out.println("|  Your have " + p2HelecopterCards + " helecopter cards in hand.|");
         System.out.println("|_______________________________________________________________|");
-        
-        boolean valid  = false;
-        while (valid == false){
-            
-            Scanner inFile;
-            inFile = new Scanner(System.in);
-            inputs[0] = this.getInput("Press (Q) to return to game menu:");
-            String value = inFile.nextLine().trim();
-            
-            inputs[0] = value;
-            valid = true;
-        }
+        inputs[0] = this.getInput("Press Q to return:");
         
         return inputs;
     }
