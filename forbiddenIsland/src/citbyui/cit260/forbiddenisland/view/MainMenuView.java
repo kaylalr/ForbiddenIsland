@@ -39,15 +39,15 @@ public class MainMenuView extends View{
         switch (inputs[0]) {
             case "N":
                 System.out.println("Inputs = N");
-                startNewGame();
+                this.startNewGame();
                 break;
             case "R":
                 System.out.println("Inputs = R");
-                restartNewGame();
+                this.restartNewGame();
                 break;
             case "H":
                 System.out.println("Inputs = H");
-                getHelp();
+                this.getHelp();
                 break;
             default:
                 System.out.println("Invalid value entered");
@@ -58,7 +58,7 @@ public class MainMenuView extends View{
     }
     
     private void startNewGame(){
-        Game game = GameControl.createNewGame(ForbiddenIsland.getPlayer());
+        int game = GameControl.createNewGame(ForbiddenIsland.getPlayer());
         
         GameMenuView gameMenuView = new GameMenuView();
         gameMenuView.display();

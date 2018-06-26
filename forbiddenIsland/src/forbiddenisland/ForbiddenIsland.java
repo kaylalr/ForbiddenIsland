@@ -22,6 +22,7 @@ public class ForbiddenIsland {
     /**
      * @param args the command line arguments
      */
+    public Game game;
     private static Game currentGame = null;
     private static Player player = null;
     
@@ -48,6 +49,16 @@ public class ForbiddenIsland {
     public static void setPlayer(Player player) {
         ForbiddenIsland.player = player;
     }
+
+    public Game getGame() {
+        return game;
+    }
+
+    public void setGame(Game game) {
+        this.game = game;
+    }
+    
+    
     
     
 }

@@ -19,7 +19,7 @@ public class Actor implements Serializable{
     private String specialAbility;
     private Location Location;
     private Card cards;
-    private ArrayList<Player> players = new ArrayList<Player>();
+    private ArrayList<Player> player = new ArrayList<Player>();
     
     public Actor() {
     }
@@ -54,12 +54,12 @@ public class Actor implements Serializable{
         this.specialAbility = specialAbility;
     }
 
-    public ArrayList<Player> getPlayers() {
-        return players;
+    public ArrayList<Player> getPlayer() {
+        return player;
     }
 
-    public void setPlayers(ArrayList<Player> players) {
-        this.players = players;
+    public void setPlayer(ArrayList<Player> player) {
+        this.player = player;
     }
 
     public Location getLocation() {
@@ -80,7 +80,7 @@ public class Actor implements Serializable{
 
     @Override
     public String toString() {
-        return "Actor{" + "name=" + name + ", coordinates=" + coordinates + ", specialAbility=" + specialAbility + ", Location=" + Location + ", players=" + players + '}';
+        return "Actor{" + "name=" + name + ", coordinates=" + coordinates + ", specialAbility=" + specialAbility + ", Location=" + Location + ", player=" + player + '}';
     }
 
     @Override
@@ -90,7 +90,7 @@ public class Actor implements Serializable{
         hash = 67 * hash + (int) (Double.doubleToLongBits(this.coordinates) ^ (Double.doubleToLongBits(this.coordinates) >>> 32));
         hash = 67 * hash + Objects.hashCode(this.specialAbility);
         hash = 67 * hash + Objects.hashCode(this.Location);
-        hash = 67 * hash + Objects.hashCode(this.players);
+        hash = 67 * hash + Objects.hashCode(this.player);
         return hash;
     }
 
@@ -118,7 +118,7 @@ public class Actor implements Serializable{
         if (!Objects.equals(this.Location, other.Location)) {
             return false;
         }
-        if (!Objects.equals(this.players, other.players)) {
+        if (!Objects.equals(this.player, other.player)) {
             return false;
         }
         return true;

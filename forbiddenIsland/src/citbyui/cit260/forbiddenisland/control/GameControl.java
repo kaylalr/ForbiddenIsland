@@ -7,7 +7,9 @@ package citbyui.cit260.forbiddenisland.control;
 
 import citbyui.cit260.model.Game;
 import citbyui.cit260.model.Player;
+import citbyui.cit260.model.Actor;
 import forbiddenisland.ForbiddenIsland;
+import java.util.ArrayList;
 
 /**
  *
@@ -50,11 +52,27 @@ public class GameControl {
         return new Player();
     }
 
-    public static Game createNewGame(Player player) {
-        System.out.println("*** createNewGame() called ***");
+    public static int createNewGame(Player player) {
+        ArrayList<Player> players = new ArrayList<Player>();
+        ArrayList<Actor> actors = new ArrayList<Actor>();
+        
+        
+        
+        if(player == null){
+            return -1;
+        }
+        
         Game game = new Game();
         
-        return game;
+        game.setPlayer(player);
+        
+        ForbiddenIsland.setCurrentGame(game); 
+        player.setActors(actors);
+        
+        
+        
+        
+        return 1;
     }
 
 

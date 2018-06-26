@@ -16,7 +16,7 @@ public class Game implements Serializable{
     private double turns;
     private double score;
     private Card cardType;
-    private ArrayList<Actor> actors = new ArrayList<Actor>();
+    private Player player;
     private Map map;
     
     public Game() {
@@ -43,12 +43,12 @@ public class Game implements Serializable{
         this.score = score;
     }
 
-    public ArrayList<Actor> getActors() {
-        return actors;
+    public Player getPlayer() {
+        return player;
     }
 
-    public void setActors(ArrayList<Actor> actors) {
-        this.actors = actors;
+    public void setPlayer(Player player) {
+        this.player = player;
     }
 
     public Card getCardType() {
@@ -69,17 +69,17 @@ public class Game implements Serializable{
 
     @Override
     public String toString() {
-        return "Game{" + "turns=" + turns + ", score=" + score + ", cardType=" + cardType + ", actors=" + actors + ", map=" + map + '}';
+        return "Game{" + "turns=" + turns + ", score=" + score + ", cardType=" + cardType + ", map=" + map + '}';
     }
 
     @Override
     public int hashCode() {
         int hash = 7;
-        hash = 29 * hash + (int) (Double.doubleToLongBits(this.turns) ^ (Double.doubleToLongBits(this.turns) >>> 32));
-        hash = 29 * hash + (int) (Double.doubleToLongBits(this.score) ^ (Double.doubleToLongBits(this.score) >>> 32));
-        hash = 29 * hash + Objects.hashCode(this.cardType);
-        hash = 29 * hash + Objects.hashCode(this.actors);
-        hash = 29 * hash + Objects.hashCode(this.map);
+        hash = 83 * hash + (int) (Double.doubleToLongBits(this.turns) ^ (Double.doubleToLongBits(this.turns) >>> 32));
+        hash = 83 * hash + (int) (Double.doubleToLongBits(this.score) ^ (Double.doubleToLongBits(this.score) >>> 32));
+        hash = 83 * hash + Objects.hashCode(this.cardType);
+        hash = 83 * hash + Objects.hashCode(this.player);
+        hash = 83 * hash + Objects.hashCode(this.map);
         return hash;
     }
 
@@ -104,7 +104,7 @@ public class Game implements Serializable{
         if (this.cardType != other.cardType) {
             return false;
         }
-        if (!Objects.equals(this.actors, other.actors)) {
+        if (!Objects.equals(this.player, other.player)) {
             return false;
         }
         if (!Objects.equals(this.map, other.map)) {
