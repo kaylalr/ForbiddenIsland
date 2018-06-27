@@ -8,6 +8,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Objects;
 import citbyui.cit260.model.Card;
+import java.awt.Point;
 /**
  *
  * @author mcwis
@@ -15,7 +16,7 @@ import citbyui.cit260.model.Card;
 public class Actor implements Serializable{
 
     private String name;
-    private double coordinates;
+    private Point coordinates;
     private String specialAbility;
     private Location Location;
     private Card cards;
@@ -24,7 +25,7 @@ public class Actor implements Serializable{
     public Actor() {
     }
 
-    public Actor(String name, double coordinates, String specialAbility) {
+    public Actor(String name, Point coordinates, String specialAbility) {
         this.name = name;
         this.coordinates = coordinates;
         this.specialAbility = specialAbility;
@@ -38,11 +39,11 @@ public class Actor implements Serializable{
         this.name = name;
     }
 
-    public double getCoordinates() {
+    public Point getCoordinates() {
         return coordinates;
     }
 
-    public void setCoordinates(double coordinates) {
+    public void setCoordinates(Point coordinates) {
         this.coordinates = coordinates;
     }
 
@@ -86,11 +87,12 @@ public class Actor implements Serializable{
     @Override
     public int hashCode() {
         int hash = 3;
-        hash = 67 * hash + Objects.hashCode(this.name);
-        hash = 67 * hash + (int) (Double.doubleToLongBits(this.coordinates) ^ (Double.doubleToLongBits(this.coordinates) >>> 32));
-        hash = 67 * hash + Objects.hashCode(this.specialAbility);
-        hash = 67 * hash + Objects.hashCode(this.Location);
-        hash = 67 * hash + Objects.hashCode(this.player);
+        hash = 59 * hash + Objects.hashCode(this.name);
+        hash = 59 * hash + Objects.hashCode(this.coordinates);
+        hash = 59 * hash + Objects.hashCode(this.specialAbility);
+        hash = 59 * hash + Objects.hashCode(this.Location);
+        hash = 59 * hash + Objects.hashCode(this.cards);
+        hash = 59 * hash + Objects.hashCode(this.player);
         return hash;
     }
 
@@ -106,16 +108,19 @@ public class Actor implements Serializable{
             return false;
         }
         final Actor other = (Actor) obj;
-        if (Double.doubleToLongBits(this.coordinates) != Double.doubleToLongBits(other.coordinates)) {
-            return false;
-        }
         if (!Objects.equals(this.name, other.name)) {
             return false;
         }
         if (!Objects.equals(this.specialAbility, other.specialAbility)) {
             return false;
         }
+        if (!Objects.equals(this.coordinates, other.coordinates)) {
+            return false;
+        }
         if (!Objects.equals(this.Location, other.Location)) {
+            return false;
+        }
+        if (this.cards != other.cards) {
             return false;
         }
         if (!Objects.equals(this.player, other.player)) {
@@ -123,9 +128,5 @@ public class Actor implements Serializable{
         }
         return true;
     }
-
-
-    
-    
     
 }

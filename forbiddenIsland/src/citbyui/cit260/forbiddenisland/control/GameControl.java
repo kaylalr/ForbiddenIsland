@@ -8,7 +8,9 @@ package citbyui.cit260.forbiddenisland.control;
 import citbyui.cit260.model.Game;
 import citbyui.cit260.model.Player;
 import citbyui.cit260.model.Actor;
+import citbyui.cit260.model.Treasure;
 import forbiddenisland.ForbiddenIsland;
+import java.awt.Point;
 import java.util.ArrayList;
 
 /**
@@ -53,10 +55,9 @@ public class GameControl {
     }
 
     public static int createNewGame(Player player) {
-        ArrayList<Player> players = new ArrayList<Player>();
-        ArrayList<Actor> actors = new ArrayList<Actor>();
-        
-        
+//        
+//        ArrayList<Player> players = new ArrayList<Player>();
+//        ArrayList<Actor> actors = new ArrayList<Actor>();
         
         if(player == null){
             return -1;
@@ -67,12 +68,38 @@ public class GameControl {
         game.setPlayer(player);
         
         ForbiddenIsland.setCurrentGame(game); 
+        
+        
+        //ITEMS
+        ArrayList<Actor> actors = createActors();
         player.setActors(actors);
         
+        //Creat all other list (questions)
+        
+        Treasure[] treasure = createTreasure();
         
         
         
         return 1;
+    }
+
+    public static ArrayList<Actor> createActors() {
+        ArrayList<Actor> actor = new ArrayList<Actor>();
+        
+        actor.add(new Actor("Pilot", new Point(0,0) , "Helicopter"));
+        actor.add(new Actor ("Explorer", new Point(0,0) , "Diagonal Movements"));
+          
+        return actor;
+    }
+
+    private static Treasure[] createTreasure() {
+        Treasure[] treasure = new Treasure[4];
+//        treasure("Earth Stone", "Earth Description", "Uncaptured");
+//        treasure("Statue of the Wind", "Wind Discription", "uncaptured");
+//        treasure("Crytal of Fire", "Fire Decription", "Uncaptured");
+//        treasure("Oceans Chalice", "Ocean Description", "uncaptured");
+//          treasure.setName("Earth Stone");
+        return treasure;
     }
 
 
