@@ -7,11 +7,12 @@ package citbyui.cit260.model;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Objects;
+import java.lang.Cloneable;
 /**
  *
  * @author mcwis
  */
-public class Location implements Serializable{
+public class Location implements Serializable, Cloneable{
 
     private double row;
     private double column;
@@ -129,7 +130,9 @@ public class Location implements Serializable{
         return true;
     }
     
-    
-
+    @Override
+    public Object clone() throws CloneNotSupportedException {
+        return super.clone(); //To change body of generated methods, choose Tools | Templates.
+    }
 
 }

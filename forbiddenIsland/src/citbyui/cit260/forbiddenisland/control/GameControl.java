@@ -5,9 +5,11 @@
  */
 package citbyui.cit260.forbiddenisland.control;
 
+import static citbyui.cit260.forbiddenisland.control.MapControl.createMap;
 import citbyui.cit260.model.Game;
 import citbyui.cit260.model.Player;
 import citbyui.cit260.model.Actor;
+import citbyui.cit260.model.Map;
 import citbyui.cit260.model.Treasure;
 import forbiddenisland.ForbiddenIsland;
 import java.awt.Point;
@@ -19,38 +21,37 @@ import java.util.ArrayList;
  */
 public class GameControl {
 
-    
-    public static int getTurnsLeft(int player1Turns, int player2Turns){
-       	if (player1Turns < 0 || player1Turns > 20){
-		return -1;
+    public static int getTurnsLeft(int player1Turns, int player2Turns) {
+        if (player1Turns < 0 || player1Turns > 20) {
+            return -1;
         }
 
-	if (player2Turns < 0 || player2Turns > 20){
-		return -1;
+        if (player2Turns < 0 || player2Turns > 20) {
+            return -1;
         }
-	int turnsLeft = 40 - (player1Turns + player2Turns);
-	return turnsLeft;
- 
+        int turnsLeft = 40 - (player1Turns + player2Turns);
+        return turnsLeft;
+
     }
-    
-    public static int getActionsLeft(int playerTurns) {
-		if (playerTurns < 15 || playerTurns > 20) {
-			return -1;
-                }
 
-		int ActionsLeft = (20 - playerTurns)*3;
-		return ActionsLeft;
+    public static int getActionsLeft(int playerTurns) {
+        if (playerTurns < 15 || playerTurns > 20) {
+            return -1;
+        }
+
+        int ActionsLeft = (20 - playerTurns) * 3;
+        return ActionsLeft;
     }
 
     public static Player savePlayer(String playerName) {
-        
-        if (playerName == null || playerName.length() < 1){
+
+        if (playerName == null || playerName.length() < 1) {
             return null;
         }
-        
+
         Player player = new Player();
         ForbiddenIsland.setPlayer(player);
-        
+
         return new Player();
     }
 
@@ -58,49 +59,70 @@ public class GameControl {
 //        
 //        ArrayList<Player> players = new ArrayList<Player>();
 //        ArrayList<Actor> actors = new ArrayList<Actor>();
-        
-        if(player == null){
+
+        if (player == null) {
             return -1;
         }
-        
+
         Game game = new Game();
-        
+
         game.setPlayer(player);
-        
-        ForbiddenIsland.setCurrentGame(game); 
-        
-        
+
+        ForbiddenIsland.setCurrentGame(game);
+
         //ITEMS
         ArrayList<Actor> actors = createActors();
         player.setActors(actors);
-        
+
         //Creat all other list (questions)
+        Treasure[] treasures = createTreasure();
         
-        Treasure[] treasure = createTreasure();
-        
-        
-        
+        Map map = createMap(game, 4, 4);
+        if (map == null) {
+            return -2;
+        }
+        game.setMap(map);
+
         return 1;
     }
 
     public static ArrayList<Actor> createActors() {
         ArrayList<Actor> actor = new ArrayList<Actor>();
-        
-        actor.add(new Actor("Pilot", new Point(0,0) , "Helicopter"));
-        actor.add(new Actor ("Explorer", new Point(0,0) , "Diagonal Movements"));
-          
+
+        actor.add(new Actor("Pilot", new Point(0, 0), "Helicopter"));
+        actor.add(new Actor("Explorer", new Point(0, 0), "Diagonal Movements"));
+
         return actor;
     }
 
     private static Treasure[] createTreasure() {
-        Treasure[] treasure = new Treasure[4];
-//        treasure("Earth Stone", "Earth Description", "Uncaptured");
-//        treasure("Statue of the Wind", "Wind Discription", "uncaptured");
-//        treasure("Crytal of Fire", "Fire Decription", "Uncaptured");
-//        treasure("Oceans Chalice", "Ocean Description", "uncaptured");
-//          treasure.setName("Earth Stone");
-        return treasure;
+        Treasure[] treasures = new Treasure[4];
+        // create earth treasure
+        Treasure earthTreasure = new Treasure();
+        earthTreasure.setName("Earth Stone");
+        earthTreasure.setDescription("Earth Description");
+        earthTreasure.setStatus("Uncaputred");
+        treasures[0] = earthTreasure;
+        // create wind treasure
+        Treasure windTreasure = new Treasure();
+        windTreasure.setName("Statue of the Wind");
+        windTreasure.setDescription("Wind Description");
+        windTreasure.setStatus("Uncaputred");
+        treasures[1] = windTreasure;
+        // create fire treasure
+        Treasure fireTreasure = new Treasure();
+        fireTreasure.setName("Crystal of Fire");
+        fireTreasure.setDescription("Fire Description");
+        fireTreasure.setStatus("Uncaputred");
+        treasures[2] = fireTreasure;
+        // create water treasure
+        Treasure waterTreasure = new Treasure();
+        waterTreasure.setName("Ocean's Chalice");
+        waterTreasure.setDescription("Water Description");
+        waterTreasure.setStatus("Uncaputred");
+        treasures[3] = waterTreasure;
+        System.out.println(treasures[2]);
+        return treasures;
     }
-
-
-}
+    
+    }
