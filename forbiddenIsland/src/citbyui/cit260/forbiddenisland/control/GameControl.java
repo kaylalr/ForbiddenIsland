@@ -9,6 +9,7 @@ import static citbyui.cit260.forbiddenisland.control.MapControl.createMap;
 import citbyui.cit260.model.Game;
 import citbyui.cit260.model.Player;
 import citbyui.cit260.model.Actor;
+import citbyui.cit260.model.ActorType;
 import citbyui.cit260.model.Map;
 import citbyui.cit260.model.Treasure;
 import forbiddenisland.ForbiddenIsland;
@@ -77,7 +78,7 @@ public class GameControl {
         //Creat all other list (questions)
         Treasure[] treasures = createTreasure();
         
-        Map map = createMap(game, 4, 4);
+        Map map = createMap(game, 5, 5, actors);
         if (map == null) {
             return -2;
         }
@@ -89,8 +90,8 @@ public class GameControl {
     public static ArrayList<Actor> createActors() {
         ArrayList<Actor> actor = new ArrayList<Actor>();
 
-        actor.add(new Actor("Pilot", new Point(0, 0), "Helicopter"));
-        actor.add(new Actor("Explorer", new Point(0, 0), "Diagonal Movements"));
+        actor.add(ActorType.Pilot.ordinal(),new Actor("Pilot", new Point(0, 0), "Helicopter"));
+        actor.add(ActorType.Explorer.ordinal(),new Actor("Explorer", new Point(0, 0), "Diagonal Movements"));
 
         return actor;
     }

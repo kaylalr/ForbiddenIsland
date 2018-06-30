@@ -14,17 +14,18 @@ import java.lang.Cloneable;
  */
 public class Location implements Serializable, Cloneable{
 
-    private double row;
-    private double column;
+    private int row;
+    private int column;
     private int flooded;
     private int sunken;
     private String displaySymbol;
+    private String locationType;
     private ArrayList<Actor> actors = new ArrayList<Actor>();
     
     public Location() {
     }
 
-    public Location(double row, double column, int flooded, int sunken, String displaySymbol) {
+    public Location(int row, int column, int flooded, int sunken, String displaySymbol) {
         this.row = row;
         this.column = column;
         this.flooded = flooded;
@@ -32,19 +33,19 @@ public class Location implements Serializable, Cloneable{
         this.displaySymbol = displaySymbol;
     }
 
-    public double getRow() {
+    public int getRow() {
         return row;
     }
 
-    public void setRow(double row) {
+    public void setRow(int row) {
         this.row = row;
     }
 
-    public double getColumn() {
+    public int getColumn() {
         return column;
     }
 
-    public void setColumn(double column) {
+    public void setColumn(int column) {
         this.column = column;
     }
 
@@ -68,6 +69,14 @@ public class Location implements Serializable, Cloneable{
         return displaySymbol;
     }
 
+    public String getLocationType() {
+        return locationType;
+    }
+
+    public void setLocationType(String locationType) {
+        this.locationType = locationType;
+    }
+
     public void setDisplaySymbol(String displaySymbol) {
         this.displaySymbol = displaySymbol;
     }
@@ -80,6 +89,7 @@ public class Location implements Serializable, Cloneable{
         this.actors = actors;
     }
 
+    
     @Override
     public String toString() {
         return "Location{" + "row=" + row + ", column=" + column + ", flooded=" + flooded + ", sunken=" + sunken + ", displaySymbol=" + displaySymbol + ", actors=" + actors + '}';

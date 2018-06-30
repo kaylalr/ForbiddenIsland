@@ -5,10 +5,13 @@
  */
 package citbyui.cit260.forbiddenisland.control;
 
+import citbyui.cit260.model.Actor;
+import citbyui.cit260.model.ActorType;
 import citbyui.cit260.model.Game;
 import citbyui.cit260.model.Location;
 import citbyui.cit260.model.Map;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -18,7 +21,7 @@ import java.util.logging.Logger;
  */
 public class MapControl {
 
-    public static Map createMap(Game game, int noOfRows, int noOfColumns) {
+    public static Map createMap(Game game, int noOfRows, int noOfColumns, ArrayList<Actor> actors) {
         // check for invalid inputs
         if (game == null || noOfRows < 1 || noOfColumns < 1) {
             return null;
@@ -41,15 +44,15 @@ public class MapControl {
         map.setLocation(locations);
 
 // assign objects to locations
-        int success = assignActorsToLocations(locations);
-        if (success < 0) {
-            return null;
-        }
-        success = assignIemsToLocations(locations);
+        int success = assignActorsToLocations(locations, actors);
         if (success < 0) {
             return null;
         }
         success = assignTreasuresToLocations(locations);
+        if (success < 0) {
+            return null;
+        }
+        
         return map;
 
     }
@@ -60,30 +63,70 @@ public class MapControl {
         if (noOfRows < 1 || noOfColumns < 1) {
             return null;
         }
+        
         ArrayList<Location> unshuffledLocations = new ArrayList<Location>();
+        
         Location fireLocation = new Location();
         fireLocation.setDisplaySymbol("^f^");
         unshuffledLocations.add(fireLocation);
+        
         Location waterLocation = new Location();
         waterLocation.setDisplaySymbol("~w~");
         unshuffledLocations.add(waterLocation);
+        
         Location windLocation = new Location();
         windLocation.setDisplaySymbol("{w}");
         unshuffledLocations.add(windLocation);
+        
         Location earthLocation = new Location();
-        windLocation.setDisplaySymbol("-e-");
+        earthLocation.setDisplaySymbol("-e-");
         unshuffledLocations.add(earthLocation);
+        
         try {
             Location fireLocation1 = (Location) fireLocation.clone();
+            unshuffledLocations.add(fireLocation1);
             Location waterLocation1 = (Location) waterLocation.clone();
+            unshuffledLocations.add(waterLocation1);
             Location windLocation1 = (Location) windLocation.clone();
+            unshuffledLocations.add(windLocation1);
             Location earthLocation1 = (Location) earthLocation.clone();
+            unshuffledLocations.add(earthLocation1);
         } catch (CloneNotSupportedException ex) {
             Logger.getLogger(MapControl.class.getName()).log(Level.SEVERE, null, ex);
         }
-        for (int i = 0; i <= 4; i++) {
-            for (int j = 0; j <= 4; j++) {
-                locations[i][j] = new Location();
+        
+        Location landingPadLocation = new Location();
+        landingPadLocation.setDisplaySymbol(" # ");
+        unshuffledLocations.add(landingPadLocation);
+        
+        Location playerOneStart = new Location();
+        playerOneStart.setDisplaySymbol(" 1 ");
+        playerOneStart.setLocationType("startOne");
+        unshuffledLocations.add(playerOneStart);
+        
+        Location playerTwoStart = new Location();
+        playerTwoStart.setDisplaySymbol(" 2 ");
+        playerTwoStart.setLocationType("startTwo");
+        unshuffledLocations.add(playerTwoStart);
+        
+        for (int i = 0; i < 14; i++) {
+            Location loc = new Location();
+            loc.setDisplaySymbol("   ");
+            unshuffledLocations.add(loc);
+            loc.setLocationType("normal");
+        }
+        
+        Collections.shuffle(unshuffledLocations);
+        
+        int y = 0;
+        
+        for (int i = 0; i < 5; i++) {
+            for (int j = 0; j < 5; j++) {
+                locations[i][j] = unshuffledLocations.get(y);
+                locations[i][j].setRow(i);
+                locations[i][j].setColumn(j);
+                System.out.println(unshuffledLocations.get(y)+ "\n");
+                y++;
             }
         }
         
@@ -100,14 +143,40 @@ public class MapControl {
         
         return locations;
     }
-
-    private static int assignActorsToLocations(Location[][] locations) {
-        System.out.println("assignActorsToLocations");
-        return 1;
+    private static Location findLocation (Location[][] locations, String locationType) {
+        for (int i = 0; i < locations.length; i++) {
+            for (int j = 0; j < locations[i].length; j++) {
+                if (locations[i][j].getLocationType().equals(locationType)) {
+                    return locations[i][j];
+                }
+            }
+        }
+        return null;
     }
+    private static int assignActorsToLocations(Location[][] locations, ArrayList<Actor> actors) {
+        System.out.println("assignActorsToLocations");
+        // Check for invalid input
+        if (locations == null) {
+            return -1;
+        }
+        Location pilotLocation = MapControl.findLocation(locations, "startOne");
+        if (pilotLocation == null) {
+            return -1;
+        }
+        Actor pilot = actors.get(ActorType.Pilot.ordinal());
+        pilotLocation.getActors().add(pilot);
+        pilot.getCoordinates().x = pilotLocation.getRow();
+        pilot.getCoordinates().y = pilotLocation.getColumn();
+        
+        Location explorerLocation = MapControl.findLocation(locations, "startTwo");
+        if (explorerLocation == null) {
+            return -1;
+        }
+        Actor explorer = actors.get(ActorType.Explorer.ordinal());
+        explorerLocation.getActors().add(explorer);
+        explorer.getCoordinates().x = explorerLocation.getRow();
+        explorer.getCoordinates().y = explorerLocation.getColumn();
 
-    private static int assignIemsToLocations(Location[][] locations) {
-        System.out.println("assignIemsToLocations");
         return 1;
     }
 
