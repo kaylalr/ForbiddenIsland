@@ -11,4 +11,8 @@ package citbyui.cit260.model;
  */
 public enum TreasureType {
     
+    Earth,
+    Fire,
+    Water,
+    Wind;
 }

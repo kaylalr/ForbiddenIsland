@@ -78,7 +78,7 @@ public class GameControl {
         //Creat all other list (questions)
         Treasure[] treasures = createTreasure();
         
-        Map map = createMap(game, 5, 5, actors);
+        Map map = createMap(game, 5, 5, actors, treasures);
         if (map == null) {
             return -2;
         }

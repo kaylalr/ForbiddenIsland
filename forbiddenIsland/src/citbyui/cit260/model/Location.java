@@ -21,6 +21,7 @@ public class Location implements Serializable, Cloneable{
     private String displaySymbol;
     private String locationType;
     private ArrayList<Actor> actors = new ArrayList<Actor>();
+    private Treasure[] treasures;
     
     public Location() {
     }
@@ -89,6 +90,13 @@ public class Location implements Serializable, Cloneable{
         this.actors = actors;
     }
 
+    public Treasure[] getTreasures() {
+        return treasures;
+    }
+
+    public void setTreasures(Treasure[] treasures) {
+        this.treasures = treasures;
+    }
     
     @Override
     public String toString() {
