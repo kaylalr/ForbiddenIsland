@@ -10,6 +10,7 @@ import citbyui.cit260.model.ActorType;
 import citbyui.cit260.model.Game;
 import citbyui.cit260.model.Location;
 import citbyui.cit260.model.Map;
+import citbyui.cit260.model.Treasure;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.logging.Level;
@@ -21,7 +22,7 @@ import java.util.logging.Logger;
  */
 public class MapControl {
 
-    public static Map createMap(Game game, int noOfRows, int noOfColumns, ArrayList<Actor> actors) {
+    public static Map createMap(Game game, int noOfRows, int noOfColumns, ArrayList<Actor> actors, Treasure[] treasures) {
         // check for invalid inputs
         if (game == null || noOfRows < 1 || noOfColumns < 1) {
             return null;
@@ -48,7 +49,7 @@ public class MapControl {
         if (success < 0) {
             return null;
         }
-        success = assignTreasuresToLocations(locations);
+        success = assignTreasuresToLocations(locations, treasures);
         if (success < 0) {
             return null;
         }
@@ -68,18 +69,22 @@ public class MapControl {
         
         Location fireLocation = new Location();
         fireLocation.setDisplaySymbol("^f^");
+        fireLocation.setLocationType("fireLocation");
         unshuffledLocations.add(fireLocation);
         
         Location waterLocation = new Location();
         waterLocation.setDisplaySymbol("~w~");
+        waterLocation.setLocationType("waterLocation");
         unshuffledLocations.add(waterLocation);
         
         Location windLocation = new Location();
         windLocation.setDisplaySymbol("{w}");
+        windLocation.setLocationType("windLocation");
         unshuffledLocations.add(windLocation);
         
         Location earthLocation = new Location();
         earthLocation.setDisplaySymbol("-e-");
+        earthLocation.setLocationType("earthLocation");
         unshuffledLocations.add(earthLocation);
         
         try {
@@ -97,6 +102,7 @@ public class MapControl {
         
         Location landingPadLocation = new Location();
         landingPadLocation.setDisplaySymbol(" # ");
+        landingPadLocation.setLocationType("landingPad");
         unshuffledLocations.add(landingPadLocation);
         
         Location playerOneStart = new Location();
@@ -180,8 +186,22 @@ public class MapControl {
         return 1;
     }
 
-    private static int assignTreasuresToLocations(Location[][] locations) {
+    private static int assignTreasuresToLocations(Location[][] locations, Treasure[] treasures) {
         System.out.println("assignTreasuresToLocations");
+        // Check for invalid input
+        if (locations == null) {
+            return -1;
+        }
+        Location fireLocation = MapControl.findLocation(locations, "fireLocation");
+        if (fireLocation == null) {
+            return -1;
+        }
+        Treasure fireTreasure = treasures[2];
+        fireTreasure.getName();
+        fireTreasure.getDescription();
+        fireTreasure.getStatus();
+        fireLocation.getTreasures().add(fireTreasure);
+        
         return 1;
     }
     
