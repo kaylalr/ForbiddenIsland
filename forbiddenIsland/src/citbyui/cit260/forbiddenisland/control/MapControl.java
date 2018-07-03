@@ -126,13 +126,28 @@ public class MapControl {
         
         int y = 0;
         
-        for (int i = 0; i < 5; i++) {
-            for (int j = 0; j < 5; j++) {
+//        for (int i = 0; i < 5; i++) {
+//            for (int j = 0; j < 5; j++) {
+//                locations[i][j] = unshuffledLocations.get(y);
+//                locations[i][j].setRow(i);
+//                locations[i][j].setColumn(j);
+//                System.out.println(unshuffledLocations.get(y)+ "\n");
+//                y++;
+//            }
+//        }
+        
+        /*--------------------------------------------------------------------*/
+        for(int i = 0; i < 5; i++){
+          for (int j= 0; j < 5; j++){
                 locations[i][j] = unshuffledLocations.get(y);
                 locations[i][j].setRow(i);
                 locations[i][j].setColumn(j);
-                System.out.println(unshuffledLocations.get(y)+ "\n");
-                y++;
+               System.out.print(unshuffledLocations.get(y)+"   ");
+               y++;
+              if (j == 4)
+              {
+                System.out.println("\n");
+              }
             }
         }
         
@@ -200,7 +215,7 @@ public class MapControl {
         fireTreasure.getName();
         fireTreasure.getDescription();
         fireTreasure.getStatus();
-        fireLocation.getTreasures().add(fireTreasure);
+      //  fireLocation.getTreasures().add(fireTreasure);
         
         return 1;
     }
