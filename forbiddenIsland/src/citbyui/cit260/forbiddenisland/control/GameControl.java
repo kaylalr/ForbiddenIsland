@@ -12,6 +12,7 @@ import citbyui.cit260.model.Actor;
 import citbyui.cit260.model.ActorType;
 import citbyui.cit260.model.Map;
 import citbyui.cit260.model.Treasure;
+import citbyui.cit260.model.TreasureType;
 import forbiddenisland.ForbiddenIsland;
 import java.awt.Point;
 import java.util.ArrayList;
@@ -97,32 +98,39 @@ public class GameControl {
     }
 
     private static Treasure[] createTreasure() {
-        Treasure[] treasures = new Treasure[4];
+        Treasure[] treasures = new Treasure[TreasureType.values().length];
         // create earth treasure
         Treasure earthTreasure = new Treasure();
         earthTreasure.setName("Earth Stone");
         earthTreasure.setDescription("Earth Description");
         earthTreasure.setStatus("Uncaputred");
-        treasures[0] = earthTreasure;
+        treasures[TreasureType.Earth.ordinal()] = earthTreasure;
         // create wind treasure
         Treasure windTreasure = new Treasure();
         windTreasure.setName("Statue of the Wind");
         windTreasure.setDescription("Wind Description");
         windTreasure.setStatus("Uncaputred");
-        treasures[1] = windTreasure;
+        treasures[TreasureType.Wind.ordinal()] = windTreasure;
         // create fire treasure
         Treasure fireTreasure = new Treasure();
         fireTreasure.setName("Crystal of Fire");
         fireTreasure.setDescription("Fire Description");
         fireTreasure.setStatus("Uncaputred");
-        treasures[2] = fireTreasure;
+        treasures[TreasureType.Fire.ordinal()] = fireTreasure;
         // create water treasure
         Treasure waterTreasure = new Treasure();
         waterTreasure.setName("Ocean's Chalice");
         waterTreasure.setDescription("Water Description");
         waterTreasure.setStatus("Uncaputred");
-        treasures[3] = waterTreasure;
-        System.out.println(treasures[2]);
+        treasures[TreasureType.Water.ordinal()] = waterTreasure;
+        
+        // create water treasure
+        Treasure emptyTreasure = new Treasure();
+        emptyTreasure.setName("Empty");
+        emptyTreasure.setDescription("No Treasure here");
+        emptyTreasure.setStatus("Cannot capture");
+        treasures[TreasureType.Empty.ordinal()] = emptyTreasure;
+
         return treasures;
     }
     

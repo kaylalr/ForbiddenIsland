@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package citbyui.cit260.model;
+import java.awt.Point;
 import java.io.Serializable;
 import java.util.Objects;
 /**
@@ -15,6 +16,7 @@ public class Treasure implements Serializable{
     private String name;
     private String description;
     private String status;
+    private Point coordinates;
     private TreasureLocation TreasureLocation;
     
     public Treasure() {
@@ -60,18 +62,27 @@ public class Treasure implements Serializable{
         this.TreasureLocation = TreasureLocation;
     }
 
+    public Point getCoordinates() {
+        return coordinates;
+    }
+
+    public void setCoordinates(Point coordinates) {
+        this.coordinates = coordinates;
+    }
+
     @Override
     public String toString() {
-        return "Treasure{" + " name=" + name + ", description=" + description + ", status=" + status + ", TreasureLocation=" + TreasureLocation + '}';
+        return "Treasure{" + "name=" + name + ", description=" + description + ", status=" + status + ", coordinates=" + coordinates + ", TreasureLocation=" + TreasureLocation + '}';
     }
 
     @Override
     public int hashCode() {
-        int hash = 5;
-        hash = 89 * hash + Objects.hashCode(this.name);
-        hash = 89 * hash + Objects.hashCode(this.description);
-        hash = 89 * hash + Objects.hashCode(this.status);
-        hash = 89 * hash + Objects.hashCode(this.TreasureLocation);
+        int hash = 7;
+        hash = 17 * hash + Objects.hashCode(this.name);
+        hash = 17 * hash + Objects.hashCode(this.description);
+        hash = 17 * hash + Objects.hashCode(this.status);
+        hash = 17 * hash + Objects.hashCode(this.coordinates);
+        hash = 17 * hash + Objects.hashCode(this.TreasureLocation);
         return hash;
     }
 
@@ -96,11 +107,16 @@ public class Treasure implements Serializable{
         if (!Objects.equals(this.status, other.status)) {
             return false;
         }
+        if (!Objects.equals(this.coordinates, other.coordinates)) {
+            return false;
+        }
         if (!Objects.equals(this.TreasureLocation, other.TreasureLocation)) {
             return false;
         }
         return true;
     }
+
+    
     
     
     

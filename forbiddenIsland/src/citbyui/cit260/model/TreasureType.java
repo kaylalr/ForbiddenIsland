@@ -10,7 +10,7 @@ package citbyui.cit260.model;
  * @author DD
  */
 public enum TreasureType {
-    
+    Empty,
     Earth,
     Fire,
     Water,
