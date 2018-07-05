@@ -4,21 +4,23 @@
  * and open the template in the editor.
  */
 package citbyui.cit260.model;
+
 import java.awt.Point;
 import java.io.Serializable;
 import java.util.Objects;
+
 /**
  *
  * @author mcwis
  */
-public class Treasure implements Serializable{
+public class Treasure implements Serializable {
 
     private String name;
     private String description;
     private String status;
     private Point coordinates;
     private TreasureLocation TreasureLocation;
-    
+
     public Treasure() {
     }
 
@@ -27,8 +29,6 @@ public class Treasure implements Serializable{
         this.description = description;
         this.status = status;
     }
-    
-    
 
     public String getName() {
         return name;
@@ -116,8 +116,4 @@ public class Treasure implements Serializable{
         return true;
     }
 
-    
-    
-    
-    
 }

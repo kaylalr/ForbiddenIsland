@@ -9,15 +9,15 @@ package citbyui.cit260.forbiddenisland.view;
  *
  * @author mcwis
  */
-public class StartExistingGameView extends View{
-    
+public class StartExistingGameView extends View {
+
     @Override
     public String[] getInputs() {
         String[] inputs = new String[1];
         System.out.println("*** getInputs() called ***");
         return inputs;
     }
-    
+
     @Override
     public boolean doAction(String[] inputs) {
         System.out.println("*** doAction() called ***");

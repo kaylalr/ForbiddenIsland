@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package citbyui.cit260.model;
+
 /**
  *
  * @author DD
@@ -15,7 +16,7 @@ public enum Card {
     wind("Desc wind", "element"),
     unfloodTile("descFlood", "specialAction"),
     helicopter("DescHelicopter", "specialAction");
-    
+
     private final String description;
     private final String cardType;
 

@@ -17,7 +17,7 @@ public class MoveMenuView extends View {
     public String[] getInputs() {
         String[] inputs = new String[2];
         // test code
-        int turn = (int)Math.ceil(Math.random()*2);
+        int turn = (int) Math.ceil(Math.random() * 2);
         if (turn == 1) {
             inputs[0] = this.getInput("\nWhere would you like to move?\n"
                     + "W - move up\n"
@@ -28,8 +28,7 @@ public class MoveMenuView extends View {
                     + "E - up and to the right\n"
                     + "Z - down and to the left\n"
                     + "C - down and to the right\n");
-        }
-        else {
+        } else {
             inputs[0] = this.getInput("\nWhere would you like to move?\n"
                     + "W - move up\n"
                     + "A - move left\n"

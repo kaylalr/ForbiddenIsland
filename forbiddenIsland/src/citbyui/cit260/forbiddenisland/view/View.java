@@ -11,11 +11,11 @@ import java.util.Scanner;
  *
  * @author mcwis
  */
-public abstract class View implements ViewInterface{
+public abstract class View implements ViewInterface {
 
     public View() {
     }
-    
+
     @Override
     public void display() {
 
@@ -32,16 +32,15 @@ public abstract class View implements ViewInterface{
         } while (endOfView != true);
 
     }
-    
+
     @Override
     public String getInput(String promptMessage) {
         String[] inputs = new String[1];
 
         //System.out.println(promptMessage);
-
         boolean valid = false;
         while (valid == false) {
-            //CREATED SCANNER  
+            //CREATED SCANNER
             Scanner inFile;
             inFile = new Scanner(System.in);
 
@@ -58,5 +57,5 @@ public abstract class View implements ViewInterface{
         }
         return inputs[0];
     }
-    
+
 }

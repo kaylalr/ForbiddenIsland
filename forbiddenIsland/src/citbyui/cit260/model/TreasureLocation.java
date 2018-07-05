@@ -11,11 +11,12 @@ import java.util.Objects;
  *
  * @author mcwis
  */
-public class TreasureLocation extends Location{
+public class TreasureLocation extends Location {
+
     private Treasure Treasure;
 
     public TreasureLocation() {
- 
+
     }
 
     public Treasure getTreasure() {
@@ -55,6 +56,5 @@ public class TreasureLocation extends Location{
         }
         return true;
     }
-    
-    
+
 }

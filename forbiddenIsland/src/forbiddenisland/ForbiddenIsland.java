@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package forbiddenisland;
+
 import citbyui.cit260.forbiddenisland.view.StartProgramView;
 import citbyui.cit260.model.Actor;
 import citbyui.cit260.model.Card;
@@ -13,6 +14,7 @@ import citbyui.cit260.model.Map;
 import citbyui.cit260.model.Player;
 import citbyui.cit260.model.Treasure;
 import citbyui.cit260.model.TreasureLocation;
+
 /**
  *
  * @author mcwis
@@ -25,13 +27,13 @@ public class ForbiddenIsland {
     public Game game;
     private static Game currentGame = null;
     private static Player player = null;
-    
+
     public static void main(String[] args) {
         // TODO code application logic here
-        
+
         StartProgramView startProgramView = new StartProgramView();
         startProgramView.display();
-        
+
     }
 
     public static Game getCurrentGame() {
@@ -57,8 +59,5 @@ public class ForbiddenIsland {
     public void setGame(Game game) {
         this.game = game;
     }
-    
-    
-    
-    
+
 }

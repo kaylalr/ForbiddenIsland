@@ -11,7 +11,7 @@ import java.util.Scanner;
  *
  * @author Kayla
  */
-public class GiveTreasureCardView extends View{
+public class GiveTreasureCardView extends View {
 
 //    void displayGiveTreasureCardView() {
 //        boolean endOfView = false;
@@ -61,7 +61,6 @@ public class GiveTreasureCardView extends View{
 //            totalWater = p1Water + p2Water;
 //        } while (totalWater > 5);
 //        // end test code
-
     @Override
     public String[] getInputs() {
         String[] inputs = new String[1];
@@ -71,7 +70,6 @@ public class GiveTreasureCardView extends View{
 //                + "S - Statue of the Wind\n"
 //                + "C - Crystal of Fire #\n"
 //                + "O - Ocean's Chalice #\n");
-
         inputs[0] = this.getInput("Which card(s) would you like to give?\n"
                 + "E - Earth Stone #\n"
                 + "S - Statue of the Wind\n"
@@ -116,15 +114,14 @@ public class GiveTreasureCardView extends View{
 //            valid = true;
 //        }
 //        return inputs;
-        
     }
 
     @Override
     public boolean doAction(String[] inputs) {
         if (inputs[0].length() > 1) {
-                System.out.println("Error: Please re-enter value: ");
-                return false;
-            }
+            System.out.println("Error: Please re-enter value: ");
+            return false;
+        }
         //(String[] inputs, boolean player1, boolean player2, int totalEarth, int totalWind, int totalFire, int totalWater, int p1Earth, int p2Earth, int p1Wind, int p2Wind, int p1Fire, int p2Fire, int p1Water, int p2Water) {
 //        switch (inputs[0]) {
 //            case "E":

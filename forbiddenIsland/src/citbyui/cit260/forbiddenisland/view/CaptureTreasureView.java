@@ -11,7 +11,7 @@ import java.util.Scanner;
  *
  * @author Kayla
  */
-public class CaptureTreasureView extends View{
+public class CaptureTreasureView extends View {
 
     @Override
     public String[] getInputs() {
@@ -29,10 +29,10 @@ public class CaptureTreasureView extends View{
     @Override
     public boolean doAction(String[] inputs) {
         if (inputs[0].length() > 1) {
-                System.out.println("Error: Please re-enter value: ");
-                return false;
-            }
-        switch (inputs[0]){
+            System.out.println("Error: Please re-enter value: ");
+            return false;
+        }
+        switch (inputs[0]) {
             case "Y":
                 System.out.println("Congrats! You have collected the _______ trophy!");
                 break;

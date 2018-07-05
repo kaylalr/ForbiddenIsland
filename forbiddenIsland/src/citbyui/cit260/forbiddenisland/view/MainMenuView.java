@@ -14,7 +14,7 @@ import java.util.Scanner;
  *
  * @author mcwis
  */
-public class MainMenuView extends View{
+public class MainMenuView extends View {
 
     @Override
     public String[] getInputs() {
@@ -33,9 +33,9 @@ public class MainMenuView extends View{
     @Override
     public boolean doAction(String[] inputs) {
         if (inputs[0].length() > 1) {
-                System.out.println("Error: Please re-enter value: ");
-                return false;
-            }
+            System.out.println("Error: Please re-enter value: ");
+            return false;
+        }
         switch (inputs[0]) {
             case "N":
                 System.out.println("Inputs = N");
@@ -56,25 +56,22 @@ public class MainMenuView extends View{
 
         return true;
     }
-    
-    private void startNewGame(){
+
+    private void startNewGame() {
         int game = GameControl.createNewGame(ForbiddenIsland.getPlayer());
-        
+
         GameMenuView gameMenuView = new GameMenuView();
         gameMenuView.display();
     }
-    
-    private void restartNewGame(){
+
+    private void restartNewGame() {
         StartExistingGameView startExistingGameView = new StartExistingGameView();
         //startExistingGameView.displayStartExistingGameView();
     }
-    
-    private void getHelp(){
+
+    private void getHelp() {
         HelpMenuView helpMenuView = new HelpMenuView();
         helpMenuView.display();
     }
-    
-    
-    
-    
+
 }

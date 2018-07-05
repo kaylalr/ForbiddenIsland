@@ -4,21 +4,23 @@
  * and open the template in the editor.
  */
 package citbyui.cit260.model;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Objects;
+
 /**
  *
  * @author mcwis
  */
-public class Game implements Serializable{
+public class Game implements Serializable {
 
     private double turns;
     private double score;
     private Card cardType;
     private Player player;
     private Map map;
-    
+
     public Game() {
     }
 
@@ -112,6 +114,5 @@ public class Game implements Serializable{
         }
         return true;
     }
-    
-    
+
 }

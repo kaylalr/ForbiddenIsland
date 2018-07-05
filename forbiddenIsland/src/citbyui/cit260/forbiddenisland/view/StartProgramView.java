@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package citbyui.cit260.forbiddenisland.view;
+
 import citbyui.cit260.forbiddenisland.view.MainMenuView;
 import citbyui.cit260.forbiddenisland.control.GameControl;
 import citbyui.cit260.model.Player;
@@ -13,7 +14,7 @@ import java.util.Scanner;
  *
  * @author mcwis
  */
-public class StartProgramView extends View{
+public class StartProgramView extends View {
 
     public StartProgramView() {
     }
@@ -39,15 +40,13 @@ public class StartProgramView extends View{
     @Override
     public boolean doAction(String[] inputs) {
 
-        
-        
         String playerName = inputs[0];
         if (playerName.length() > 12) {
-                System.out.println("Error: Please re-enter name: ");
-                return false;
-            }
+            System.out.println("Error: Please re-enter name: ");
+            return false;
+        }
         Player player = GameControl.savePlayer(playerName);
-        
+
         if (player == null) {
             System.out.println("Could not create the player. "
                     + "Enter a different name.");

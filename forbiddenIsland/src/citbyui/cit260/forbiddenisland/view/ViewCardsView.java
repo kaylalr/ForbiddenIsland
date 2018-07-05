@@ -11,7 +11,7 @@ import java.util.Scanner;
  *
  * @author mcwis
  */
-public class ViewCardsView extends View{
+public class ViewCardsView extends View {
 
     @Override
     public String[] getInputs() {
@@ -32,13 +32,13 @@ public class ViewCardsView extends View{
         System.out.println("|  Your have " + p2HelecopterCards + " helecopter cards in hand.|");
         System.out.println("|_______________________________________________________________|");
         inputs[0] = this.getInput("Press Q to return:");
-        
+
         return inputs;
     }
 
     @Override
     public boolean doAction(String[] inputs) {
- 
+
         return true;
     }
 

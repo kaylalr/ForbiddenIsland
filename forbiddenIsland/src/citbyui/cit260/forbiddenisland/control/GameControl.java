@@ -78,7 +78,7 @@ public class GameControl {
 
         //Creat all other list (questions)
         Treasure[] treasures = createTreasure();
-        
+
         Map map = createMap(game, 5, 5, actors, treasures);
         if (map == null) {
             return -2;
@@ -91,8 +91,8 @@ public class GameControl {
     public static ArrayList<Actor> createActors() {
         ArrayList<Actor> actor = new ArrayList<Actor>();
 
-        actor.add(ActorType.Pilot.ordinal(),new Actor("Pilot", new Point(0, 0), "Helicopter"));
-        actor.add(ActorType.Explorer.ordinal(),new Actor("Explorer", new Point(0, 0), "Diagonal Movements"));
+        actor.add(ActorType.Pilot.ordinal(), new Actor("Pilot", new Point(0, 0), "Helicopter"));
+        actor.add(ActorType.Explorer.ordinal(), new Actor("Explorer", new Point(0, 0), "Diagonal Movements"));
 
         return actor;
     }
@@ -123,7 +123,7 @@ public class GameControl {
         waterTreasure.setDescription("Water Description");
         waterTreasure.setStatus("Uncaputred");
         treasures[TreasureType.Water.ordinal()] = waterTreasure;
-        
+
         // create water treasure
         Treasure emptyTreasure = new Treasure();
         emptyTreasure.setName("Empty");
@@ -133,5 +133,5 @@ public class GameControl {
 
         return treasures;
     }
-    
-    }
+
+}

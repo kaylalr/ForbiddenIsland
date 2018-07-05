@@ -4,20 +4,22 @@
  * and open the template in the editor.
  */
 package citbyui.cit260.model;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Objects;
+
 /**
  *
  * @author mcwis
  */
-public class Player implements Serializable{
+public class Player implements Serializable {
 
     private String name;
     private double bestScore;
     private ArrayList<Game> games = new ArrayList<Game>();
     private ArrayList<Actor> actors = new ArrayList<Actor>();
-    
+
     public Player() {
     }
 
@@ -57,8 +59,6 @@ public class Player implements Serializable{
     public void setActors(ArrayList<Actor> actors) {
         this.actors = actors;
     }
-    
-    
 
     @Override
     public String toString() {
@@ -101,5 +101,5 @@ public class Player implements Serializable{
         }
         return true;
     }
-    
+
 }

@@ -4,22 +4,24 @@
  * and open the template in the editor.
  */
 package citbyui.cit260.model;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Objects;
+
 /**
  *
  * @author mcwis
  */
-public class Map implements Serializable{
-    
+public class Map implements Serializable {
+
     private double rowCount;
     private double columnCount;
     private String description;
     private ArrayList<Game> games = new ArrayList<Game>();
     private Location location[][];
-    
+
     public Map() {
     }
 
@@ -114,6 +116,5 @@ public class Map implements Serializable{
         }
         return true;
     }
-    
-    
+
 }

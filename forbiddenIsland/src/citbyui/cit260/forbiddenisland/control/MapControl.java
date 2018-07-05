@@ -127,8 +127,8 @@ public class MapControl {
 
         Collections.shuffle(unshuffledLocations);
 
+        //THIS CREATES THE ALLOCATED LOCATION SPACES AND GIVES THEM THEIR VALUES.
         int y = 0;
-
         for (int i = 0; i < 5; i++) {
             for (int j = 0; j < 5; j++) {
                 locations[i][j] = unshuffledLocations.get(y);
@@ -138,37 +138,10 @@ public class MapControl {
                 y++;
             }
         }
-
-        /*--------------------------------------------------------------------*/
-//        for(int i = 0; i < 5; i++){
-//          for (int j= 0; j < 5; j++){
-//                locations[i][j] = unshuffledLocations.get(y);
-//                locations[i][j].setRow(i);
-//                locations[i][j].setColumn(j);
-//               System.out.print(unshuffledLocations.get(y)+"   ");
-//               y++;
-//              if (j == 4)
-//              {
-//                System.out.println("\n");
-//              }
-//            }
-//        }
-
-
-// // Create a location and assign it to its position in the locations array
-// location = create a new location object of the appropriate location datatype
-// assign the location object to its row and column position in the locations array
-// call setters to assign the row and column number in the location object
-// call setter to assign a description in the location object
-// call setter to assign a display symbol in the location object
-// call setter methods to assign values to other attributes in the location object
-//
-// // Repeat above steps to create and assign each location to the locations array
-// … 
         return locations;
     }
 
-
+    //THIS HAS A SIMILAR EQUATION AS THE LOCATION ALLOCATION BUT THIS REFERENCES IT AND DISPLAYS THE MAP WITH THE DISPLAY SYMBOLS
     public static void displayMap() {
         Location[][] locations = ForbiddenIsland.getCurrentGame().getMap().getLocation();
         System.out.println("\n-_-_-GAME MAP-_-_-\n");
@@ -183,7 +156,6 @@ public class MapControl {
 
     }
 
-    
     private static Location findLocation(Location[][] locations, String locationType) {
         for (int i = 0; i < locations.length; i++) {
             for (int j = 0; j < locations[i].length; j++) {
@@ -239,7 +211,7 @@ public class MapControl {
         //Treasure treasure = null;
         for (int i = 0; i < locations.length; i++) {
             for (int j = 0; j < locations[i].length; j++) {
-                
+
                 switch (locations[i][j].getLocationType()) {
                     case "earthLocation":
                         //Treasure earthTreasure = treasures[TreasureType.Earth.ordinal()];
@@ -261,12 +233,10 @@ public class MapControl {
                         //treasure = treasures[TreasureType.Empty.ordinal()];
                         locations[i][j].setTreasure(treasures[TreasureType.Empty.ordinal()]);
                 }
-                
-     
+
 //                Location earthLoc = locations[i][j];
 //                earthLoc.setTreasure(treasure);
 //                    earth.setCoordinates(new Point(earthLoc.getRow(), earthLoc.getColumn())); 
-
             }
         }
 
@@ -278,7 +248,6 @@ public class MapControl {
 
         return 1;
 
-    
 //    for (int i = 0;
 //    i< locations.length ;
 //    i
@@ -303,10 +272,7 @@ public class MapControl {
 //            }
 //        }
 //    }
-
-
 //return 1;
-
     }
 
 }

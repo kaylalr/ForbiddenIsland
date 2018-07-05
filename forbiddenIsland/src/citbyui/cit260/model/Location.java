@@ -4,15 +4,17 @@
  * and open the template in the editor.
  */
 package citbyui.cit260.model;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Objects;
 import java.lang.Cloneable;
+
 /**
  *
  * @author mcwis
  */
-public class Location implements Serializable, Cloneable{
+public class Location implements Serializable, Cloneable {
 
     private int row;
     private int column;
@@ -22,7 +24,7 @@ public class Location implements Serializable, Cloneable{
     private String locationType;
     private ArrayList<Actor> actors = new ArrayList<Actor>();
     private Treasure treasure;
-    
+
     public Location() {
     }
 
@@ -155,7 +157,7 @@ public class Location implements Serializable, Cloneable{
     public String toString() {
         return "Location{" + "row=" + row + ", column=" + column + ", flooded=" + flooded + ", sunken=" + sunken + ", displaySymbol=" + displaySymbol + ", locationType=" + locationType + ", actors=" + actors + ", treasure=" + treasure + '}';
     }
-    
+
     @Override
     public Object clone() throws CloneNotSupportedException {
         return super.clone(); //To change body of generated methods, choose Tools | Templates.

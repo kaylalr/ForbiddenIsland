@@ -4,16 +4,18 @@
  * and open the template in the editor.
  */
 package citbyui.cit260.model;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Objects;
 import citbyui.cit260.model.Card;
 import java.awt.Point;
+
 /**
  *
  * @author mcwis
  */
-public class Actor implements Serializable{
+public class Actor implements Serializable {
 
     private String name;
     private Point coordinates;
@@ -21,7 +23,7 @@ public class Actor implements Serializable{
     private Location Location;
     private Card cards;
     private ArrayList<Player> player = new ArrayList<Player>();
-    
+
     public Actor() {
     }
 
@@ -128,5 +130,5 @@ public class Actor implements Serializable{
         }
         return true;
     }
-    
+
 }

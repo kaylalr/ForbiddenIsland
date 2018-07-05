@@ -10,8 +10,12 @@ package citbyui.cit260.forbiddenisland.view;
  * @author mcwis
  */
 public interface ViewInterface {
+
     public void display();
+
     public String[] getInputs();
+
     public String getInput(String promptMessage);
+
     public boolean doAction(String[] inputs);
 }
