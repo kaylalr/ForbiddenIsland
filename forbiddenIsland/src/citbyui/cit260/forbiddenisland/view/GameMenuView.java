@@ -5,6 +5,7 @@
  */
 package citbyui.cit260.forbiddenisland.view;
 
+import citbyui.cit260.forbiddenisland.control.MapControl;
 import java.util.Scanner;
 
 /**
@@ -16,7 +17,7 @@ public class GameMenuView extends View {
     @Override
     public String[] getInputs() {
         String[] inputs = new String[1];
-
+        MapControl.displayMap();
         System.out.println("\nGame Menu\n"
                 + "M – Move\n"
                 + "U – Unflood a tile\n"
@@ -36,9 +37,9 @@ public class GameMenuView extends View {
     @Override
     public boolean doAction(String[] inputs) {
         if (inputs[0].length() > 1) {
-                System.out.println("Error: Please re-enter value: ");
-                return false;
-            }
+            System.out.println("Error: Please re-enter value: ");
+            return false;
+        }
         switch (inputs[0]) {
             case "M":
                 MoveMenuView moveMenuView = new MoveMenuView();
@@ -62,19 +63,19 @@ public class GameMenuView extends View {
                 break;
             case "V":
                 ViewCardsView viewCardsView = new ViewCardsView();
-                viewCardsView.display(); 
+                viewCardsView.display();
                 break;
             case "E":
-                
+
                 break;
             case "I":
                 HelpMenuView helpMenuView = new HelpMenuView();
                 helpMenuView.display();
                 break;
             case "S":
-                
+
                 break;
-            
+
         }
         return false;
     }
