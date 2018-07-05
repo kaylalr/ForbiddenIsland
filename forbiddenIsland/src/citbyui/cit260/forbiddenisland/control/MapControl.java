@@ -12,6 +12,8 @@ import citbyui.cit260.model.Location;
 import citbyui.cit260.model.Map;
 import citbyui.cit260.model.Treasure;
 import forbiddenisland.ForbiddenIsland;
+import citbyui.cit260.model.TreasureType;
+//import java.awt.Point;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.logging.Level;
@@ -138,6 +140,21 @@ public class MapControl {
         }
 
         /*--------------------------------------------------------------------*/
+//        for(int i = 0; i < 5; i++){
+//          for (int j= 0; j < 5; j++){
+//                locations[i][j] = unshuffledLocations.get(y);
+//                locations[i][j].setRow(i);
+//                locations[i][j].setColumn(j);
+//               System.out.print(unshuffledLocations.get(y)+"   ");
+//               y++;
+//              if (j == 4)
+//              {
+//                System.out.println("\n");
+//              }
+//            }
+//        }
+
+
 // // Create a location and assign it to its position in the locations array
 // location = create a new location object of the appropriate location datatype
 // assign the location object to its row and column position in the locations array
@@ -150,6 +167,7 @@ public class MapControl {
 // … 
         return locations;
     }
+
 
     public static void displayMap() {
         Location[][] locations = ForbiddenIsland.getCurrentGame().getMap().getLocation();
@@ -165,6 +183,7 @@ public class MapControl {
 
     }
 
+    
     private static Location findLocation(Location[][] locations, String locationType) {
         for (int i = 0; i < locations.length; i++) {
             for (int j = 0; j < locations[i].length; j++) {
@@ -209,10 +228,48 @@ public class MapControl {
         if (locations == null) {
             return -1;
         }
-        Location fireLocation = MapControl.findLocation(locations, "fireLocation");
-        if (fireLocation == null) {
-            return -1;
+//        for (int i = 0; i < locations.length; i++) {
+//            for (int j = 0; j < locations[i].length; j++) {
+//                if (locations[i][j].getLocationType().equals("fireLocation")) {
+//                    locations[i][j].setTreasure(treasures[TreasureType.Fire.ordinal()]);
+//                }
+//            }
+//        }
+
+        //Treasure treasure = null;
+        for (int i = 0; i < locations.length; i++) {
+            for (int j = 0; j < locations[i].length; j++) {
+                
+                switch (locations[i][j].getLocationType()) {
+                    case "earthLocation":
+                        //Treasure earthTreasure = treasures[TreasureType.Earth.ordinal()];
+                        locations[i][j].setTreasure(treasures[TreasureType.Earth.ordinal()]);
+                        break;
+                    case "fireLocation":
+                        //Treasure fireTreasure = treasures[TreasureType.Fire.ordinal()];
+                        locations[i][j].setTreasure(treasures[TreasureType.Fire.ordinal()]);
+                        break;
+                    case "waterLocation":
+                        //treasure = treasures[TreasureType.Water.ordinal()];
+                        locations[i][j].setTreasure(treasures[TreasureType.Water.ordinal()]);
+                        break;
+                    case "windLocation":
+                        //treasure = treasures[TreasureType.Wind.ordinal()];
+                        locations[i][j].setTreasure(treasures[TreasureType.Wind.ordinal()]);
+                        break;
+                    default:
+                        //treasure = treasures[TreasureType.Empty.ordinal()];
+                        locations[i][j].setTreasure(treasures[TreasureType.Empty.ordinal()]);
+                }
+                
+     
+//                Location earthLoc = locations[i][j];
+//                earthLoc.setTreasure(treasure);
+//                    earth.setCoordinates(new Point(earthLoc.getRow(), earthLoc.getColumn())); 
+
+            }
         }
+
         Treasure fireTreasure = treasures[2];
         fireTreasure.getName();
         fireTreasure.getDescription();
@@ -220,6 +277,36 @@ public class MapControl {
         //  fireLocation.getTreasures().add(fireTreasure);
 
         return 1;
+
+    
+//    for (int i = 0;
+//    i< locations.length ;
+//    i
+//
+//    
+//        ++) {
+//            for (int j = 0; j < locations[i].length; j++) {
+//            if (locations[i][j].getLocationType().equals("windLocation")) {
+//                locations[i][j].setTreasure(treasures[TreasureType.Wind.ordinal()]);
+//            }
+//        }
+//    }
+//    for (int i = 0;
+//    i< locations.length ;
+//    i
+//
+//    
+//        ++) {
+//            for (int j = 0; j < locations[i].length; j++) {
+//            if (locations[i][j].getLocationType().equals("waterLocation")) {
+//                locations[i][j].setTreasure(treasures[TreasureType.Water.ordinal()]);
+//            }
+//        }
+//    }
+
+
+//return 1;
+
     }
 
 }

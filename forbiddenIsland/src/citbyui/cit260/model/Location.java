@@ -21,7 +21,7 @@ public class Location implements Serializable, Cloneable{
     private String displaySymbol;
     private String locationType;
     private ArrayList<Actor> actors = new ArrayList<Actor>();
-    private Treasure[] treasures;
+    private Treasure treasure;
     
     public Location() {
     }
@@ -90,28 +90,25 @@ public class Location implements Serializable, Cloneable{
         this.actors = actors;
     }
 
-    public Treasure[] getTreasures() {
-        return treasures;
+    public Treasure getTreasure() {
+        return treasure;
     }
 
-    public void setTreasures(Treasure[] treasures) {
-        this.treasures = treasures;
-    }
-    
-    @Override
-    public String toString() {
-        return "Location{" + "row=" + row + ", column=" + column + ", flooded=" + flooded + ", sunken=" + sunken + ", displaySymbol=" + displaySymbol + ", actors=" + actors + '}';
+    public void setTreasure(Treasure treasure) {
+        this.treasure = treasure;
     }
 
     @Override
     public int hashCode() {
-        int hash = 3;
-        hash = 89 * hash + (int) (Double.doubleToLongBits(this.row) ^ (Double.doubleToLongBits(this.row) >>> 32));
-        hash = 89 * hash + (int) (Double.doubleToLongBits(this.column) ^ (Double.doubleToLongBits(this.column) >>> 32));
-        hash = 89 * hash + this.flooded;
-        hash = 89 * hash + this.sunken;
-        hash = 89 * hash + Objects.hashCode(this.displaySymbol);
-        hash = 89 * hash + Objects.hashCode(this.actors);
+        int hash = 7;
+        hash = 11 * hash + this.row;
+        hash = 11 * hash + this.column;
+        hash = 11 * hash + this.flooded;
+        hash = 11 * hash + this.sunken;
+        hash = 11 * hash + Objects.hashCode(this.displaySymbol);
+        hash = 11 * hash + Objects.hashCode(this.locationType);
+        hash = 11 * hash + Objects.hashCode(this.actors);
+        hash = 11 * hash + Objects.hashCode(this.treasure);
         return hash;
     }
 
@@ -127,10 +124,10 @@ public class Location implements Serializable, Cloneable{
             return false;
         }
         final Location other = (Location) obj;
-        if (Double.doubleToLongBits(this.row) != Double.doubleToLongBits(other.row)) {
+        if (this.row != other.row) {
             return false;
         }
-        if (Double.doubleToLongBits(this.column) != Double.doubleToLongBits(other.column)) {
+        if (this.column != other.column) {
             return false;
         }
         if (this.flooded != other.flooded) {
@@ -142,10 +139,21 @@ public class Location implements Serializable, Cloneable{
         if (!Objects.equals(this.displaySymbol, other.displaySymbol)) {
             return false;
         }
+        if (!Objects.equals(this.locationType, other.locationType)) {
+            return false;
+        }
         if (!Objects.equals(this.actors, other.actors)) {
             return false;
         }
+        if (!Objects.equals(this.treasure, other.treasure)) {
+            return false;
+        }
         return true;
+    }
+
+    @Override
+    public String toString() {
+        return "Location{" + "row=" + row + ", column=" + column + ", flooded=" + flooded + ", sunken=" + sunken + ", displaySymbol=" + displaySymbol + ", locationType=" + locationType + ", actors=" + actors + ", treasure=" + treasure + '}';
     }
     
     @Override
