@@ -172,15 +172,16 @@ public class MapControl {
     public static void displayMap() {
         Location[][] locations = ForbiddenIsland.getCurrentGame().getMap().getLocation();
         System.out.println("\n-_-_-GAME MAP-_-_-\n");
+        System.out.println("       1       2       3       4       5");
         for (int i = 0; i < 5; i++) {
-            System.out.print("-----------------------------------------\n");
+            System.out.print("   -----------------------------------------\n");
+            System.out.print(i + "  ");
             for (int j = 0; j < 5; j++) {
                 System.out.print("|  " + locations[i][j].getDisplaySymbol() + "  ");
             }
             System.out.print("|\n");
         }
-        System.out.print("-----------------------------------------");
-
+        System.out.print("   -----------------------------------------");
     }
 
     
@@ -218,7 +219,6 @@ public class MapControl {
         explorerLocation.getActors().add(explorer);
         explorer.getCoordinates().x = explorerLocation.getRow();
         explorer.getCoordinates().y = explorerLocation.getColumn();
-
         return 1;
     }
 
@@ -244,6 +244,7 @@ public class MapControl {
                     case "earthLocation":
                         //Treasure earthTreasure = treasures[TreasureType.Earth.ordinal()];
                         locations[i][j].setTreasure(treasures[TreasureType.Earth.ordinal()]);
+                        System.out.println(locations[i][j].getTreasure().getName());
                         break;
                     case "fireLocation":
                         //Treasure fireTreasure = treasures[TreasureType.Fire.ordinal()];
