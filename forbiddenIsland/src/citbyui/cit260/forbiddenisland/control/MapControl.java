@@ -5,6 +5,7 @@
  */
 package citbyui.cit260.forbiddenisland.control;
 
+import citbyui.cit260.forbiddenisland.exceptions.MapControlException;
 import citbyui.cit260.model.Actor;
 import citbyui.cit260.model.ActorType;
 import citbyui.cit260.model.Game;
@@ -25,10 +26,11 @@ import java.util.logging.Logger;
  */
 public class MapControl {
 
-    public static Map createMap(Game game, int noOfRows, int noOfColumns, ArrayList<Actor> actors, Treasure[] treasures) {
+    public static Map createMap(Game game, int noOfRows, int noOfColumns, ArrayList<Actor> actors, Treasure[] treasures) throws MapControlException {
         // check for invalid inputs
         if (game == null || noOfRows < 1 || noOfColumns < 1) {
-            return null;
+
+            throw new MapControlException("Game cant be NULL or less than 1 Row / 1Column");
         }
         // create the map object and assign values to it
         Map map = new Map();
@@ -42,7 +44,7 @@ public class MapControl {
         // initially create stub method
         Location[][] locations = createLocations(noOfRows, noOfColumns);
         if (locations == null) {
-            return null;
+            throw new MapControlException("Location can't be NULL.");
         }
 
         map.setLocation(locations);
@@ -50,22 +52,22 @@ public class MapControl {
 // assign objects to locations
         int success = assignActorsToLocations(locations, actors);
         if (success < 0) {
-            return null;
+            throw new MapControlException("Assign actors to location can't return NULL/ Failed.");
         }
         success = assignTreasuresToLocations(locations, treasures);
         if (success < 0) {
-            return null;
+            throw new MapControlException("Assign Treasures to location can't return NULL/ Failed.");
         }
 
         return map;
 
     }
 
-    private static Location[][] createLocations(int noOfRows, int noOfColumns) {
+    private static Location[][] createLocations(int noOfRows, int noOfColumns) throws MapControlException {
         Location[][] locations = new Location[noOfRows][noOfColumns];
         System.out.println("createdLocations working");
         if (noOfRows < 1 || noOfColumns < 1) {
-            return null;
+            throw new MapControlException("Rows and Columns must be more than one 1 in size.");
         }
 
         ArrayList<Location> unshuffledLocations = new ArrayList<Location>();
@@ -168,15 +170,15 @@ public class MapControl {
         return null;
     }
 
-    private static int assignActorsToLocations(Location[][] locations, ArrayList<Actor> actors) {
+    private static int assignActorsToLocations(Location[][] locations, ArrayList<Actor> actors) throws MapControlException {
         System.out.println("assignActorsToLocations");
         // Check for invalid input
         if (locations == null) {
-            return -1;
+            throw new MapControlException("Locations can't be NULL.");
         }
         Location pilotLocation = MapControl.findLocation(locations, "startOne");
         if (pilotLocation == null) {
-            return -1;
+            throw new MapControlException("Pilot can't be NULL");
         }
         Actor pilot = actors.get(ActorType.Pilot.ordinal());
         pilotLocation.getActors().add(pilot);
@@ -185,7 +187,7 @@ public class MapControl {
 
         Location explorerLocation = MapControl.findLocation(locations, "startTwo");
         if (explorerLocation == null) {
-            return -1;
+            throw new MapControlException("Explorer Location can't be NULL.");
         }
         Actor explorer = actors.get(ActorType.Explorer.ordinal());
         explorerLocation.getActors().add(explorer);
@@ -194,11 +196,12 @@ public class MapControl {
         return 1;
     }
 
-    private static int assignTreasuresToLocations(Location[][] locations, Treasure[] treasures) {
+    private static int assignTreasuresToLocations(Location[][] locations, Treasure[] treasures) throws MapControlException {
         System.out.println("assignTreasuresToLocations");
         // Check for invalid input
         if (locations == null) {
-            return -1;
+            throw new MapControlException("Locations can't be NULL.");
+
         }
 //        for (int i = 0; i < locations.length; i++) {
 //            for (int j = 0; j < locations[i].length; j++) {
@@ -274,6 +277,10 @@ public class MapControl {
 //        }
 //    }
 //return 1;
+    }
+    
+    public static void unfloodTile(int row, int column){
+        
     }
 
 }

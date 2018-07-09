@@ -6,6 +6,8 @@
 package citbyui.cit260.forbiddenisland.control;
 
 import static citbyui.cit260.forbiddenisland.control.MapControl.createMap;
+import citbyui.cit260.forbiddenisland.exceptions.GameControlException;
+import citbyui.cit260.forbiddenisland.exceptions.MapControlException;
 import citbyui.cit260.model.Game;
 import citbyui.cit260.model.Player;
 import citbyui.cit260.model.Actor;
@@ -23,32 +25,32 @@ import java.util.ArrayList;
  */
 public class GameControl {
 
-    public static int getTurnsLeft(int player1Turns, int player2Turns) {
+    public static int getTurnsLeft(int player1Turns, int player2Turns) throws GameControlException {
         if (player1Turns < 0 || player1Turns > 20) {
-            return -1;
+            throw new GameControlException("Turns left needs to be between 0 and 20");
         }
 
         if (player2Turns < 0 || player2Turns > 20) {
-            return -1;
+            throw new GameControlException("Turns left needs to be between 0 and 20");
         }
         int turnsLeft = 40 - (player1Turns + player2Turns);
         return turnsLeft;
 
     }
 
-    public static int getActionsLeft(int playerTurns) {
+    public static int getActionsLeft(int playerTurns) throws GameControlException {
         if (playerTurns < 15 || playerTurns > 20) {
-            return -1;
+            throw new GameControlException("Player turns needs to be between 15 and 20.");
         }
 
         int ActionsLeft = (20 - playerTurns) * 3;
         return ActionsLeft;
     }
 
-    public static Player savePlayer(String playerName) {
+    public static Player savePlayer(String playerName) throws GameControlException {
 
         if (playerName == null || playerName.length() < 1) {
-            return null;
+            throw new GameControlException("Name cant be NULL");
         }
 
         Player player = new Player();
@@ -57,13 +59,13 @@ public class GameControl {
         return new Player();
     }
 
-    public static int createNewGame(Player player) {
+    public static int createNewGame(Player player) throws GameControlException, MapControlException {
 //        
 //        ArrayList<Player> players = new ArrayList<Player>();
 //        ArrayList<Actor> actors = new ArrayList<Actor>();
 
         if (player == null) {
-            return -1;
+            throw new GameControlException("Player cant be NULL");
         }
 
         Game game = new Game();
@@ -81,7 +83,7 @@ public class GameControl {
 
         Map map = createMap(game, 5, 5, actors, treasures);
         if (map == null) {
-            return -2;
+            throw new GameControlException("Map cant be NULL");
         }
         game.setMap(map);
 

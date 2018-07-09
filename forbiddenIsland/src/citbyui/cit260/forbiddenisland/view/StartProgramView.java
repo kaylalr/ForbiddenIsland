@@ -7,8 +7,11 @@ package citbyui.cit260.forbiddenisland.view;
 
 import citbyui.cit260.forbiddenisland.view.MainMenuView;
 import citbyui.cit260.forbiddenisland.control.GameControl;
+import citbyui.cit260.forbiddenisland.exceptions.GameControlException;
 import citbyui.cit260.model.Player;
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -40,26 +43,30 @@ public class StartProgramView extends View {
     @Override
     public boolean doAction(String[] inputs) {
 
-        String playerName = inputs[0];
-        if (playerName.length() > 12) {
-            System.out.println("Error: Please re-enter name: ");
-            return false;
+        try {
+            String playerName = inputs[0];
+            if (playerName.length() > 12) {
+                System.out.println("Error: Please re-enter name: ");
+                return false;
+            }
+            Player player = GameControl.savePlayer(playerName);
+
+            if (player == null) {
+                System.out.println("Could not create the player. "
+                        + "Enter a different name.");
+                return false;
+            }
+
+            System.out.println("\n");
+            System.out.println("Welcome to the game " + playerName + "! We hope you have a lot of fun!");
+            System.out.println("\n");
+
+            MainMenuView mainMenuView = new MainMenuView();
+            mainMenuView.display();
+
+        } catch (GameControlException ex) {
+            Logger.getLogger(StartProgramView.class.getName()).log(Level.SEVERE, null, ex);
         }
-        Player player = GameControl.savePlayer(playerName);
-
-        if (player == null) {
-            System.out.println("Could not create the player. "
-                    + "Enter a different name.");
-            return false;
-        }
-
-        System.out.println("\n");
-        System.out.println("Welcome to the game " + playerName + "! We hope you have a lot of fun!");
-        System.out.println("\n");
-
-        MainMenuView mainMenuView = new MainMenuView();
-        mainMenuView.display();
-
         return true;
     }
 

@@ -10,5 +10,26 @@ package citbyui.cit260.forbiddenisland.exceptions;
  * @author mcwis
  */
 public class InventoryControlException extends Exception{
+
+    public InventoryControlException() {
+    }
+
+    public InventoryControlException(String string) {
+        super(string);
+    }
+
+    public InventoryControlException(String string, Throwable thrwbl) {
+        super(string, thrwbl);
+    }
+
+    public InventoryControlException(Throwable thrwbl) {
+        super(thrwbl);
+    }
+
+    public InventoryControlException(String string, Throwable thrwbl, boolean bln, boolean bln1) {
+        super(string, thrwbl, bln, bln1);
+    }
+    
+    
     
 }
