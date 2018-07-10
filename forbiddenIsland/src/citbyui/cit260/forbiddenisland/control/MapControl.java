@@ -6,6 +6,7 @@
 package citbyui.cit260.forbiddenisland.control;
 
 import citbyui.cit260.forbiddenisland.exceptions.MapControlException;
+import citbyui.cit260.forbiddenisland.view.MoveMenuView;
 import citbyui.cit260.model.Actor;
 import citbyui.cit260.model.ActorType;
 import citbyui.cit260.model.Game;
@@ -126,7 +127,6 @@ public class MapControl {
             unshuffledLocations.add(loc);
             loc.setLocationType("normal");
         }
-
         Collections.shuffle(unshuffledLocations);
 
         //THIS CREATES THE ALLOCATED LOCATION SPACES AND GIVES THEM THEIR VALUES.
@@ -278,9 +278,42 @@ public class MapControl {
 //    }
 //return 1;
     }
-    
-    public static void unfloodTile(int row, int column){
-        
-    }
 
+//    public static void unfloodTile(int row, int column){
+//        
+//    }
+    public static Location moveActor(actor, newRow, newColumn) throws MapControlException {
+
+        if (actor == null) {
+            throw new MapControlException("Actor can't be NULL.");
+        }
+
+        Location locs[][] = ForbiddenIsland.getCurrentGame().getMap().getLocation();
+        if (newRow < 1 || newRow > 5 || newColumn < 1 || newColumn > 5) {
+            throw new MapControlException("NewRow and NewColumn must be within 1-5.");
+        }
+
+//        Location[][] CurrentRow = ForbiddenIsland.getCurrentGame().getMap().getcolumnCount(0);
+//        Location[][] newLocation = ForbiddenIsland.getCurrentGame().getMap().getRowCount(0);
+//        Location[][] oldLocation = ForbiddenIsland.getcurrentGame().getMap();
+//        
+//        Actor oldLoaction = null;
+//        Actor newLocation = ForbiddenIsland.getCurrentGame().getMap().setLocation(newLocation);
+//        
+//        return newLocation;
+//game = get the currentGame in the main class map = get the map in the game object locations = get the locations in the map
+//        if (newRow < 1 || newRow > noOfRows || newColumn < 1 || newColumn > noOfColumns)*
+//        
+//        throw MapControlException*
+//        endIf *
+//        currentRow = get the row from the actor 
+//        currentColumn = get the column from the actor 
+//        oldLocation = get the location from the locations array at the current row and column
+//        newLocation = get the location at the new row and column
+//        set actor in the oldLocation to null
+//        set actor in the newLocation to the actor
+//        set row in actor to newRow
+//        set column in actor to newColumn
+//        return newLocation
+    }
 }

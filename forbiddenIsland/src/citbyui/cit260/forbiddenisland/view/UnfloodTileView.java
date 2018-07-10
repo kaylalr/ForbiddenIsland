@@ -30,8 +30,9 @@ public class UnfloodTileView extends View {
     public boolean doAction(String[] inputs) {
         int row = parseInt(inputs[0]);
         int column = parseInt(inputs[1]);
-        if (row < 1 || row > 5){
-           
+        if (row < 1 || row > 5 || column < 1 || column > 5){
+            System.out.println("Error: invalid input.");
+           return false;
         }
         System.out.println("You have chosen Row - " + inputs[0] + ", and Column - " + inputs[1]);
         return true;
