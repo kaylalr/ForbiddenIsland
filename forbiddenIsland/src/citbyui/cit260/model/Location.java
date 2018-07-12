@@ -22,7 +22,7 @@ public class Location implements Serializable, Cloneable {
     private int sunken;
     private String displaySymbol;
     private String locationType;
-    private ArrayList<Actor> actors = new ArrayList<Actor>();
+    private Actor actor;
     private Treasure treasure;
 
     public Location() {
@@ -84,13 +84,23 @@ public class Location implements Serializable, Cloneable {
         this.displaySymbol = displaySymbol;
     }
 
-    public ArrayList<Actor> getActors() {
-        return actors;
+//    public ArrayList<Actor> getActors() {
+//        return actors;
+//    }
+//
+//    public void setActors(ArrayList<Actor> actors) {
+//        this.actors = actors;
+//    }
+
+    public Actor getActor() {
+        return actor;
     }
 
-    public void setActors(ArrayList<Actor> actors) {
-        this.actors = actors;
+    public void setActor(Actor actor) {
+        this.actor = actor;
     }
+    
+    
 
     public Treasure getTreasure() {
         return treasure;
@@ -102,15 +112,15 @@ public class Location implements Serializable, Cloneable {
 
     @Override
     public int hashCode() {
-        int hash = 7;
-        hash = 11 * hash + this.row;
-        hash = 11 * hash + this.column;
-        hash = 11 * hash + this.flooded;
-        hash = 11 * hash + this.sunken;
-        hash = 11 * hash + Objects.hashCode(this.displaySymbol);
-        hash = 11 * hash + Objects.hashCode(this.locationType);
-        hash = 11 * hash + Objects.hashCode(this.actors);
-        hash = 11 * hash + Objects.hashCode(this.treasure);
+        int hash = 5;
+        hash = 67 * hash + this.row;
+        hash = 67 * hash + this.column;
+        hash = 67 * hash + this.flooded;
+        hash = 67 * hash + this.sunken;
+        hash = 67 * hash + Objects.hashCode(this.displaySymbol);
+        hash = 67 * hash + Objects.hashCode(this.locationType);
+        hash = 67 * hash + Objects.hashCode(this.actor);
+        hash = 67 * hash + Objects.hashCode(this.treasure);
         return hash;
     }
 
@@ -144,7 +154,7 @@ public class Location implements Serializable, Cloneable {
         if (!Objects.equals(this.locationType, other.locationType)) {
             return false;
         }
-        if (!Objects.equals(this.actors, other.actors)) {
+        if (!Objects.equals(this.actor, other.actor)) {
             return false;
         }
         if (!Objects.equals(this.treasure, other.treasure)) {
@@ -155,8 +165,68 @@ public class Location implements Serializable, Cloneable {
 
     @Override
     public String toString() {
-        return "Location{" + "row=" + row + ", column=" + column + ", flooded=" + flooded + ", sunken=" + sunken + ", displaySymbol=" + displaySymbol + ", locationType=" + locationType + ", actors=" + actors + ", treasure=" + treasure + '}';
+        return "Location{" + "row=" + row + ", column=" + column + ", flooded=" + flooded + ", sunken=" + sunken + ", displaySymbol=" + displaySymbol + ", locationType=" + locationType + ", actor=" + actor + ", treasure=" + treasure + '}';
     }
+
+    
+    
+//    @Override
+//    public int hashCode() {
+//        int hash = 7;
+//        hash = 11 * hash + this.row;
+//        hash = 11 * hash + this.column;
+//        hash = 11 * hash + this.flooded;
+//        hash = 11 * hash + this.sunken;
+//        hash = 11 * hash + Objects.hashCode(this.displaySymbol);
+//        hash = 11 * hash + Objects.hashCode(this.locationType);
+//        hash = 11 * hash + Objects.hashCode(this.actors);
+//        hash = 11 * hash + Objects.hashCode(this.treasure);
+//        return hash;
+//    }
+//
+//    @Override
+//    public boolean equals(Object obj) {
+//        if (this == obj) {
+//            return true;
+//        }
+//        if (obj == null) {
+//            return false;
+//        }
+//        if (getClass() != obj.getClass()) {
+//            return false;
+//        }
+//        final Location other = (Location) obj;
+//        if (this.row != other.row) {
+//            return false;
+//        }
+//        if (this.column != other.column) {
+//            return false;
+//        }
+//        if (this.flooded != other.flooded) {
+//            return false;
+//        }
+//        if (this.sunken != other.sunken) {
+//            return false;
+//        }
+//        if (!Objects.equals(this.displaySymbol, other.displaySymbol)) {
+//            return false;
+//        }
+//        if (!Objects.equals(this.locationType, other.locationType)) {
+//            return false;
+//        }
+//        if (!Objects.equals(this.actors, other.actors)) {
+//            return false;
+//        }
+//        if (!Objects.equals(this.treasure, other.treasure)) {
+//            return false;
+//        }
+//        return true;
+//    }
+//
+//    @Override
+//    public String toString() {
+//        return "Location{" + "row=" + row + ", column=" + column + ", flooded=" + flooded + ", sunken=" + sunken + ", displaySymbol=" + displaySymbol + ", locationType=" + locationType + ", actors=" + actors + ", treasure=" + treasure + '}';
+//    }
 
     @Override
     public Object clone() throws CloneNotSupportedException {

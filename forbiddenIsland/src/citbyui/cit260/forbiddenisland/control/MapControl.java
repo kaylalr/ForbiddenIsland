@@ -181,7 +181,8 @@ public class MapControl {
             throw new MapControlException("Pilot can't be NULL");
         }
         Actor pilot = actors.get(ActorType.Pilot.ordinal());
-        pilotLocation.getActors().add(pilot);
+        //pilotLocation.getActors().add(pilot);
+        pilotLocation.setActor(pilot);
         pilot.getCoordinates().x = pilotLocation.getRow();
         pilot.getCoordinates().y = pilotLocation.getColumn();
 
@@ -190,7 +191,8 @@ public class MapControl {
             throw new MapControlException("Explorer Location can't be NULL.");
         }
         Actor explorer = actors.get(ActorType.Explorer.ordinal());
-        explorerLocation.getActors().add(explorer);
+        //explorerLocation.getActors().add(explorer);
+        explorerLocation.setActor(explorer);
         explorer.getCoordinates().x = explorerLocation.getRow();
         explorer.getCoordinates().y = explorerLocation.getColumn();
         return 1;
@@ -282,32 +284,31 @@ public class MapControl {
 //    public static void unfloodTile(int row, int column){
 //        
 //    }
-    public static Location moveActor(actor, newRow, newColumn) throws MapControlException {
+    public static Location moveActor(Actor actor, int newRow, int newColumn) throws MapControlException {
 
         if (actor == null) {
             throw new MapControlException("Actor can't be NULL.");
         }
 
         Location locs[][] = ForbiddenIsland.getCurrentGame().getMap().getLocation();
-        if (newRow < 1 || newRow > 5 || newColumn < 1 || newColumn > 5) {
+        if (newRow < 0 || newRow > 4 || newColumn < 0 || newColumn > 4) {
             throw new MapControlException("NewRow and NewColumn must be within 1-5.");
         }
 
-//        Location[][] CurrentRow = ForbiddenIsland.getCurrentGame().getMap().getcolumnCount(0);
-//        Location[][] newLocation = ForbiddenIsland.getCurrentGame().getMap().getRowCount(0);
-//        Location[][] oldLocation = ForbiddenIsland.getcurrentGame().getMap();
-//        
-//        Actor oldLoaction = null;
-//        Actor newLocation = ForbiddenIsland.getCurrentGame().getMap().setLocation(newLocation);
-//        
-//        return newLocation;
-//game = get the currentGame in the main class map = get the map in the game object locations = get the locations in the map
-//        if (newRow < 1 || newRow > noOfRows || newColumn < 1 || newColumn > noOfColumns)*
-//        
-//        throw MapControlException*
-//        endIf *
-//        currentRow = get the row from the actor 
-//        currentColumn = get the column from the actor 
+        int currentRow = actor.getCoordinates().x;
+        int currentColumn = actor.getCoordinates().y;
+        Location oldLocation = ForbiddenIsland.getCurrentGame().getMap().getLocation()[currentRow][currentColumn];
+        Location newLocation = ForbiddenIsland.getCurrentGame().getMap().getLocation()[newRow][newColumn];
+        
+        oldLocation.setActor(null);
+        newLocation.setActor(actor);
+        
+        System.out.println(actor.getCoordinates());
+        System.out.println(oldLocation);
+        System.out.println(newLocation);
+        
+        return newLocation;
+ 
 //        oldLocation = get the location from the locations array at the current row and column
 //        newLocation = get the location at the new row and column
 //        set actor in the oldLocation to null
