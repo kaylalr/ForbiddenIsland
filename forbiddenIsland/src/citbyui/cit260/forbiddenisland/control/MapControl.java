@@ -299,16 +299,20 @@ public class MapControl {
         int currentColumn = actor.getCoordinates().y;
         Location oldLocation = ForbiddenIsland.getCurrentGame().getMap().getLocation()[currentRow][currentColumn];
         Location newLocation = ForbiddenIsland.getCurrentGame().getMap().getLocation()[newRow][newColumn];
-        
+
         oldLocation.setActor(null);
         newLocation.setActor(actor);
+        actor.getCoordinates().x = newLocation.getRow();
+        actor.getCoordinates().y = newLocation.getColumn();
         
+        
+
         System.out.println(actor.getCoordinates());
         System.out.println(oldLocation);
         System.out.println(newLocation);
-        
+
         return newLocation;
- 
+
 //        oldLocation = get the location from the locations array at the current row and column
 //        newLocation = get the location at the new row and column
 //        set actor in the oldLocation to null
