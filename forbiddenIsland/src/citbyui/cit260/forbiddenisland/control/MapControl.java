@@ -155,7 +155,7 @@ public class MapControl {
             System.out.print("   -----------------------------------------\n");
             System.out.print(i + "  ");
             for (int j = 0; j < 5; j++) {
-//                if (locations[i][j].getActor().getName() == "Pilot" && locations[i][j].getDisplaySymbol() != " 1 "){
+//                if (locations[i][j].getActor().getName().equals("Pilot")){
 //                    System.out.print("| 1" + locations[i][j].getDisplaySymbol() + "  ");
 //                }
 //                if (actor.getName() == "Explorer"){
@@ -164,7 +164,7 @@ public class MapControl {
 //                else {
                     System.out.print("|  " + locations[i][j].getDisplaySymbol() + "  ");
                     //System.out.print(locations[i][j].getActor());
- //               }
+//                }
             }
             System.out.print("|\n");
         }
@@ -207,6 +207,8 @@ public class MapControl {
         explorerLocation.setActor(explorer);
         explorer.getCoordinates().x = explorerLocation.getRow();
         explorer.getCoordinates().y = explorerLocation.getColumn();
+        
+        
         return 1;
     }
 

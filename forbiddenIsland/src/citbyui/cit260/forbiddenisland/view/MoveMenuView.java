@@ -26,8 +26,10 @@ public class MoveMenuView extends View {
     public String[] getInputs() {
         String[] inputs = new String[2];
         // test code
-        int turn = (int) Math.ceil(Math.random() * 2);
-        if (turn == 1) {
+        //int turn = (int) Math.ceil(Math.random() * 2);
+        ArrayList<Actor> currActors = ForbiddenIsland.getPlayer().getActors();
+        Actor actor = currActors.get(0);
+        if (actor.getName().equals("Explorer")) {
             inputs[0] = this.getInput("\nWhere would you like to move?\n"
                     + "W - move up\n"
                     + "A - move left\n"
