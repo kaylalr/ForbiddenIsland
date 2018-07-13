@@ -10,7 +10,6 @@ package citbyui.cit260.model;
  * @author DD
  */
 public enum ActorType {
-
     Pilot,
     Explorer;
 }

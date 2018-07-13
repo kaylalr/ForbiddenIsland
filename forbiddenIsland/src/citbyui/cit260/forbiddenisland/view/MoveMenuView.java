@@ -33,7 +33,7 @@ public class MoveMenuView extends View {
                     + "A - move left\n"
                     + "S - move down\n"
                     + "D - move right\n"
-                    + "Q - up and to the left\n"
+                    + "1 - up and to the left\n"
                     + "E - up and to the right\n"
                     + "Z - down and to the left\n"
                     + "C - down and to the right\n");
@@ -75,7 +75,7 @@ public class MoveMenuView extends View {
                 case "W":
                     System.out.println("Move Up");
                     newRow += -1;
-                    Location newLoc = MapControl.moveActor(actor, newRow - 1, newColumn);
+                    Location newLoc = MapControl.moveActor(actor, newRow, newColumn);
                     break;
                 case "A":
                     System.out.println("Move Left");
@@ -89,7 +89,7 @@ public class MoveMenuView extends View {
                     System.out.println("Move Right");
                     newLoc = MapControl.moveActor(actor, newRow, newColumn + 1);
                     break;
-                case "Q":
+                case "1":
                     System.out.println("move up and to the left");
                     newLoc = MapControl.moveActor(actor, newRow - 1, newColumn - 1);
                     break;

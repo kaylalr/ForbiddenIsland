@@ -6,6 +6,7 @@
 package citbyui.cit260.forbiddenisland.view;
 
 import citbyui.cit260.forbiddenisland.control.MapControl;
+import java.io.IOException;
 import java.util.Scanner;
 
 /**
@@ -17,6 +18,7 @@ public class GameMenuView extends View {
     @Override
     public String[] getInputs() {
         String[] inputs = new String[1];
+        cls();
         MapControl.displayMap();
         System.out.println("\nGame Menu\n"
                 + "M – Move\n"
@@ -78,5 +80,18 @@ public class GameMenuView extends View {
 
         }
         return false;
+    }
+
+public void cls()
+    {
+        try 
+        {
+            Runtime.getRuntime().exec("cmd /c cls");
+        }
+        catch(final Exception e)
+        {
+            System.out.print(e);
+        }
+
     }
 }
