@@ -145,9 +145,12 @@ public class MapControl {
 
     //THIS HAS A SIMILAR EQUATION AS THE LOCATION ALLOCATION BUT THIS REFERENCES IT AND DISPLAYS THE MAP WITH THE DISPLAY SYMBOLS
     public static void displayMap() {
-        Location[][] locations = ForbiddenIsland.getCurrentGame().getMap().getLocation();
         ArrayList<Actor> currActors = ForbiddenIsland.getPlayer().getActors();
         Actor actor = currActors.get(0);
+        System.out.println("Current Actors Name: " + actor.getName());
+        Location[][] locations = ForbiddenIsland.getCurrentGame().getMap().getLocation();
+       // ArrayList<Actor> currActors = ForbiddenIsland.getPlayer().getActors();
+        //Actor actor = currActors.get(0);
         Actor pilot = currActors.get(ActorType.Pilot.ordinal());
         Actor explorer = currActors.get(ActorType.Explorer.ordinal());
        
@@ -211,6 +214,8 @@ public class MapControl {
         explorerLocation.setActor(explorer);
         explorer.getCoordinates().x = explorerLocation.getRow();
         explorer.getCoordinates().y = explorerLocation.getColumn();
+        
+        
         return 1;
     }
 
