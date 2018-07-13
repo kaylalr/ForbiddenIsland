@@ -66,7 +66,6 @@ public class MapControl {
 
     private static Location[][] createLocations(int noOfRows, int noOfColumns) throws MapControlException {
         Location[][] locations = new Location[noOfRows][noOfColumns];
-        System.out.println("createdLocations working");
         if (noOfRows < 1 || noOfColumns < 1) {
             throw new MapControlException("Rows and Columns must be more than one 1 in size.");
         }
@@ -112,12 +111,12 @@ public class MapControl {
         unshuffledLocations.add(landingPadLocation);
 
         Location playerOneStart = new Location();
-        playerOneStart.setDisplaySymbol(" 1 ");
+        playerOneStart.setDisplaySymbol("...");
         playerOneStart.setLocationType("startOne");
         unshuffledLocations.add(playerOneStart);
 
         Location playerTwoStart = new Location();
-        playerTwoStart.setDisplaySymbol(" 2 ");
+        playerTwoStart.setDisplaySymbol("...");
         playerTwoStart.setLocationType("startTwo");
         unshuffledLocations.add(playerTwoStart);
 
@@ -136,7 +135,6 @@ public class MapControl {
                 locations[i][j] = unshuffledLocations.get(y);
                 locations[i][j].setRow(i);
                 locations[i][j].setColumn(j);
-                System.out.println(unshuffledLocations.get(y) + "\n");
                 y++;
             }
         }
@@ -147,7 +145,7 @@ public class MapControl {
     public static void displayMap() {
         ArrayList<Actor> currActors = ForbiddenIsland.getPlayer().getActors();
         Actor actor = currActors.get(0);
-        System.out.println("Current Actors Name: " + actor.getName());
+        System.out.println("\nCurrent Actors Name: " + actor.getName());
         Location[][] locations = ForbiddenIsland.getCurrentGame().getMap().getLocation();
        // ArrayList<Actor> currActors = ForbiddenIsland.getPlayer().getActors();
         //Actor actor = currActors.get(0);
@@ -190,7 +188,6 @@ public class MapControl {
     }
 
     private static int assignActorsToLocations(Location[][] locations, ArrayList<Actor> actors) throws MapControlException {
-        System.out.println("assignActorsToLocations");
         // Check for invalid input
         if (locations == null) {
             throw new MapControlException("Locations can't be NULL.");
@@ -220,19 +217,11 @@ public class MapControl {
     }
 
     private static int assignTreasuresToLocations(Location[][] locations, Treasure[] treasures) throws MapControlException {
-        System.out.println("assignTreasuresToLocations");
         // Check for invalid input
         if (locations == null) {
             throw new MapControlException("Locations can't be NULL.");
 
         }
-//        for (int i = 0; i < locations.length; i++) {
-//            for (int j = 0; j < locations[i].length; j++) {
-//                if (locations[i][j].getLocationType().equals("fireLocation")) {
-//                    locations[i][j].setTreasure(treasures[TreasureType.Fire.ordinal()]);
-//                }
-//            }
-//        }
 
         //Treasure treasure = null;
         for (int i = 0; i < locations.length; i++) {
@@ -240,30 +229,21 @@ public class MapControl {
 
                 switch (locations[i][j].getLocationType()) {
                     case "earthLocation":
-                        //Treasure earthTreasure = treasures[TreasureType.Earth.ordinal()];
                         locations[i][j].setTreasure(treasures[TreasureType.Earth.ordinal()]);
-                        System.out.println(locations[i][j].getTreasure().getName());
                         break;
                     case "fireLocation":
-                        //Treasure fireTreasure = treasures[TreasureType.Fire.ordinal()];
                         locations[i][j].setTreasure(treasures[TreasureType.Fire.ordinal()]);
                         break;
                     case "waterLocation":
-                        //treasure = treasures[TreasureType.Water.ordinal()];
                         locations[i][j].setTreasure(treasures[TreasureType.Water.ordinal()]);
                         break;
                     case "windLocation":
-                        //treasure = treasures[TreasureType.Wind.ordinal()];
                         locations[i][j].setTreasure(treasures[TreasureType.Wind.ordinal()]);
                         break;
                     default:
-                        //treasure = treasures[TreasureType.Empty.ordinal()];
                         locations[i][j].setTreasure(treasures[TreasureType.Empty.ordinal()]);
                 }
 
-//                Location earthLoc = locations[i][j];
-//                earthLoc.setTreasure(treasure);
-//                    earth.setCoordinates(new Point(earthLoc.getRow(), earthLoc.getColumn())); 
             }
         }
 
@@ -275,36 +255,8 @@ public class MapControl {
 
         return 1;
 
-//    for (int i = 0;
-//    i< locations.length ;
-//    i
-//
-//    
-//        ++) {
-//            for (int j = 0; j < locations[i].length; j++) {
-//            if (locations[i][j].getLocationType().equals("windLocation")) {
-//                locations[i][j].setTreasure(treasures[TreasureType.Wind.ordinal()]);
-//            }
-//        }
-//    }
-//    for (int i = 0;
-//    i< locations.length ;
-//    i
-//
-//    
-//        ++) {
-//            for (int j = 0; j < locations[i].length; j++) {
-//            if (locations[i][j].getLocationType().equals("waterLocation")) {
-//                locations[i][j].setTreasure(treasures[TreasureType.Water.ordinal()]);
-//            }
-//        }
-//    }
-//return 1;
     }
 
-//    public static void unfloodTile(int row, int column){
-//        
-//    }
     public static Location moveActor(Actor actor, int newRow, int newColumn) throws MapControlException {
 
         if (actor == null) {
@@ -334,12 +286,5 @@ public class MapControl {
 
         return newLocation;
 
-//        oldLocation = get the location from the locations array at the current row and column
-//        newLocation = get the location at the new row and column
-//        set actor in the oldLocation to null
-//        set actor in the newLocation to the actor
-//        set row in actor to newRow
-//        set column in actor to newColumn
-//        return newLocation
     }
 }
