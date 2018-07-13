@@ -145,6 +145,9 @@ public class MapControl {
 
     //THIS HAS A SIMILAR EQUATION AS THE LOCATION ALLOCATION BUT THIS REFERENCES IT AND DISPLAYS THE MAP WITH THE DISPLAY SYMBOLS
     public static void displayMap() {
+        ArrayList<Actor> currActors = ForbiddenIsland.getPlayer().getActors();
+        Actor actor = currActors.get(0);
+        System.out.println("Current Actors Name: " + actor.getName());
         Location[][] locations = ForbiddenIsland.getCurrentGame().getMap().getLocation();
         System.out.println("\n-_-_-GAME MAP-_-_-\n");
         System.out.println("       1       2       3       4       5");
@@ -152,7 +155,16 @@ public class MapControl {
             System.out.print("   -----------------------------------------\n");
             System.out.print(i + "  ");
             for (int j = 0; j < 5; j++) {
-                System.out.print("|  " + locations[i][j].getDisplaySymbol() + "  ");
+//                if (locations[i][j].getActor().getName() == "Pilot" && locations[i][j].getDisplaySymbol() != " 1 "){
+//                    System.out.print("| 1" + locations[i][j].getDisplaySymbol() + "  ");
+//                }
+//                if (actor.getName() == "Explorer"){
+//                    System.out.print("|  " + locations[i][j].getDisplaySymbol() + "2 ");
+//                }
+//                else {
+                    System.out.print("|  " + locations[i][j].getDisplaySymbol() + "  ");
+                    //System.out.print(locations[i][j].getActor());
+ //               }
             }
             System.out.print("|\n");
         }
