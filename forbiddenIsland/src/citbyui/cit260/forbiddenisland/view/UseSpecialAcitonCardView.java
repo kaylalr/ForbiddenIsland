@@ -24,21 +24,21 @@ public class UseSpecialAcitonCardView extends View {
             inputs[0] = this.getInput("You have no Special Action cards.\nWould you like to use a different player's Special Action card?\n"
                     + "Y - yes\n"
                     + "N - no\n");
-//            System.out.println("You have no Special Action cards.\nWould you like to use a different player's Special Action card?\n"
-//                    + "Y - yes\n"
-//                    + "N - no\n");
         } else {
-            inputs[0] = this.getInput("You have " + SpecialActionCardUnflood + " Unflood Tile card(s) and " + SpecialActionCardHelicopter + " Helicopter card(s)\n"
-                    + "Which Speical Action card would you like to use?\n");
             if (SpecialActionCardUnflood == 0) {
-
-                inputs[0] = this.getInput("H - Helicopter\n"
+                inputs[0] = this.getInput("You have " + SpecialActionCardUnflood + " Unflood Tile card(s) and " + SpecialActionCardHelicopter + " Helicopter card(s)\n"
+                    + "Which Speical Action card would you like to use?\n"
+                        + "H - Helicopter\n"
                         + "D - Use different players Special Action card\n");
             } else if (SpecialActionCardHelicopter == 0) {
-                inputs[0] = this.getInput("U - Unflood Tile\n"
+                inputs[0] = this.getInput("You have " + SpecialActionCardUnflood + " Unflood Tile card(s) and " + SpecialActionCardHelicopter + " Helicopter card(s)\n"
+                    + "Which Speical Action card would you like to use?\n"
+                        + "U - Unflood Tile\n"
                         + "D - Use different players Special Action card\n");
             } else {
-                inputs[0] = this.getInput("U - Unflood Tile\n"
+                inputs[0] = this.getInput("You have " + SpecialActionCardUnflood + " Unflood Tile card(s) and " + SpecialActionCardHelicopter + " Helicopter card(s)\n"
+                    + "Which Speical Action card would you like to use?\n"
+                        + "U - Unflood Tile\n"
                         + "H - Helicopter\n"
                         + "D - Use different players Special Action card\n");
             }
@@ -55,10 +55,14 @@ public class UseSpecialAcitonCardView extends View {
         }
         switch (inputs[0]) {
             case "U":
-                System.out.println("use unflood tile card - call unfloodTilesView()");
+                //System.out.println("use unflood tile card - call unfloodTilesView()");
+                UnfloodTileView unfloodTileView = new UnfloodTileView();
+                unfloodTileView.display();
                 break;
             case "H":
-                System.out.println("use helicopter card - call helicopterView()?");
+                //System.out.println("use helicopter card - call helicopterView()?");
+                FlyView flyView = new FlyView();
+                flyView.display();
                 break;
             case "D":
             case "Y":
