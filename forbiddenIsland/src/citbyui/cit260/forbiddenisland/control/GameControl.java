@@ -135,5 +135,17 @@ public class GameControl {
 
         return treasures;
     }
+    
+    public static boolean endTurn() {
+        ArrayList<Actor> currActors = ForbiddenIsland.getPlayer().getActors();
+        Actor actor1 = currActors.get(0);
+        Actor actor2 = currActors.get(1);
+        ArrayList<Actor> newActors = new ArrayList();
+        newActors.add(0,actor2);
+        newActors.add(1,actor1);
+        ForbiddenIsland.getPlayer().setActors(newActors);
+        newActors.get(0).setTurns(0);
+        return true;
+    }
 
 }

@@ -73,22 +73,22 @@ public class MapControl {
         ArrayList<Location> unshuffledLocations = new ArrayList<Location>();
 
         Location fireLocation = new Location();
-        fireLocation.setDisplaySymbol("^F^");
+        fireLocation.setDisplaySymbol("F");
         fireLocation.setLocationType("fireLocation");
         unshuffledLocations.add(fireLocation);
 
         Location waterLocation = new Location();
-        waterLocation.setDisplaySymbol("~W~");
+        waterLocation.setDisplaySymbol("W");
         waterLocation.setLocationType("waterLocation");
         unshuffledLocations.add(waterLocation);
 
         Location windLocation = new Location();
-        windLocation.setDisplaySymbol("{W}");
+        windLocation.setDisplaySymbol("A");
         windLocation.setLocationType("windLocation");
         unshuffledLocations.add(windLocation);
 
         Location earthLocation = new Location();
-        earthLocation.setDisplaySymbol("-E-");
+        earthLocation.setDisplaySymbol("E");
         earthLocation.setLocationType("earthLocation");
         unshuffledLocations.add(earthLocation);
 
@@ -106,23 +106,23 @@ public class MapControl {
         }
 
         Location landingPadLocation = new Location();
-        landingPadLocation.setDisplaySymbol(" # ");
+        landingPadLocation.setDisplaySymbol("#");
         landingPadLocation.setLocationType("landingPad");
         unshuffledLocations.add(landingPadLocation);
 
         Location playerOneStart = new Location();
-        playerOneStart.setDisplaySymbol("...");
+        playerOneStart.setDisplaySymbol(" ");
         playerOneStart.setLocationType("startOne");
         unshuffledLocations.add(playerOneStart);
 
         Location playerTwoStart = new Location();
-        playerTwoStart.setDisplaySymbol("...");
+        playerTwoStart.setDisplaySymbol(" ");
         playerTwoStart.setLocationType("startTwo");
         unshuffledLocations.add(playerTwoStart);
 
         for (int i = 0; i < 14; i++) {
             Location loc = new Location();
-            loc.setDisplaySymbol("...");
+            loc.setDisplaySymbol(" ");
             unshuffledLocations.add(loc);
             loc.setLocationType("normal");
         }
@@ -161,15 +161,16 @@ public class MapControl {
             t++;
             for (int j = 0; j < 5; j++) {
                 if(pilot.getCoordinates().x == i && pilot.getCoordinates().y == j){
-                        System.out.print("| 1" + locations[i][j].getDisplaySymbol());
-                                }
+                        System.out.print("| 1 " + locations[i][j].getDisplaySymbol());
+                }
                 else{
-                    System.out.print("|  " + locations[i][j].getDisplaySymbol());
+                    System.out.print("|   " + locations[i][j].getDisplaySymbol());
                 }
                 if(explorer.getCoordinates().x == i && explorer.getCoordinates().y == j){
-                    System.out.print("2 ");
-                }else
-                    System.out.print("  ");
+                    System.out.print(" 2 ");
+                }else {
+                    System.out.print("   ");
+                }
             }
             System.out.print("|\n");
         }
@@ -262,6 +263,12 @@ public class MapControl {
         if (actor == null) {
             throw new MapControlException("Actor can't be NULL.");
         }
+        
+        int currTurns = actor.getTurns();
+            if (currTurns > 3) {
+                //System.out.println("\nSorry, you have no turns left.\nPlease end your turn.\n");
+                throw new MapControlException("\nSorry, you have no turns left.\nPlease end your turn.\n");
+            }
 
         Location locs[][] = ForbiddenIsland.getCurrentGame().getMap().getLocation();
         if (newRow < 0 || newRow > 4 || newColumn < 0 || newColumn > 4) {
@@ -283,6 +290,11 @@ public class MapControl {
         System.out.println(actor.getCoordinates());
         System.out.println(oldLocation);
         System.out.println(newLocation);
+        
+        if (currTurns < 4) {
+                int newTurns = currTurns++;
+                actor.setTurns(newTurns);
+            }
 
         return newLocation;
 

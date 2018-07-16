@@ -29,6 +29,8 @@ public class MoveMenuView extends View {
         //int turn = (int) Math.ceil(Math.random() * 2);
         ArrayList<Actor> currActors = ForbiddenIsland.getPlayer().getActors();
         Actor actor = currActors.get(0);
+        System.out.println(currActors.get(0)+"\n");
+        System.out.println(currActors.get(1));
         if (actor.getName().equals("Explorer")) {
             inputs[0] = this.getInput("\nWhere would you like to move?\n"
                     + "W - move up\n"
@@ -69,6 +71,11 @@ public class MoveMenuView extends View {
             
             ArrayList<Actor> currActors = ForbiddenIsland.getPlayer().getActors();
             Actor actor = currActors.get(0);
+            int currTurns = actor.getTurns();
+            if (currTurns > 3) {
+                System.out.println("\nSorry, you have no turns left.\nPlease end your turn.\n");
+                return true;
+            }
             
             int newRow = actor.getCoordinates().x;
             int newColumn = actor.getCoordinates().y;
@@ -109,9 +116,13 @@ public class MoveMenuView extends View {
                     break;
                 case "F":
                     System.out.println("Where would you like to fly?");
-                    inputs[0] = this.getInput("Please enter row:");
-                    inputs[1] = this.getInput("Please enter column:");
-                    System.out.println("\nYou have moved to " + inputs[0] + "," + inputs[1]);
+                    FlyView flyView = new FlyView();
+                    flyView.display();
+                    //System.out.println("\nYou have moved to " + inputs[0] + "," + inputs[1]);
+//                    if (currTurns < 4) {
+//                        int newTurns = currTurns++;
+//                        actor.setTurns(newTurns);
+//                    }
                     break;
                 default:
                     System.out.println("Please enter a valid input.");

@@ -5,8 +5,12 @@
  */
 package citbyui.cit260.forbiddenisland.view;
 
+import citbyui.cit260.forbiddenisland.control.GameControl;
 import citbyui.cit260.forbiddenisland.control.MapControl;
+import citbyui.cit260.model.Actor;
+import forbiddenisland.ForbiddenIsland;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
@@ -68,7 +72,7 @@ public class GameMenuView extends View {
                 viewCardsView.display();
                 break;
             case "E":
-
+                GameControl.endTurn();
                 break;
             case "I":
                 HelpMenuView helpMenuView = new HelpMenuView();
@@ -79,6 +83,15 @@ public class GameMenuView extends View {
                 break;
 
         }
+        ArrayList<Actor> currActors = ForbiddenIsland.getPlayer().getActors();
+        Actor actor = currActors.get(0);
+        int currTurns = actor.getTurns();
+            if (currTurns > 2) {
+                System.out.println("\n************************************\n"
+                        + "*        Your turn is over.        *"
+                        + "************************************\n");
+                GameControl.endTurn();
+            }
         return false;
     }
 

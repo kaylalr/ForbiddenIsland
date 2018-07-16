@@ -32,24 +32,25 @@ public class FlyView extends View{
     @Override
     public boolean doAction(String[] inputs) {
         try {
+            
             ArrayList<Actor> currActors = ForbiddenIsland.getPlayer().getActors();
             Actor actor = currActors.get(0);
+            int currTurns = actor.getTurns();
+//            if (currTurns > 3) {
+//                System.out.println("\nSorry, you have no turns left.\nPlease end your turn.\n");
+//                return true;
+//            }
             int newRow = parseInt(inputs[0]);
             int newColumn = parseInt(inputs[1]);
             if (newRow < 1 || newRow > 5 || newColumn < 1 || newColumn > 5){
                 System.out.println("Error: invalid input.");
                 return false;
             }
-            //System.out.println("You have chosen Row - " + inputs[0] + ", and Column - " + inputs[1]);
             Location newLoc = MapControl.moveActor(actor, newRow - 1, newColumn - 1);
-            
-//        if (inputs[0].length() < 1 || inputs[1].length() < 1) {
-//            System.out.println("Error, please enter a valid input.");
-//        }
-//        ArrayList<Actor> currActors = ForbiddenIsland.getPlayer().getActors();
-//        Actor actor = currActors.get(0);
-//        int newRow = inputs[0];
-//        return true;
+            if (currTurns < 4) {
+                int newTurns = currTurns++;
+                actor.setTurns(newTurns);
+            }
         } catch (MapControlException ex) {
             Logger.getLogger(FlyView.class.getName()).log(Level.SEVERE, null, ex);
         }

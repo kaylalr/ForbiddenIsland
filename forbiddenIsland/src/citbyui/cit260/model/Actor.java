@@ -22,6 +22,7 @@ public class Actor implements Serializable {
     private String specialAbility;
     private Location Location;
     private Card cards;
+    private int turns;
     private ArrayList<Player> player = new ArrayList<Player>();
 
     public Actor() {
@@ -81,20 +82,24 @@ public class Actor implements Serializable {
         this.cards = cards;
     }
 
-    @Override
-    public String toString() {
-        return "Actor{" + "name=" + name + ", coordinates=" + coordinates + ", specialAbility=" + specialAbility + ", Location=" + Location + ", player=" + player + '}';
+    public int getTurns() {
+        return turns;
+    }
+
+    public void setTurns(int turns) {
+        this.turns = turns;
     }
 
     @Override
     public int hashCode() {
-        int hash = 3;
-        hash = 59 * hash + Objects.hashCode(this.name);
-        hash = 59 * hash + Objects.hashCode(this.coordinates);
-        hash = 59 * hash + Objects.hashCode(this.specialAbility);
-        hash = 59 * hash + Objects.hashCode(this.Location);
-        hash = 59 * hash + Objects.hashCode(this.cards);
-        hash = 59 * hash + Objects.hashCode(this.player);
+        int hash = 7;
+        hash = 43 * hash + Objects.hashCode(this.name);
+        hash = 43 * hash + Objects.hashCode(this.coordinates);
+        hash = 43 * hash + Objects.hashCode(this.specialAbility);
+        hash = 43 * hash + Objects.hashCode(this.Location);
+        hash = 43 * hash + Objects.hashCode(this.cards);
+        hash = 43 * hash + this.turns;
+        hash = 43 * hash + Objects.hashCode(this.player);
         return hash;
     }
 
@@ -110,6 +115,9 @@ public class Actor implements Serializable {
             return false;
         }
         final Actor other = (Actor) obj;
+        if (this.turns != other.turns) {
+            return false;
+        }
         if (!Objects.equals(this.name, other.name)) {
             return false;
         }
@@ -131,4 +139,11 @@ public class Actor implements Serializable {
         return true;
     }
 
+    @Override
+    public String toString() {
+        return "Actor{" + "name=" + name + ", coordinates=" + coordinates + ", specialAbility=" + specialAbility + ", Location=" + Location + ", cards=" + cards + ", turns=" + turns + ", player=" + player + '}';
+    }
+    
+    
+    
 }
