@@ -55,7 +55,7 @@ public class MainMenuView extends View {
                     this.getHelp();
                     break;
                 default:
-                    System.out.println("Invalid value entered");
+                    ErrorView.display(this.getClass().getName(), "Invalid value entered");
                     return false;
             }
 
