@@ -5,13 +5,22 @@
  */
 package citbyui.cit260.forbiddenisland.view;
 
+import forbiddenisland.ForbiddenIsland;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
  * @author mcwis
  */
 public abstract class View implements ViewInterface {
+
+    protected final BufferedReader keyboard = ForbiddenIsland.getInFile();
+    protected final PrintWriter console = ForbiddenIsland.getOutFile();
 
     public View() {
     }
@@ -36,26 +45,34 @@ public abstract class View implements ViewInterface {
     @Override
     public String getInput(String promptMessage) {
         String[] inputs = new String[1];
+        String selection = null;
 
         //System.out.println(promptMessage);
         boolean valid = false;
-        while (valid == false) {
-            //CREATED SCANNER
-            Scanner inFile;
-            inFile = new Scanner(System.in);
+        try {
+            while (valid == false) {
 
-            System.out.println(promptMessage);
-            //System.out.println("Please choose a main menu item: ");
-            String value = inFile.nextLine().trim().toUpperCase();
+                //CREATED SCANNER
+//               Scanner inFile;
+//            inFile = new Scanner(System.in);
+                selection = this.keyboard.readLine();
 
-            if (value.length() < 1) {
-                System.out.println("Error: Please re-enter value: ");
-                continue;
+                selection = selection.trim();
+                System.out.println(promptMessage);
+                //System.out.println("Please choose a main menu item: ");
+               //String value = inFile.nextLine().trim().toUpperCase();
+
+                if (selection.length() < 1) {
+                    System.out.println("Error: Please re-enter value: ");
+                    continue;
+                }
+                //inputs[0] = value;
+                break;
             }
-            inputs[0] = value;
-            valid = true;
+        } catch (Exception e) {
+            System.out.println("Error reading inputs: " + e.getMessage());
         }
-        return inputs[0];
+        return selection;
     }
 
 }

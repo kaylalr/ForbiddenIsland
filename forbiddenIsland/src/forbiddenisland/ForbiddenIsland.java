@@ -16,6 +16,10 @@ import citbyui.cit260.model.Map;
 import citbyui.cit260.model.Player;
 import citbyui.cit260.model.Treasure;
 import citbyui.cit260.model.TreasureLocation;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.PrintWriter;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -31,10 +35,19 @@ public class ForbiddenIsland {
     public Game game;
     private static Game currentGame = null;
     private static Player player = null;
+    
+    private static PrintWriter outFile = null;
+    private static BufferedReader inFile = null;
+
+    
+    
 
     public static void main(String[] args) {
         // TODO code application logic here
         try {
+            ForbiddenIsland.inFile = new BufferedReader(new InputStreamReader(System.in));
+            ForbiddenIsland.outFile = new PrintWriter(System.out, true);
+            
             StartProgramView startProgramView = new StartProgramView();
             startProgramView.display();
         } catch (Exception ex) {
@@ -44,8 +57,38 @@ public class ForbiddenIsland {
             System.out.println(te.getMessage());
             te.printStackTrace();
         }
+        finally{
+            try {
+                if (ForbiddenIsland.inFile != null){
+                    ForbiddenIsland.inFile.close();
+                }
+                if (ForbiddenIsland.outFile != null){
+                 ForbiddenIsland.outFile.close();
+                }
+            } catch (IOException ex) {
+                System.out.println("Error closing files");
+                return;
+            }
+        }
 
     }
+
+    public static PrintWriter getOutFile() {
+        return outFile;
+    }
+
+    public static void setOutFile(PrintWriter outFile) {
+        ForbiddenIsland.outFile = outFile;
+    }
+
+    public static BufferedReader getInFile() {
+        return inFile;
+    }
+
+    public static void setInFile(BufferedReader inFile) {
+        ForbiddenIsland.inFile = inFile;
+    }
+   
 
     public static Game getCurrentGame() {
         return currentGame;
@@ -70,5 +113,5 @@ public class ForbiddenIsland {
     public void setGame(Game game) {
         this.game = game;
     }
-
+    
 }
