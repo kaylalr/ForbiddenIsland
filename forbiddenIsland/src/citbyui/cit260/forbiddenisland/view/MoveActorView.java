@@ -15,7 +15,7 @@ public class MoveActorView extends View {
     public String[] getInputs() {
         String[] inputs = new String[2];
 
-        System.out.println("Print instructions to move an actor ");
+        this.console.println("Print instructions to move an actor ");
         
         inputs[0] = this.getInput("\nPlease choose a main menu item: ");
         

@@ -18,7 +18,7 @@ public class UnfloodTileView extends View {
     @Override
     public String[] getInputs() {
         String[] inputs = new String[2];
-        System.out.println("Which tile would you like to unflood? ");
+        this.console.println("Which tile would you like to unflood? ");
         inputs[0] = this.getInput("Row:");
         inputs[1] = this.getInput("Column:");
         
@@ -34,7 +34,7 @@ public class UnfloodTileView extends View {
             ErrorView.display(this.getClass().getName(), "Error: invalid input.");
            return false;
         }
-        System.out.println("You have chosen Row - " + inputs[0] + ", and Column - " + inputs[1]);
+        this.console.println("You have chosen Row - " + inputs[0] + ", and Column - " + inputs[1]);
         return true;
     }
 

@@ -20,17 +20,17 @@ public class ViewCardsView extends View {
         int p2UnfloodCardsInHand = 3;
         int p1HelecopterCards = 3;
         int p2HelecopterCards = 2;
-        System.out.println("_________________________________________________________________");
-        System.out.println("|  Total - 30 Cards in Game:                                    |");
-        System.out.println("|_______________________________________________________________|");
-        System.out.println("|  Player 1:                                                    |");
-        System.out.println("|  You have " + p1UnfloodCardsInHand + " unFlood cards in hand. |");
-        System.out.println("|  Your have " + p1HelecopterCards + " helecopter cards in hand.|");
-        System.out.println("|_______________________________________________________________|");
-        System.out.println("|  Player 2:                                                    |");
-        System.out.println("|  You have " + p2UnfloodCardsInHand + " unFlood cards in hand. |");
-        System.out.println("|  Your have " + p2HelecopterCards + " helecopter cards in hand.|");
-        System.out.println("|_______________________________________________________________|");
+        this.console.println("_________________________________________________________________");
+        this.console.println("|  Total - 30 Cards in Game:                                    |");
+        this.console.println("|_______________________________________________________________|");
+        this.console.println("|  Player 1:                                                    |");
+        this.console.println("|  You have " + p1UnfloodCardsInHand + " unFlood cards in hand. |");
+        this.console.println("|  Your have " + p1HelecopterCards + " helecopter cards in hand.|");
+        this.console.println("|_______________________________________________________________|");
+        this.console.println("|  Player 2:                                                    |");
+        this.console.println("|  You have " + p2UnfloodCardsInHand + " unFlood cards in hand. |");
+        this.console.println("|  Your have " + p2HelecopterCards + " helecopter cards in hand.|");
+        this.console.println("|_______________________________________________________________|");
         inputs[0] = this.getInput("Press Q to return:");
 
         return inputs;

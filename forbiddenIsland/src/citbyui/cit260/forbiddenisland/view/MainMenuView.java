@@ -24,7 +24,7 @@ public class MainMenuView extends View {
     public String[] getInputs() {
         String[] inputs = new String[1];
 
-        System.out.println("Main Menu\n"
+        this.console.println("Main Menu\n"
                 + "N - Start new game\n"
                 + "R - Restart current game\n"
                 + "H - Get help\n"
@@ -43,15 +43,15 @@ public class MainMenuView extends View {
             }
             switch (inputs[0]) {
                 case "N":
-                    System.out.println("Inputs = N");
+                    this.console.println("Inputs = N");
                     this.startNewGame();
                     break;
                 case "R":
-                    System.out.println("Inputs = R");
+                    this.console.println("Inputs = R");
                     this.restartNewGame();
                     break;
                 case "H":
-                    System.out.println("Inputs = H");
+                    this.console.println("Inputs = H");
                     this.getHelp();
                     break;
                 default:

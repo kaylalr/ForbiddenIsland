@@ -23,7 +23,7 @@ public class GameMenuView extends View {
     public String[] getInputs() {
         String[] inputs = new String[1];
         MapControl.displayMap();
-        System.out.println("\nGame Menu\n"
+        this.console.println("\nGame Menu\n"
                 + "M – Move\n"
                 + "U – Unflood a tile\n"
                 + "G – Give Treasure Card\n"
@@ -86,7 +86,7 @@ public class GameMenuView extends View {
         Actor actor = currActors.get(0);
         int currTurns = actor.getTurns();
             if (currTurns > 2) {
-                System.out.println("\n************************************\n"
+                this.console.println("\n************************************\n"
                         + "*        Your turn is over.        *"
                         + "************************************\n");
                 GameControl.endTurn();

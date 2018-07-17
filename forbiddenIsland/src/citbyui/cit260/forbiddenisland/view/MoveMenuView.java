@@ -29,8 +29,8 @@ public class MoveMenuView extends View {
         //int turn = (int) Math.ceil(Math.random() * 2);
         ArrayList<Actor> currActors = ForbiddenIsland.getPlayer().getActors();
         Actor actor = currActors.get(0);
-        System.out.println(currActors.get(0)+"\n");
-        System.out.println(currActors.get(1));
+        this.console.println(currActors.get(0)+"\n");
+        this.console.println(currActors.get(1));
         if (actor.getName().equals("Explorer")) {
             inputs[0] = this.getInput("\nWhere would you like to move?\n"
                     + "W - move up\n"
@@ -82,40 +82,40 @@ public class MoveMenuView extends View {
             
             switch (inputs[0]) {
                 case "W":
-                    System.out.println("Move Up");
+                    this.console.println("Move Up");
                     newRow += -1;
                     Location newLoc = MapControl.moveActor(actor, newRow, newColumn);
                     break;
                 case "A":
-                    System.out.println("Move Left");
+                    this.console.println("Move Left");
                     newLoc = MapControl.moveActor(actor, newRow, newColumn - 1);
                     break;
                 case "S":
-                    System.out.println("Move Down");
+                    this.console.println("Move Down");
                     newLoc = MapControl.moveActor(actor, newRow + 1, newColumn);
                     break;
                 case "D":
-                    System.out.println("Move Right");
+                    this.console.println("Move Right");
                     newLoc = MapControl.moveActor(actor, newRow, newColumn + 1);
                     break;
                 case "1":
-                    System.out.println("move up and to the left");
+                    this.console.println("move up and to the left");
                     newLoc = MapControl.moveActor(actor, newRow - 1, newColumn - 1);
                     break;
                 case "E":
-                    System.out.println("Move up and to the right");
+                    this.console.println("Move up and to the right");
                     newLoc = MapControl.moveActor(actor, newRow - 1, newColumn + 1);
                     break;
                 case "Z":
-                    System.out.println("Move down and to the left");
+                    this.console.println("Move down and to the left");
                     newLoc = MapControl.moveActor(actor, newRow + 1, newColumn - 1);
                     break;
                 case "C":
-                    System.out.println("Move down and to the right");
+                    this.console.println("Move down and to the right");
                     newLoc = MapControl.moveActor(actor, newRow + 1, newColumn + 1);
                     break;
                 case "F":
-                    System.out.println("Where would you like to fly?");
+                    this.console.println("Where would you like to fly?");
                     FlyView flyView = new FlyView();
                     flyView.display();
                     //System.out.println("\nYou have moved to " + inputs[0] + "," + inputs[1]);

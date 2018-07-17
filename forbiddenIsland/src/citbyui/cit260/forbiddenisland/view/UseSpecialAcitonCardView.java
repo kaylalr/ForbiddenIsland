@@ -66,7 +66,7 @@ public class UseSpecialAcitonCardView extends View {
                 break;
             case "D":
             case "Y":
-                System.out.println("Use different player's Special Action card display other players cards");
+                this.console.println("Use different player's Special Action card display other players cards");
                 break;
             default:
                 return true;

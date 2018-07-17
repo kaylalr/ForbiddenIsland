@@ -17,7 +17,7 @@ public class HelpMenuView extends View {
     public String[] getInputs() {
         String[] inputs = new String[1];
 
-        System.out.println("Help Menu\n"
+        this.console.println("Help Menu\n"
                 + "W - How to Win\n"
                 + "M - How to Move\n"
                 + "S - Special Action Cards\n"
@@ -65,26 +65,26 @@ public class HelpMenuView extends View {
                 toDoOnTurn();
                 break;
             case "I":
-                System.out.println("____________:ALL INSTRUCTION:____________");
-                System.out.println("\n");
+                this.console.println("____________:ALL INSTRUCTION:____________");
+                this.console.println("\n");
                 howToWin();
-                System.out.println("\n");
+                this.console.println("\n");
                 howToMove();
-                System.out.println("\n");
+                this.console.println("\n");
                 specialActionCards();
-                System.out.println("\n");
+                this.console.println("\n");
                 specialAbilities();
-                System.out.println("\n");
+                this.console.println("\n");
                 treasureCards();
-                System.out.println("\n");
+                this.console.println("\n");
                 floodedTiles();
-                System.out.println("\n");
+                this.console.println("\n");
                 captureTreasure();
-                System.out.println("\n");
+                this.console.println("\n");
                 toDoOnTurn();
                 break;
             default:
-                System.out.println("Invalid value entered");
+                ErrorView.display(this.getClass().getName(), "Invalid value.");
                 return false;
         }
 
@@ -92,8 +92,8 @@ public class HelpMenuView extends View {
     }
 
     private void howToWin() {
-        System.out.println("*************************How to win instruction:***************************");
-        System.out.println("Use your cards to your advantage. You need to use your turns wisely as each\n"
+        this.console.println("*************************How to win instruction:***************************");
+        this.console.println("Use your cards to your advantage. You need to use your turns wisely as each\n"
                 + "time you play, you will lose 3 turns.(use or lose) It is upt to you to\n"
                 + "travel and unflood tiles that treasures are on. Make sure you allocate\n"
                 + "anough turns to collect all treasures and make it to the landing pad before\n"
@@ -102,50 +102,50 @@ public class HelpMenuView extends View {
     }
 
     private void howToMove() {
-        System.out.println("*************************How to move instruction:***************************");
-        System.out.println("Moving around the board is easy. Every turn you are given 3 actions. One \n"
+        this.console.println("*************************How to move instruction:***************************");
+        this.console.println("Moving around the board is easy. Every turn you are given 3 actions. One \n"
                 + "thing you can do with those actions is to move. In the Game Menu, you can\n"
                 + "select (M). You will then be presented with four options, move up, down,\n"
                 + "right, or left. Each time you use a direction, you use an action.");
     }
 
     private void specialActionCards() {
-        System.out.println("*************************About special action cards:************************");
-        System.out.println("Special action cards allow you to abilities your individual character would\n"
+        this.console.println("*************************About special action cards:************************");
+        this.console.println("Special action cards allow you to abilities your individual character would\n"
                 + "not normally have. Some of these actions would be like using a helicopter or \n"
                 + "moving to any location on the board.");
     }
 
     private void specialAbilities() {
-        System.out.println("*************************About special abilities:***************************");
-        System.out.println("Pilot: Can move to any space on the board once a turn.\n"
+        this.console.println("*************************About special abilities:***************************");
+        this.console.println("Pilot: Can move to any space on the board once a turn.\n"
                 + "Explorer: Can move diagonally");
     }
 
     private void treasureCards() {
-        System.out.println("*************************About treasure cards:******************************");
-        System.out.println("Treasure cards can be passed along to other players, but will count as a \n"
+        this.console.println("*************************About treasure cards:******************************");
+        this.console.println("Treasure cards can be passed along to other players, but will count as a \n"
                 + "play.");
     }
 
     private void floodedTiles() {
-        System.out.println("*************************About flooded tiles:*******************************");
-        System.out.println("Flooded tiles can be unflooded. Once a tile is sunken, there is no chance of\n"
+        this.console.println("*************************About flooded tiles:*******************************");
+        this.console.println("Flooded tiles can be unflooded. Once a tile is sunken, there is no chance of\n"
                 + "saving the tile. A player will be forced to go for another treasure if the\n"
                 + "one that sunk was holding a treasure.");
     }
 
     private void captureTreasure() {
-        System.out.println("*************************How to capture treasure:***************************");
-        System.out.println("To capture treasure, in the Game Menu select (capture treasure). The menu\n"
+        this.console.println("*************************How to capture treasure:***************************");
+        this.console.println("To capture treasure, in the Game Menu select (capture treasure). The menu\n"
                 + "will prompt you to say either collect it or not. Remember that there are\n"
                 + "two of each treasure on the board and you need to collect one of each before\n"
                 + "the tiles and or you run out of turns.");
     }
 
     private void toDoOnTurn() {
-        System.out.println("**********************What to do on your turn:******************************");
-        System.out.println("On your turn you have several options. Within 3 movements you can collect\n"
+        this.console.println("**********************What to do on your turn:******************************");
+        this.console.println("On your turn you have several options. Within 3 movements you can collect\n"
                 + "treasure, unflood tiles, fly to a location, and most importantly you can \n"
                 + "move. Each of these turn uses is essencial and will be used by each player\n"
                 + "to succesfully capture all treasures before all turns are used up and the \n"

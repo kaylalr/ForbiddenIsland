@@ -17,7 +17,7 @@ public class CaptureTreasureView extends View {
     public String[] getInputs() {
         String[] inputs = new String[1];
 
-        System.out.println("Would you like to capture the ________ treasure?\n"
+        this.console.println("Would you like to capture the ________ treasure?\n"
                 + "Trophies left: #\n"
                 + "Y - Yes\n"
                 + "N - No\n");
@@ -34,10 +34,10 @@ public class CaptureTreasureView extends View {
         }
         switch (inputs[0]) {
             case "Y":
-                System.out.println("Congrats! You have collected the _______ trophy!");
+                this.console.println("Congrats! You have collected the _______ trophy!");
                 break;
             case "N":
-                System.out.println("You have decided to leave the trophy...");
+                this.console.println("You have decided to leave the trophy...");
                 break;
 //            case "Q":
 //                break;

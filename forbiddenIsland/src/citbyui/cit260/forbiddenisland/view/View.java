@@ -27,7 +27,7 @@ public abstract class View implements ViewInterface {
 
     @Override
     public void display() {
-
+           
         boolean endOfView = false;
 
         do {
@@ -50,7 +50,7 @@ public abstract class View implements ViewInterface {
         try {
             // while a valid input has not been retrieved
             while (valid == false) {
-                System.out.println(promptMessage);
+                this.console.println(promptMessage);
                 
                 // get the value enetered from keyboard
                 inputs = this.keyboard.readLine();

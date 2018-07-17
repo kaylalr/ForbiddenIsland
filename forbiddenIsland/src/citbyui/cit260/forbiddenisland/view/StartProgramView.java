@@ -28,13 +28,13 @@ public class StartProgramView extends View {
         String[] inputs = new String[1];
 
         //DISPLAYS BANNER PAGE
-        System.out.println("***************************************************************************");
-        System.out.println("*  You are stuck on an island and the only way off is to collect all      *\n"
+        this.console.println("***************************************************************************");
+        this.console.println("*  You are stuck on an island and the only way off is to collect all      *\n"
                 + "*  the treasure and fly away.  But it’s not as easy as it sounds.  As     *\n"
                 + "*  you are collecting the treasure, the island is being flooded!  You     *\n"
                 + "*  need to hurry! Collect all the treasure as fast as you can and leave   *\n"
                 + "*  before you become stuck, with no escape.                               *");
-        System.out.println("***************************************************************************");
+        this.console.println("***************************************************************************");
 
         inputs[0] = this.getInput("What is your name?");
         return inputs;
@@ -57,9 +57,9 @@ public class StartProgramView extends View {
                 return false;
             }
 
-            System.out.println("\n");
-            System.out.println("Welcome to the game " + playerName + "! We hope you have a lot of fun!");
-            System.out.println("\n");
+            this.console.println("\n");
+            this.console.println("Welcome to the game " + playerName + "! We hope you have a lot of fun!");
+            this.console.println("\n");
 
             MainMenuView mainMenuView = new MainMenuView();
             mainMenuView.display();
