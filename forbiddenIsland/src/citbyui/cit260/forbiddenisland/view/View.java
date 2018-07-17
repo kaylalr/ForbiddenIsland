@@ -44,35 +44,42 @@ public abstract class View implements ViewInterface {
 
     @Override
     public String getInput(String promptMessage) {
-        String[] inputs = new String[1];
-        String selection = null;
-
-        //System.out.println(promptMessage);
+        String inputs = null;
         boolean valid = false;
+        
         try {
+            // while a valid input has not been retrieved
             while (valid == false) {
-
-                //CREATED SCANNER
-//               Scanner inFile;
-//            inFile = new Scanner(System.in);
-                selection = this.keyboard.readLine();
-
-                selection = selection.trim();
                 System.out.println(promptMessage);
-                //System.out.println("Please choose a main menu item: ");
-               //String value = inFile.nextLine().trim().toUpperCase();
-
-                if (selection.length() < 1) {
+                
+                // get the value enetered from keyboard
+                inputs = this.keyboard.readLine();
+                // trim and make value entered to upperCase
+                inputs = inputs.trim().toUpperCase();
+                if (inputs.length() < 1) {
                     System.out.println("Error: Please re-enter value: ");
                     continue;
                 }
-                //inputs[0] = value;
                 break;
             }
         } catch (Exception e) {
             System.out.println("Error reading inputs: " + e.getMessage());
         }
-        return selection;
+        return inputs;
     }
+//
+//    boolean valid = false;
+//    String[] inputs = new String[1];
+//    try {
+//        while (!valid) {
+//            inputs = this.keyboard.readLine();
+//            inputs = inputs.trim();
+//            if (inputs.length() <1) {
+//                System.out.println("you must enter a value.");
+//                continue;
+//            }
+//            break;
+//        }
+//    }
 
 }
