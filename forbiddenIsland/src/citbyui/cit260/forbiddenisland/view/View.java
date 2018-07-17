@@ -47,7 +47,7 @@ public abstract class View implements ViewInterface {
         String[] inputs = new String[1];
         String selection = null;
 
-        //System.out.println(promptMessage);
+        System.out.println(promptMessage);
         boolean valid = false;
         try {
             while (valid == false) {
@@ -57,7 +57,7 @@ public abstract class View implements ViewInterface {
 //            inFile = new Scanner(System.in);
                 selection = this.keyboard.readLine();
 
-                selection = selection.trim();
+                selection = selection.trim().toUpperCase();
                 System.out.println(promptMessage);
                 //System.out.println("Please choose a main menu item: ");
                //String value = inFile.nextLine().trim().toUpperCase();
@@ -69,7 +69,7 @@ public abstract class View implements ViewInterface {
                 //inputs[0] = value;
                 break;
             }
-        } catch (Exception e) {
+        } catch (IOException e) {
             System.out.println("Error reading inputs: " + e.getMessage());
         }
         return selection;
