@@ -46,13 +46,13 @@ public class StartProgramView extends View {
         try {
             String playerName = inputs[0];
             if (playerName.length() > 12) {
-                System.out.println("Error: Please re-enter name: ");
+                ErrorView.display(this.getClass().getName(), "Error: Invalid Name.");
                 return false;
             }
             Player player = GameControl.savePlayer(playerName);
 
             if (player == null) {
-                System.out.println("Could not create the player. "
+                ErrorView.display(this.getClass().getName(), "Error: Could not create the player. "
                         + "Enter a different name.");
                 return false;
             }

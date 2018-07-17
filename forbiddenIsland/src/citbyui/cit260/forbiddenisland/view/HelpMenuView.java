@@ -36,7 +36,7 @@ public class HelpMenuView extends View {
     @Override
     public boolean doAction(String[] inputs) {
         if (inputs[0].length() > 1) {
-            System.out.println("Error: Please re-enter value: ");
+            ErrorView.display(this.getClass().getName(), "Error: Invalid value.");
             return false;
         }
         switch (inputs[0]) {

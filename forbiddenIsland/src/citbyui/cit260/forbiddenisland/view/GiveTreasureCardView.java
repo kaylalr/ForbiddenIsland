@@ -119,7 +119,7 @@ public class GiveTreasureCardView extends View {
     @Override
     public boolean doAction(String[] inputs) {
         if (inputs[0].length() > 1) {
-            System.out.println("Error: Please re-enter value: ");
+            ErrorView.display(this.getClass().getName(), "Error: Invalid value.");
             return false;
         }
         //(String[] inputs, boolean player1, boolean player2, int totalEarth, int totalWind, int totalFire, int totalWater, int p1Earth, int p2Earth, int p1Wind, int p2Wind, int p1Fire, int p2Fire, int p1Water, int p2Water) {
@@ -187,7 +187,7 @@ public class GiveTreasureCardView extends View {
 //            default:
 //                return false;
 //        }
-        System.out.println("*** doAction() called ***");
+        //System.out.println("*** doAction() called ***");
         return true;
     }
 

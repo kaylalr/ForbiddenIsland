@@ -65,7 +65,7 @@ public class MoveMenuView extends View {
     public boolean doAction(String[] inputs) {
         try {
             if (inputs[0].length() > 12) {
-                System.out.println("Error: Please re-enter name: ");
+                ErrorView.display(this.getClass().getName(), "Error: Invalid Name.");
                 return false;
             }
             
@@ -73,7 +73,7 @@ public class MoveMenuView extends View {
             Actor actor = currActors.get(0);
             int currTurns = actor.getTurns();
             if (currTurns > 3) {
-                System.out.println("\nSorry, you have no turns left.\nPlease end your turn.\n");
+                ErrorView.display(this.getClass().getName(), "Error: No Turns Left. END TURN.");
                 return true;
             }
             
@@ -125,13 +125,13 @@ public class MoveMenuView extends View {
 //                    }
                     break;
                 default:
-                    System.out.println("Please enter a valid input.");
+                    ErrorView.display(this.getClass().getName(), "Please enter a valid input.");
                     return false;
             }
             
         } catch (MapControlException ex) {
             Logger.getLogger(MoveMenuView.class.getName()).log(Level.SEVERE, null, ex);
-            System.out.println(ex.getMessage());
+            ErrorView.display(this.getClass().getName(), ex.getMessage());
         }
         return true;
     }

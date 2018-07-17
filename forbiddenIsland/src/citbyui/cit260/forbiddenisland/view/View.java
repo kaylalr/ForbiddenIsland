@@ -57,13 +57,13 @@ public abstract class View implements ViewInterface {
                 // trim and make value entered to upperCase
                 inputs = inputs.trim().toUpperCase();
                 if (inputs.length() < 1) {
-                    System.out.println("Error: Please re-enter value: ");
+                    ErrorView.display(this.getClass().getName(), "Error: Please re-enter value: ");
                     continue;
                 }
                 break;
             }
         } catch (IOException e) {
-            System.out.println("Error reading inputs: " + e.getMessage());
+            ErrorView.display(this.getClass().getName(), "Error reading inputs: " + e.getMessage());
         }
         return inputs;
     }

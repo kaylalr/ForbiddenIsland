@@ -43,7 +43,7 @@ public class FlyView extends View{
             int newRow = parseInt(inputs[0]);
             int newColumn = parseInt(inputs[1]);
             if (newRow < 1 || newRow > 5 || newColumn < 1 || newColumn > 5){
-                System.out.println("Error: invalid input.");
+                ErrorView.display(this.getClass().getName(), "Error: invalid value.");
                 return false;
             }
             Location newLoc = MapControl.moveActor(actor, newRow - 1, newColumn - 1);

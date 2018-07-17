@@ -22,7 +22,6 @@ public class GameMenuView extends View {
     @Override
     public String[] getInputs() {
         String[] inputs = new String[1];
-        cls();
         MapControl.displayMap();
         System.out.println("\nGame Menu\n"
                 + "M – Move\n"
@@ -43,7 +42,7 @@ public class GameMenuView extends View {
     @Override
     public boolean doAction(String[] inputs) {
         if (inputs[0].length() > 1) {
-            System.out.println("Error: Please re-enter value: ");
+            ErrorView.display(this.getClass().getName(), "Error: Invalid value.");
             return false;
         }
         switch (inputs[0]) {
@@ -93,18 +92,5 @@ public class GameMenuView extends View {
                 GameControl.endTurn();
             }
         return false;
-    }
-
-public void cls()
-    {
-        try 
-        {
-            Runtime.getRuntime().exec("cmd /c cls");
-        }
-        catch(final Exception e)
-        {
-            System.out.print(e);
-        }
-
     }
 }

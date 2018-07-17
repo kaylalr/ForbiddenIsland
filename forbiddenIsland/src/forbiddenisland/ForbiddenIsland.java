@@ -34,8 +34,8 @@ public class ForbiddenIsland {
      */
     public Game game;
     private static Game currentGame = null;
+    private static PrintWriter logFile = null;
     private static Player player = null;
-    
     private static PrintWriter outFile = null;
     private static BufferedReader inFile = null;
 
@@ -47,6 +47,7 @@ public class ForbiddenIsland {
         try {
             ForbiddenIsland.inFile = new BufferedReader(new InputStreamReader(System.in));
             ForbiddenIsland.outFile = new PrintWriter(System.out, true);
+            ForbiddenIsland.logFile = new PrintWriter("logFile.txt");
             
             StartProgramView startProgramView = new StartProgramView();
             startProgramView.display();
@@ -65,12 +66,23 @@ public class ForbiddenIsland {
                 if (ForbiddenIsland.outFile != null){
                  ForbiddenIsland.outFile.close();
                 }
+                if (logFile != null){
+                    logFile.close();
+                }
             } catch (IOException ex) {
                 System.out.println("Error closing files");
                 return;
             }
         }
 
+    }
+
+    public static PrintWriter getLogFile() {
+        return logFile;
+    }
+
+    public static void setLogFile(PrintWriter logFile) {
+        ForbiddenIsland.logFile = logFile;
     }
 
     public static PrintWriter getOutFile() {

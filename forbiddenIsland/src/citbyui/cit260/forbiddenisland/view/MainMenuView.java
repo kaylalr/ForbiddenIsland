@@ -38,7 +38,7 @@ public class MainMenuView extends View {
     public boolean doAction(String[] inputs) {
         try {
             if (inputs[0].length() > 1) {
-                System.out.println("Error: Please re-enter value: ");
+                ErrorView.display(this.getClass().getName(), "Error: Invalid value.");
                 return false;
             }
             switch (inputs[0]) {

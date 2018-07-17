@@ -29,7 +29,7 @@ public class CaptureTreasureView extends View {
     @Override
     public boolean doAction(String[] inputs) {
         if (inputs[0].length() > 1) {
-            System.out.println("Error: Please re-enter value: ");
+            ErrorView.display(this.getClass().getName(), "Error: Invalid value.");
             return false;
         }
         switch (inputs[0]) {
@@ -42,7 +42,7 @@ public class CaptureTreasureView extends View {
 //            case "Q":
 //                break;
             default:
-                System.out.println("Error: Try again...");
+                ErrorView.display(this.getClass().getName(), "Error: Try again...");
                 return false;
         }
         return true;

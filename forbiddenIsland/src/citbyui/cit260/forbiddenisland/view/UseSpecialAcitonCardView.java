@@ -50,7 +50,7 @@ public class UseSpecialAcitonCardView extends View {
     public boolean doAction(String[] inputs) {
 
         if (inputs[0].length() > 1) {
-            System.out.println("ERROR: Please ReEnter a valid input...");
+            ErrorView.display(this.getClass().getName(), "ERROR: Invalid input.");
             return false;
         }
         switch (inputs[0]) {
@@ -66,7 +66,7 @@ public class UseSpecialAcitonCardView extends View {
                 break;
             case "D":
             case "Y":
-                System.out.println("use different player's Special Action card display other players cards");
+                System.out.println("Use different player's Special Action card display other players cards");
                 break;
             default:
                 return true;
