@@ -17,6 +17,11 @@ import citbyui.cit260.model.Treasure;
 import citbyui.cit260.model.TreasureType;
 import forbiddenisland.ForbiddenIsland;
 import java.awt.Point;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 
 /**
@@ -135,17 +140,42 @@ public class GameControl {
 
         return treasures;
     }
-    
+
     public static boolean endTurn() {
         ArrayList<Actor> currActors = ForbiddenIsland.getPlayer().getActors();
         Actor actor1 = currActors.get(0);
         Actor actor2 = currActors.get(1);
         ArrayList<Actor> newActors = new ArrayList();
-        newActors.add(0,actor2);
-        newActors.add(1,actor1);
+        newActors.add(0, actor2);
+        newActors.add(1, actor1);
         ForbiddenIsland.getPlayer().setActors(newActors);
         newActors.get(0).setTurns(0);
         return true;
+    }
+
+    public static void saveGame(Game game, String filePath) throws GameControlException, FileNotFoundException, IOException {
+        System.out.println("--- saveGame() in gameControl class ---");
+
+        if (game == null || filePath == null) {
+            if (game == null) {
+                throw new GameControlException("Game cant be Null");
+            }
+            if (filePath == null) {
+                throw new GameControlException("filePath cant be Null");
+            }
+        }
+        
+        try(FileOutputStream fos = new FileOutputStream(filePath)){
+            ObjectOutputStream output = new ObjectOutputStream(fos);
+            output.writeObject(game);
+        }
+        catch(Exception e) {
+            throw new GameControlException(e.getMessage());
+        }
+//        FileOutputStream filePath = new FileOutputStream(); 
+//        ObjectOutputStream objectStream = new FileOutputStream;
+
+
     }
 
 }

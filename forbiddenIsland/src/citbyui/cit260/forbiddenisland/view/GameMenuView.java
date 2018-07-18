@@ -19,6 +19,10 @@ import java.util.Scanner;
  */
 public class GameMenuView extends View {
 
+    public GameMenuView() {
+    }
+    
+  
     @Override
     public String[] getInputs() {
         String[] inputs = new String[1];
@@ -78,7 +82,7 @@ public class GameMenuView extends View {
                 helpMenuView.display();
                 break;
             case "S":
-
+                this.saveGame();
                 break;
 
         }
@@ -93,4 +97,12 @@ public class GameMenuView extends View {
             }
         return false;
     }
+
+        private void saveGame() {
+        SaveGameView saveGameView = new SaveGameView();
+        saveGameView.display();
+    }
+        
+        
+        
 }
