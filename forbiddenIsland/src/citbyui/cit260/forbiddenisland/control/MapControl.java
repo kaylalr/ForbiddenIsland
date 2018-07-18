@@ -127,6 +127,22 @@ public class MapControl {
             loc.setLocationType("normal");
         }
         Collections.shuffle(unshuffledLocations);
+        
+//        int randomFloodRow = 0;
+//        int randomFloodCol = 0;
+//        
+//        do {
+//            randomFloodRow = (int)Math.ceil(Math.random()*5);
+//        } while (randomFloodRow < 6);
+//        do {
+//            randomFloodCol = (int)Math.ceil(Math.random()*5);
+//        } while (randomFloodCol < 6);
+
+        int randomFloodRow = (int)Math.ceil(Math.random()*5);
+        int randomFloodCol = (int)Math.ceil(Math.random()*5);
+        
+
+        System.out.println("Flooded Tile: " + randomFloodRow + ", " + randomFloodCol);
 
         //THIS CREATES THE ALLOCATED LOCATION SPACES AND GIVES THEM THEIR VALUES.
         int y = 0;
@@ -138,6 +154,7 @@ public class MapControl {
                 y++;
             }
         }
+        
         return locations;
     }
 
@@ -175,6 +192,7 @@ public class MapControl {
             System.out.print("|\n");
         }
         System.out.print("   -----------------------------------------");
+        System.out.println("\n" + currActors);
     }
 
     private static Location findLocation(Location[][] locations, String locationType) {
