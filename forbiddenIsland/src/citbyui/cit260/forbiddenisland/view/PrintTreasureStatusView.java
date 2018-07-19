@@ -15,9 +15,9 @@ import java.util.logging.Logger;
 
 /**
  *
- * @author mcwis
+ * @author DD
  */
-class SaveGameView extends View {
+class PrintTreasureStatusView extends View{
 
     @Override
     public String[] getInputs() {
@@ -43,5 +43,5 @@ class SaveGameView extends View {
         this.console.println("Success: File Saved!"); 
         return true;
     }
-
+    
 }
