@@ -157,6 +157,12 @@ public class GameControl {
         newActors.add(1, actor1);
         ForbiddenIsland.getPlayer().setActors(newActors);
         newActors.get(0).setTurns(0);
+        
+       // Map floodedMap = ForbiddenIsland.getCurrentGame().getMap().getFloodLocations();
+        //Map floodedMap = 
+       // Location[][] locations = ForbiddenIsland.getCurrentGame().getMap().getLocation();
+        
+        MapControl.floodTiles();
         return true;
     }
 

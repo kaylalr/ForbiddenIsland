@@ -38,7 +38,7 @@ public class MapControl {
         map.setDescription("Map Description");
         map.setRowCount(5);
         map.setColumnCount(5);
-
+        map.setPositionInFLoodedLocations(0);
         game.setMap(map);
 
 // create a two-dimensional array of locations and assign array to the map
@@ -143,7 +143,9 @@ public class MapControl {
             unshuffledLocations.add(loc);
         }
         Collections.shuffle(unshuffledLocations);
-        
+        Map floodMap = ForbiddenIsland.getCurrentGame().getMap();
+        floodMap.setFloodLocations(unshuffledLocations);
+
 //        int randomFloodRow = 0;
 //        int randomFloodCol = 0;
 //        
@@ -153,13 +155,10 @@ public class MapControl {
 //        do {
 //            randomFloodCol = (int)Math.ceil(Math.random()*5);
 //        } while (randomFloodCol < 6);
-
 //        int randomFloodRow = (int)Math.round(Math.random()*4);
 //        int randomFloodCol = (int)Math.round(Math.random()*4);
 //        System.out.println("Flooded Tile: " + randomFloodRow + ", " + randomFloodCol);
-
         //String[][] tileToFlood = new String[5][5];
-
         //THIS CREATES THE ALLOCATED LOCATION SPACES AND GIVES THEM THEIR VALUES.
         int y = 0;
         for (int i = 0; i < 5; i++) {
@@ -173,7 +172,9 @@ public class MapControl {
                 y++;
             }
         }
-        
+        Collections.shuffle(floodMap.getFloodLocations());
+        floodTiles();
+
         return locations;
     }
 
@@ -183,11 +184,11 @@ public class MapControl {
         Actor actor = currActors.get(0);
         System.out.println("\nCurrent Actors Name: " + actor.getName());
         Location[][] locations = ForbiddenIsland.getCurrentGame().getMap().getLocation();
-       // ArrayList<Actor> currActors = ForbiddenIsland.getPlayer().getActors();
+        // ArrayList<Actor> currActors = ForbiddenIsland.getPlayer().getActors();
         //Actor actor = currActors.get(0);
         Actor pilot = currActors.get(ActorType.Pilot.ordinal());
         Actor explorer = currActors.get(ActorType.Explorer.ordinal());
-       
+
         System.out.println("\n-_-_-GAME MAP-_-_-\n");
         System.out.println("       1       2       3       4       5");
         int t = 1;
@@ -196,16 +197,40 @@ public class MapControl {
             System.out.print(t + "  ");
             t++;
             for (int j = 0; j < 5; j++) {
-                if(pilot.getCoordinates().x == i && pilot.getCoordinates().y == j){
+                if (locations[i][j].getSunken() == 1) {
+                    if (pilot.getCoordinates().x == i && pilot.getCoordinates().y == j) {
+                        System.out.print("|XXXX");
+                    } else {
+                        System.out.print("|XXXX");
+                    }
+                    if (explorer.getCoordinates().x == i && explorer.getCoordinates().y == j) {
+                        System.out.print("XXX");
+                    } else {
+                        System.out.print("XXX");
+                    }
+                }
+                if (locations[i][j].getFlooded() == 1) {
+                    if (pilot.getCoordinates().x == i && pilot.getCoordinates().y == j) {
+                        System.out.print("|.1 " + locations[i][j].getDisplaySymbol());
+                    } else {
+                        System.out.print("|.  " + locations[i][j].getDisplaySymbol());
+                    }
+                    if (explorer.getCoordinates().x == i && explorer.getCoordinates().y == j) {
+                        System.out.print(" 2.");
+                    } else {
+                        System.out.print("  .");
+                    }
+                } else {
+                    if (pilot.getCoordinates().x == i && pilot.getCoordinates().y == j) {
                         System.out.print("| 1 " + locations[i][j].getDisplaySymbol());
-                }
-                else{
-                    System.out.print("|   " + locations[i][j].getDisplaySymbol());
-                }
-                if(explorer.getCoordinates().x == i && explorer.getCoordinates().y == j){
-                    System.out.print(" 2 ");
-                }else {
-                    System.out.print("   ");
+                    } else {
+                        System.out.print("|   " + locations[i][j].getDisplaySymbol());
+                    }
+                    if (explorer.getCoordinates().x == i && explorer.getCoordinates().y == j) {
+                        System.out.print(" 2 ");
+                    } else {
+                        System.out.print("   ");
+                    }
                 }
             }
             System.out.print("|\n");
@@ -249,8 +274,7 @@ public class MapControl {
         explorerLocation.setActor(explorer);
         explorer.getCoordinates().x = explorerLocation.getRow();
         explorer.getCoordinates().y = explorerLocation.getColumn();
-        
-        
+
         return 1;
     }
 
@@ -300,12 +324,12 @@ public class MapControl {
         if (actor == null) {
             throw new MapControlException("Actor can't be NULL.");
         }
-        
+
         int currTurns = actor.getTurns();
-            if (currTurns > 3) {
-                //System.out.println("\nSorry, you have no turns left.\nPlease end your turn.\n");
-                throw new MapControlException("\nSorry, you have no turns left.\nPlease end your turn.\n");
-            }
+        if (currTurns > 3) {
+            //System.out.println("\nSorry, you have no turns left.\nPlease end your turn.\n");
+            throw new MapControlException("\nSorry, you have no turns left.\nPlease end your turn.\n");
+        }
 
         Location locs[][] = ForbiddenIsland.getCurrentGame().getMap().getLocation();
         if (newRow < 0 || newRow > 4 || newColumn < 0 || newColumn > 4) {
@@ -321,19 +345,49 @@ public class MapControl {
         newLocation.setActor(actor);
         actor.getCoordinates().x = newLocation.getRow();
         actor.getCoordinates().y = newLocation.getColumn();
-        
-        
 
         System.out.println(actor.getCoordinates());
         System.out.println(oldLocation);
         System.out.println(newLocation);
-        
+
         if (currTurns < 4) {
-                int newTurns = currTurns++;
-                actor.setTurns(newTurns);
-            }
+            int newTurns = currTurns++;
+            actor.setTurns(newTurns);
+        }
 
         return newLocation;
 
     }
+
+    public static void floodTiles() {
+
+        Map floodMap = ForbiddenIsland.getCurrentGame().getMap();
+        int y = floodMap.getPositionInFLoodedLocations();
+
+        //int y;
+//        for (int i = 0; i < 5; i++) {
+//            for (int j = 0; j < 5; j++) {
+//                //locations[i][j] = unshuffledLocations.get(y);
+//                locations[i][j].setRow(i);
+//                locations[i][j].setColumn(j);
+//                y++;
+//            }
+//        }
+        for (int i = 0; i < 3; i++) {
+            Location k = floodMap.getFloodLocations().get(y);
+            if (k.getFlooded() == 1) {
+                k.setSunken(1);
+            } else {
+                k.setFlooded(1);
+            }
+
+            if (y == 25) {
+                y = 0;
+            } else {
+                y++;
+            }
+        }
+        floodMap.setPositionInFLoodedLocations(y);
+    }
+
 }

@@ -20,7 +20,10 @@ public class Map implements Serializable {
     private double columnCount;
     private String description;
     private ArrayList<Game> games = new ArrayList<Game>();
+    private ArrayList<Location> floodLocations = new ArrayList<Location>();
+    private int positionInFLoodedLocations;
     private Location location[][];
+    
 
     public Map() {
     }
@@ -71,18 +74,31 @@ public class Map implements Serializable {
         this.location = location;
     }
 
-    @Override
-    public String toString() {
-        return "Map{" + "rowCount=" + rowCount + ", columnCount=" + columnCount + ", description=" + description + ", games=" + games + ", location=" + location + '}';
+    public ArrayList<Location> getFloodLocations() {
+        return floodLocations;
+    }
+
+    public void setFloodLocations(ArrayList<Location> floodLocations) {
+        this.floodLocations = floodLocations;
+    }
+
+    public int getPositionInFLoodedLocations() {
+        return positionInFLoodedLocations;
+    }
+
+    public void setPositionInFLoodedLocations(int positionInFLoodedLocations) {
+        this.positionInFLoodedLocations = positionInFLoodedLocations;
     }
 
     @Override
     public int hashCode() {
-        int hash = 7;
+        int hash = 5;
         hash = 29 * hash + (int) (Double.doubleToLongBits(this.rowCount) ^ (Double.doubleToLongBits(this.rowCount) >>> 32));
         hash = 29 * hash + (int) (Double.doubleToLongBits(this.columnCount) ^ (Double.doubleToLongBits(this.columnCount) >>> 32));
         hash = 29 * hash + Objects.hashCode(this.description);
         hash = 29 * hash + Objects.hashCode(this.games);
+        hash = 29 * hash + Objects.hashCode(this.floodLocations);
+        hash = 29 * hash + this.positionInFLoodedLocations;
         hash = 29 * hash + Arrays.deepHashCode(this.location);
         return hash;
     }
@@ -105,10 +121,16 @@ public class Map implements Serializable {
         if (Double.doubleToLongBits(this.columnCount) != Double.doubleToLongBits(other.columnCount)) {
             return false;
         }
+        if (this.positionInFLoodedLocations != other.positionInFLoodedLocations) {
+            return false;
+        }
         if (!Objects.equals(this.description, other.description)) {
             return false;
         }
         if (!Objects.equals(this.games, other.games)) {
+            return false;
+        }
+        if (!Objects.equals(this.floodLocations, other.floodLocations)) {
             return false;
         }
         if (!Arrays.deepEquals(this.location, other.location)) {
@@ -117,4 +139,8 @@ public class Map implements Serializable {
         return true;
     }
 
+    @Override
+    public String toString() {
+        return "Map{" + "rowCount=" + rowCount + ", columnCount=" + columnCount + ", description=" + description + ", games=" + games + ", floodLocations=" + floodLocations + ", positionInFLoodedLocations=" + positionInFLoodedLocations + ", location=" + location + '}';
+    }
 }
