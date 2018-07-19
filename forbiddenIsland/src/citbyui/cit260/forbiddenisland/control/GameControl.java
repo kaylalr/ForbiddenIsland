@@ -18,11 +18,15 @@ import citbyui.cit260.model.TreasureType;
 import forbiddenisland.ForbiddenIsland;
 import java.awt.Point;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -176,6 +180,37 @@ public class GameControl {
 //        ObjectOutputStream objectStream = new FileOutputStream;
 
 
+    }
+    
+    public static Game getGame(String filePath) throws GameControlException, IOException{
+        System.out.println("--- getGame in control class ---");
+        if(filePath == null){
+            throw new GameControlException("Game cannot be null");
+        }
+    
+        
+        try(ObjectInputStream input = new ObjectInputStream(new FileInputStream(filePath))) {
+           Game game = (Game)input.readObject();
+           ForbiddenIsland.setCurrentGame(game);
+           ForbiddenIsland.setPlayer(game.getPlayer());
+           
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(GameControl.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(GameControl.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(GameControl.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        try(FileInputStream fos = new FileInputStream(filePath)){
+            
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(GameControl.class.getName()).log(Level.SEVERE, null, ex);
+        }
+ 
+        //output.writeObject(game);
+        return null;
+        
     }
 
 }

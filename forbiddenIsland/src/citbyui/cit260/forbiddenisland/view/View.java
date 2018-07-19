@@ -67,19 +67,6 @@ public abstract class View implements ViewInterface {
         }
         return inputs;
     }
-//
-//    boolean valid = false;
-//    String[] inputs = new String[1];
-//    try {
-//        while (!valid) {
-//            inputs = this.keyboard.readLine();
-//            inputs = inputs.trim();
-//            if (inputs.length() <1) {
-//                System.out.println("you must enter a value.");
-//                continue;
-//            }
-//            break;
-//        }
-//    }
+
 
 }

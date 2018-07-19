@@ -22,9 +22,7 @@ class SaveGameView extends View {
     @Override
     public String[] getInputs() {
         String[] inputs = new String[1];
-        inputs[0] = this.getInput("Do you want to save:"
-                + "\nY - Yes"
-                + "\nN -No");
+        inputs[0] = this.getInput("Name this file with .txt after");
         return inputs;
     }
 
@@ -32,9 +30,6 @@ class SaveGameView extends View {
     public boolean doAction(String[] inputs) {
         String filePath = inputs[0];
         Game game = ForbiddenIsland.getCurrentGame();
-
-        switch (inputs[0]) {
-            case "Y":
                 this.console.println("Inputs = Y");
                 try {
                     //GameControl.saveGame(game);
@@ -44,13 +39,6 @@ class SaveGameView extends View {
                 } catch (IOException ex) {
                     Logger.getLogger(SaveGameView.class.getName()).log(Level.SEVERE, null, ex);
                 }
-                break;
-            case "N":
-                return false;
-            default:
-                ErrorView.display(this.getClass().getName(), "Invalid value entered");
-                return false;
-        }
 
         this.console.println("Success: File Saved!");
 

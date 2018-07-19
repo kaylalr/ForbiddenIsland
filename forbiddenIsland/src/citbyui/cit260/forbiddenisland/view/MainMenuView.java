@@ -27,6 +27,7 @@ public class MainMenuView extends View {
         this.console.println("Main Menu\n"
                 + "N - Start new game\n"
                 + "R - Restart current game\n"
+                + "L - Load saved game\n"
                 + "H - Get help\n"
                 + "Q - Quit\n");
 
@@ -50,6 +51,10 @@ public class MainMenuView extends View {
                     this.console.println("Inputs = R");
                     this.restartNewGame();
                     break;
+                    
+                case "L": 
+                    this.console.println("Inputs = L");
+                    this.startSavedGame();
                 case "H":
                     this.console.println("Inputs = H");
                     this.getHelp();
@@ -82,6 +87,11 @@ public class MainMenuView extends View {
     private void getHelp() {
         HelpMenuView helpMenuView = new HelpMenuView();
         helpMenuView.display();
+    }
+    
+    private void startSavedGame () {
+        StartSavedGameView startSavedGameView = new StartSavedGameView();
+        startSavedGameView.display();
     }
 
 }
