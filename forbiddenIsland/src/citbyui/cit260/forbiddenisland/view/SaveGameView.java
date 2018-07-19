@@ -22,7 +22,7 @@ class SaveGameView extends View {
     @Override
     public String[] getInputs() {
         String[] inputs = new String[1];
-        inputs[0] = this.getInput("Name this file with .txt after");
+        inputs[0] = this.getInput("Name this file with after");
         return inputs;
     }
 

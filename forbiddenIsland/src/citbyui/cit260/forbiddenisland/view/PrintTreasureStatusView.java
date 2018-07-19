@@ -8,6 +8,7 @@ package citbyui.cit260.forbiddenisland.view;
 import citbyui.cit260.forbiddenisland.control.GameControl;
 import citbyui.cit260.forbiddenisland.exceptions.GameControlException;
 import citbyui.cit260.model.Game;
+import citbyui.cit260.model.Location;
 import forbiddenisland.ForbiddenIsland;
 import java.io.IOException;
 import java.util.logging.Level;
@@ -29,12 +30,12 @@ class PrintTreasureStatusView extends View{
     @Override
     public boolean doAction(String[] inputs) {
         String filePath = inputs[0];
-        Game game = ForbiddenIsland.getCurrentGame();
-                this.console.println("Inputs = Y");
+        Location[][] locations = ForbiddenIsland.getCurrentGame().getMap().getLocation();
                 try {
                     //GameControl.saveGame(game);
-                    GameControl.saveGame(game, filePath);
-                } catch (GameControlException ex) {
+                    GameControl.printTreasureStatus(locations, filePath);
+                }
+                catch (GameControlException ex) {
                     Logger.getLogger(SaveGameView.class.getName()).log(Level.SEVERE, null, ex);
                 } catch (IOException ex) {
                     Logger.getLogger(SaveGameView.class.getName()).log(Level.SEVERE, null, ex);
