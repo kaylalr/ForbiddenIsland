@@ -201,7 +201,7 @@ public class GameControl {
 //                        int a = i+1;
 //                        int b = j+1;
 //                        output.writeObject(a + ", " + b);
-        try (PrintWriter out = new PrintWriter(filePath)){
+        try (PrintWriter out = new PrintWriter(filePath)) {
             out.println("\n\n           Treasure Location Report            ");
             out.printf("%n%-20s%10s", "Treasure Type", "Location");
             for (int i = 0; i < locations.length; i++) {
@@ -225,9 +225,50 @@ public class GameControl {
 //        FileOutputStream filePath = new FileOutputStream(); 
 //        ObjectOutputStream objectStream = new FileOutputStream;
 
-}
+    }
 
-public static Game getGame(String filePath) throws GameControlException, IOException {
+    public static void printTreasureStatus(Location[][] locations, String filePath) throws GameControlException, FileNotFoundException, IOException {
+        System.out.println("--- saveGame() in gameControl class ---");
+        FileWriter outFile = null;
+
+        if (locations == null || filePath == null) {
+            if (locations == null) {
+                throw new GameControlException("Game cant be Null");
+            }
+            if (filePath == null) {
+                throw new GameControlException("filePath cant be Null");
+            }
+        }
+
+//                    try (FileWriter fw = new FileWriter(filePath)) {
+//                        ObjectOutputStream output = new ObjectOutputStream(fw);
+//                        int a = i+1;
+//                        int b = j+1;
+//                        output.writeObject(a + ", " + b);
+        try (PrintWriter out = new PrintWriter(filePath)) {
+            out.println("\n\n           Treasure Location Report            ");
+            out.printf("%n%-20s%10s", "Treasure Type", "Status");
+            for (int i = 0; i < locations.length; i++) {
+                for (int j = 0; j < locations[i].length; j++) {
+
+                    //if (locations[i][j].getTreasure() != locations[i][j].getTreasure(TreasureType.Empty.ordinal()) {
+                    //if (locations[i][j].getTreasure(TreasureType.Empty.ordinal())) {
+                    if (!locations[i][j].getTreasure().getName().equals("Empty")) {
+                        outFile = new FileWriter(filePath);
+                        out.printf("%n%-20s%10s", locations[i][j].getTreasure().getName(), locations[i][j].getTreasure().getStatus());
+                        //out.printf("%n%-20s%6d", locations[i][j].getTreasure(), a + ", " + b);
+                    }
+                }
+            }
+        } catch (Exception e) {
+            throw new GameControlException(e.getMessage());
+        }
+//        FileOutputStream filePath = new FileOutputStream(); 
+//        ObjectOutputStream objectStream = new FileOutputStream;
+
+    }
+
+    public static Game getGame(String filePath) throws GameControlException, IOException {
         System.out.println("--- getGame in control class ---");
         if (filePath == null) {
             throw new GameControlException("Game cannot be null");
@@ -238,30 +279,25 @@ public static Game getGame(String filePath) throws GameControlException, IOExcep
             ForbiddenIsland.setCurrentGame(game);
             ForbiddenIsland.setPlayer(game.getPlayer());
 
-        
-
-} catch (FileNotFoundException ex) {
+        } catch (FileNotFoundException ex) {
             Logger.getLogger(GameControl.class
-.getName()).log(Level.SEVERE, null, ex);
-        
+                    .getName()).log(Level.SEVERE, null, ex);
 
-} catch (IOException ex) {
+        } catch (IOException ex) {
             Logger.getLogger(GameControl.class
-.getName()).log(Level.SEVERE, null, ex);
-        
+                    .getName()).log(Level.SEVERE, null, ex);
 
-} catch (ClassNotFoundException ex) {
+        } catch (ClassNotFoundException ex) {
             Logger.getLogger(GameControl.class
-.getName()).log(Level.SEVERE, null, ex);
-        
+                    .getName()).log(Level.SEVERE, null, ex);
 
-}
+        }
 
         try (FileInputStream fos = new FileInputStream(filePath)) {
 
         } catch (FileNotFoundException ex) {
             Logger.getLogger(GameControl.class
-.getName()).log(Level.SEVERE, null, ex);
+                    .getName()).log(Level.SEVERE, null, ex);
         }
 
         //output.writeObject(game);
