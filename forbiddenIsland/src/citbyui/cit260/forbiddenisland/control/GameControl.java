@@ -202,8 +202,8 @@ public class GameControl {
 //                        int b = j+1;
 //                        output.writeObject(a + ", " + b);
         try (PrintWriter out = new PrintWriter(filePath)) {
-            out.println("\n\n           Treasure Location Report            ");
-            out.printf("%n%-20s%10s", "Treasure Type", "Location");
+            out.println("\n\n   Treasure Location Report            ");
+            out.printf("%n%-20s%10s", "Treasure Type", "Location\n");
             for (int i = 0; i < locations.length; i++) {
                 for (int j = 0; j < locations[i].length; j++) {
 
@@ -246,8 +246,9 @@ public class GameControl {
 //                        int b = j+1;
 //                        output.writeObject(a + ", " + b);
         try (PrintWriter out = new PrintWriter(filePath)) {
-            out.println("\n\n           Treasure Location Report            ");
+            out.println("\n\n   Treasure Location Report            ");
             out.printf("%n%-20s%10s", "Treasure Type", "Status");
+            out.printf("%n%-20s%10s", "-------------", "------");
             for (int i = 0; i < locations.length; i++) {
                 for (int j = 0; j < locations[i].length; j++) {
 

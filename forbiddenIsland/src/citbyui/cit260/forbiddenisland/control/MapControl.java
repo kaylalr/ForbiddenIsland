@@ -75,21 +75,29 @@ public class MapControl {
         Location fireLocation = new Location();
         fireLocation.setDisplaySymbol("F");
         fireLocation.setLocationType("fireLocation");
+        fireLocation.setFlooded(0);
+        fireLocation.setSunken(0);
         unshuffledLocations.add(fireLocation);
 
         Location waterLocation = new Location();
         waterLocation.setDisplaySymbol("W");
         waterLocation.setLocationType("waterLocation");
+        waterLocation.setFlooded(0);
+        waterLocation.setSunken(0);
         unshuffledLocations.add(waterLocation);
 
         Location windLocation = new Location();
         windLocation.setDisplaySymbol("A");
         windLocation.setLocationType("windLocation");
+        windLocation.setFlooded(0);
+        windLocation.setSunken(0);
         unshuffledLocations.add(windLocation);
 
         Location earthLocation = new Location();
         earthLocation.setDisplaySymbol("E");
         earthLocation.setLocationType("earthLocation");
+        earthLocation.setFlooded(0);
+        earthLocation.setSunken(0);
         unshuffledLocations.add(earthLocation);
 
         try {
@@ -108,23 +116,31 @@ public class MapControl {
         Location landingPadLocation = new Location();
         landingPadLocation.setDisplaySymbol("#");
         landingPadLocation.setLocationType("landingPad");
+        landingPadLocation.setFlooded(0);
+        landingPadLocation.setSunken(0);
         unshuffledLocations.add(landingPadLocation);
 
         Location playerOneStart = new Location();
         playerOneStart.setDisplaySymbol(" ");
         playerOneStart.setLocationType("startOne");
+        playerOneStart.setFlooded(0);
+        playerOneStart.setSunken(0);
         unshuffledLocations.add(playerOneStart);
 
         Location playerTwoStart = new Location();
         playerTwoStart.setDisplaySymbol(" ");
         playerTwoStart.setLocationType("startTwo");
+        playerTwoStart.setFlooded(0);
+        playerTwoStart.setSunken(0);
         unshuffledLocations.add(playerTwoStart);
 
         for (int i = 0; i < 14; i++) {
             Location loc = new Location();
             loc.setDisplaySymbol(" ");
-            unshuffledLocations.add(loc);
+            loc.setFlooded(0);
+            loc.setSunken(0);
             loc.setLocationType("normal");
+            unshuffledLocations.add(loc);
         }
         Collections.shuffle(unshuffledLocations);
         
@@ -138,16 +154,19 @@ public class MapControl {
 //            randomFloodCol = (int)Math.ceil(Math.random()*5);
 //        } while (randomFloodCol < 6);
 
-        int randomFloodRow = (int)Math.ceil(Math.random()*5);
-        int randomFloodCol = (int)Math.ceil(Math.random()*5);
-        
+//        int randomFloodRow = (int)Math.round(Math.random()*4);
+//        int randomFloodCol = (int)Math.round(Math.random()*4);
+//        System.out.println("Flooded Tile: " + randomFloodRow + ", " + randomFloodCol);
 
-        System.out.println("Flooded Tile: " + randomFloodRow + ", " + randomFloodCol);
+        //String[][] tileToFlood = new String[5][5];
 
         //THIS CREATES THE ALLOCATED LOCATION SPACES AND GIVES THEM THEIR VALUES.
         int y = 0;
         for (int i = 0; i < 5; i++) {
             for (int j = 0; j < 5; j++) {
+//                if (locations[i][j] == locations[randomFloodRow][randomFloodCol]) {
+//                    locations[i][j].setFlooded(1);
+//                }
                 locations[i][j] = unshuffledLocations.get(y);
                 locations[i][j].setRow(i);
                 locations[i][j].setColumn(j);

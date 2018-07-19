@@ -34,7 +34,7 @@ public class GameMenuView extends View {
                 + "C – Capture Treasure\n"
                 + "A – Use Special Action Card\n"
                 + "V – View Cards\n"
-                + "P - Print Treasure Lists"
+                + "P - Print Treasure Lists\n"
                 + "E – End Turn\n"
                 + "I – View Instructions\n"
                 + "S – Save Game\n"

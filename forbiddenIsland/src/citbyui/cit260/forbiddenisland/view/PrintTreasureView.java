@@ -41,7 +41,7 @@ public class PrintTreasureView extends View{
                 ErrorView.display(this.getClass().getName(), "Invaid input");
                 return false;
         }
-        return false;
+        return true;
     }
 
 //    private void printLocation() {
