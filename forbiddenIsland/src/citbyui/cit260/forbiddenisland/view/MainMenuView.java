@@ -55,6 +55,7 @@ public class MainMenuView extends View {
                 case "L": 
                     this.console.println("Inputs = L");
                     this.startSavedGame();
+                    break;
                 case "H":
                     this.console.println("Inputs = H");
                     this.getHelp();

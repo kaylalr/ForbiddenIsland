@@ -39,7 +39,7 @@ public class GameMenuView extends View {
                 + "S – Save Game\n"
                 + "Q – Quit");
 
-        inputs[0] = this.getInput("\nPlease choose a main menu item: ");
+        inputs[0] = this.getInput("\nPlease choose a game menu item: ");
         return inputs;
     }
 
