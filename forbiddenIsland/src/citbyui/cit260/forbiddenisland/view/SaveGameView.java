@@ -22,7 +22,7 @@ class SaveGameView extends View {
     @Override
     public String[] getInputs() {
         String[] inputs = new String[1];
-        inputs[0] = this.getInput("Name this file with .txt after");
+        inputs[0] = this.getInput("Name this file with after");
         return inputs;
     }
 
@@ -41,19 +41,6 @@ class SaveGameView extends View {
                 }
 
         this.console.println("Success: File Saved!");
-
-        //filePath = get first value in inputs array
-//        filePath = get first value in inputs array
-//        game = get the currentGame in the main class
-//        try
-//        call the saveGame(game)control method
-//        catch GameControlException
-//        Print error passed with the exception
-//        return false to repeat the view
-//        endTry
-//        Print a success message indicating where the
-//        file was saved
-//        return true to end the view  
         return true;
     }
 
