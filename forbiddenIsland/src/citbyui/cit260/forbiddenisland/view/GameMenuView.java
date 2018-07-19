@@ -34,12 +34,13 @@ public class GameMenuView extends View {
                 + "C – Capture Treasure\n"
                 + "A – Use Special Action Card\n"
                 + "V – View Cards\n"
+                + "P - Print Treasure Lists"
                 + "E – End Turn\n"
                 + "I – View Instructions\n"
                 + "S – Save Game\n"
                 + "Q – Quit");
 
-        inputs[0] = this.getInput("\nPlease choose a main menu item: ");
+        inputs[0] = this.getInput("\nPlease choose a game menu item: ");
         return inputs;
     }
 
@@ -74,6 +75,9 @@ public class GameMenuView extends View {
                 ViewCardsView viewCardsView = new ViewCardsView();
                 viewCardsView.display();
                 break;
+            case "P":
+                PrintTreasureView printTreasureView = new PrintTreasureView();
+                printTreasureView.display();
             case "E":
                 GameControl.endTurn();
                 break;

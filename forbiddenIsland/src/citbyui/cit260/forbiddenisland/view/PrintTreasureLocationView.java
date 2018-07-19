@@ -8,6 +8,7 @@ package citbyui.cit260.forbiddenisland.view;
 import citbyui.cit260.forbiddenisland.control.GameControl;
 import citbyui.cit260.forbiddenisland.exceptions.GameControlException;
 import citbyui.cit260.model.Game;
+import citbyui.cit260.model.Location;
 import forbiddenisland.ForbiddenIsland;
 import java.io.IOException;
 import java.util.logging.Level;
@@ -15,26 +16,26 @@ import java.util.logging.Logger;
 
 /**
  *
- * @author mcwis
+ * @author DD
  */
-class SaveGameView extends View {
+class PrintTreasureLocationView extends View{
 
     @Override
     public String[] getInputs() {
         String[] inputs = new String[1];
-        inputs[0] = this.getInput("Name this file with after");
+        inputs[0] = this.getInput("Name this file:");
         return inputs;
     }
 
     @Override
     public boolean doAction(String[] inputs) {
         String filePath = inputs[0];
-        Game game = ForbiddenIsland.getCurrentGame();
-                this.console.println("Inputs = Y");
+        Location[][] locations = ForbiddenIsland.getCurrentGame().getMap().getLocation();
                 try {
                     //GameControl.saveGame(game);
-                    GameControl.saveGame(game, filePath);
-                } catch (GameControlException ex) {
+                    GameControl.printTreasureLocations(locations, filePath);
+                }
+                catch (GameControlException ex) {
                     Logger.getLogger(SaveGameView.class.getName()).log(Level.SEVERE, null, ex);
                 } catch (IOException ex) {
                     Logger.getLogger(SaveGameView.class.getName()).log(Level.SEVERE, null, ex);
@@ -43,5 +44,5 @@ class SaveGameView extends View {
         this.console.println("Success: File Saved!"); 
         return true;
     }
-
+    
 }

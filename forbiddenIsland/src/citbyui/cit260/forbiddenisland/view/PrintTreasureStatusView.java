@@ -15,14 +15,14 @@ import java.util.logging.Logger;
 
 /**
  *
- * @author mcwis
+ * @author DD
  */
-class SaveGameView extends View {
+class PrintTreasureStatusView extends View{
 
     @Override
     public String[] getInputs() {
         String[] inputs = new String[1];
-        inputs[0] = this.getInput("Name this file with after");
+        inputs[0] = this.getInput("Name this file with .txt after");
         return inputs;
     }
 
@@ -43,5 +43,5 @@ class SaveGameView extends View {
         this.console.println("Success: File Saved!"); 
         return true;
     }
-
+    
 }
