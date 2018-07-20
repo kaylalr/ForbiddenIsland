@@ -29,18 +29,24 @@ public class CaptureTreasureView extends View {
         String treasureName = locations[row][col].getTreasure().getName();
         if (!locations[row][col].getTreasure().getName().equals("Empty")) {
             if (locations[row][col].getTreasure().getStatus().equals("Captured")) {
-                this.console.println("You have already captured the " + treasureName + " treasure.\n");
+                //this.console.println("You have already captured the " + treasureName + " treasure.\n");
+                this.console.println("\n\n\n*******************************************************\n"
+                    + "*\n\n"
+                    + "You have already captured the " + treasureName + " treasure.\n"
+                    + "\n*\n"
+                    + "*******************************************************\n");
                 inputs[0] = "Q";
             } else {
                 this.console.println("Would you like to capture the " + treasureName + " treasure?\n"
-                        //                    + "Treasures left: #\n"
                         + "Y - Yes\n"
                         + "N - No\n");
                 inputs[0] = this.getInput("Please enter Y or N:");
             }
         } else {
-            this.console.println("\n**********************************************\n"
+            this.console.println("\n\n\n**********************************************\n"
+                    + "*\n"
                     + "       There is not a treasure here.\n"
+                    + "*\n"
                     + "**********************************************\n");
             inputs[0] = "Q";
         }
@@ -63,7 +69,11 @@ public class CaptureTreasureView extends View {
         switch (inputs[0]) {
             case "Y":
                 locations[row][col].getTreasure().setStatus("Captured");
-                this.console.println("Congrats! You have collected the " + treasureName + " trophy!");
+                this.console.println("\n\n\n***************************************************\n" 
+                        + "*\n"
+                        + "Congrats! You have collected the " + treasureName + " trophy!\n"
+                        + "*\n"
+                        + "***************************************************\n");
                 break;
             case "N":
                 this.console.println("You have decided to leave the trophy...");

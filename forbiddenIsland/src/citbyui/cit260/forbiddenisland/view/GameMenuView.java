@@ -27,7 +27,7 @@ public class GameMenuView extends View {
     public String[] getInputs() {
         String[] inputs = new String[1];
         MapControl.displayMap();
-        this.console.println("\nGame Menu\n"
+        this.console.println("\n\nGame Menu\n"
                 + "M – Move\n"
                 + "U – Unflood a tile\n"
                 + "G – Give Treasure Card\n"

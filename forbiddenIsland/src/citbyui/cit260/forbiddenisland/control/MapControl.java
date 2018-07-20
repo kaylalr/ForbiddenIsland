@@ -145,27 +145,9 @@ public class MapControl {
         Collections.shuffle(unshuffledLocations);
         Map floodMap = ForbiddenIsland.getCurrentGame().getMap();
         floodMap.setFloodLocations(unshuffledLocations);
-
-//        int randomFloodRow = 0;
-//        int randomFloodCol = 0;
-//        
-//        do {
-//            randomFloodRow = (int)Math.ceil(Math.random()*5);
-//        } while (randomFloodRow < 6);
-//        do {
-//            randomFloodCol = (int)Math.ceil(Math.random()*5);
-//        } while (randomFloodCol < 6);
-//        int randomFloodRow = (int)Math.round(Math.random()*4);
-//        int randomFloodCol = (int)Math.round(Math.random()*4);
-//        System.out.println("Flooded Tile: " + randomFloodRow + ", " + randomFloodCol);
-        //String[][] tileToFlood = new String[5][5];
-        //THIS CREATES THE ALLOCATED LOCATION SPACES AND GIVES THEM THEIR VALUES.
         int y = 0;
         for (int i = 0; i < 5; i++) {
             for (int j = 0; j < 5; j++) {
-//                if (locations[i][j] == locations[randomFloodRow][randomFloodCol]) {
-//                    locations[i][j].setFlooded(1);
-//                }
                 locations[i][j] = unshuffledLocations.get(y);
                 locations[i][j].setRow(i);
                 locations[i][j].setColumn(j);
@@ -181,13 +163,27 @@ public class MapControl {
     //THIS HAS A SIMILAR EQUATION AS THE LOCATION ALLOCATION BUT THIS REFERENCES IT AND DISPLAYS THE MAP WITH THE DISPLAY SYMBOLS
     public static void displayMap() {
         ArrayList<Actor> currActors = ForbiddenIsland.getPlayer().getActors();
-        Actor actor = currActors.get(0);
-        System.out.println("\nCurrent Actors Name: " + actor.getName());
+        Actor actorOne = currActors.get(0);
+        Actor actorTwo = currActors.get(1);
+        System.out.println("\nCurrent Actors Name: " + actorOne.getName());
         Location[][] locations = ForbiddenIsland.getCurrentGame().getMap().getLocation();
         // ArrayList<Actor> currActors = ForbiddenIsland.getPlayer().getActors();
         //Actor actor = currActors.get(0);
         Actor pilot = currActors.get(ActorType.Pilot.ordinal());
         Actor explorer = currActors.get(ActorType.Explorer.ordinal());
+         if (actorOne.getName().equals("Pilot")) {
+             pilot = currActors.get(0);
+         } else if (actorTwo.getName().equals("Pilot")) {
+             pilot = currActors.get(1);
+         }
+         if (actorOne.getName().equals("Explorer")) {
+             explorer = currActors.get(0);
+         } else if (actorTwo.getName().equals("Explorer")) {
+             explorer = currActors.get(1);
+         }
+        
+        //Actor pilot = ForbiddenIsland.getPlayer().getActors().equals("Pilot");
+        
 
         System.out.println("\n-_-_-GAME MAP-_-_-\n");
         System.out.println("       1       2       3       4       5");
@@ -236,7 +232,7 @@ public class MapControl {
             System.out.print("|\n");
         }
         System.out.print("   -----------------------------------------");
-        System.out.println("\n" + currActors);
+        //System.out.println("\n" + currActors);
     }
 
     private static Location findLocation(Location[][] locations, String locationType) {
@@ -260,7 +256,6 @@ public class MapControl {
             throw new MapControlException("Pilot can't be NULL");
         }
         Actor pilot = actors.get(ActorType.Pilot.ordinal());
-        //pilotLocation.getActors().add(pilot);
         pilotLocation.setActor(pilot);
         pilot.getCoordinates().x = pilotLocation.getRow();
         pilot.getCoordinates().y = pilotLocation.getColumn();
@@ -364,15 +359,6 @@ public class MapControl {
         Map floodMap = ForbiddenIsland.getCurrentGame().getMap();
         int y = floodMap.getPositionInFLoodedLocations();
 
-        //int y;
-//        for (int i = 0; i < 5; i++) {
-//            for (int j = 0; j < 5; j++) {
-//                //locations[i][j] = unshuffledLocations.get(y);
-//                locations[i][j].setRow(i);
-//                locations[i][j].setColumn(j);
-//                y++;
-//            }
-//        }
         for (int i = 0; i < 3; i++) {
             Location k = floodMap.getFloodLocations().get(y);
             if (k.getFlooded() == 1) {

@@ -6,6 +6,9 @@
 package citbyui.cit260.forbiddenisland.view;
 
 import citbyui.cit260.forbiddenisland.exceptions.MapControlException;
+import citbyui.cit260.model.Location;
+import citbyui.cit260.model.Map;
+import forbiddenisland.ForbiddenIsland;
 import static java.lang.Integer.parseInt;
 import java.util.Scanner;
 
@@ -34,7 +37,13 @@ public class UnfloodTileView extends View {
             ErrorView.display(this.getClass().getName(), "Error: invalid input.");
            return false;
         }
-        this.console.println("You have chosen Row - " + inputs[0] + ", and Column - " + inputs[1]);
+        //this.console.println("You have chosen Row - " + inputs[0] + ", and Column - " + inputs[1]);
+        this.console.println("***********************************\n"
+                + "You have unflooded " + row + "," + column + "\n"
+                + "***********************************");
+        //Map floodMap = ForbiddenIsland.getCurrentGame().getMap();
+        Location[][] locations = ForbiddenIsland.getCurrentGame().getMap().getLocation();
+        locations[row-1][column-1].setFlooded(0);
         return true;
     }
 
