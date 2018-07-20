@@ -83,6 +83,7 @@ public class GameControl {
         Game game = new Game();
 
         game.setPlayer(player);
+        game.setTurns(0);
 
         ForbiddenIsland.setCurrentGame(game);
 
@@ -152,11 +153,32 @@ public class GameControl {
         ArrayList<Actor> currActors = ForbiddenIsland.getPlayer().getActors();
         Actor actor1 = currActors.get(0);
         Actor actor2 = currActors.get(1);
+        int incTurns = actor1.getTurns();
+        int currTotalTurns = (int)ForbiddenIsland.getCurrentGame().getTurns();
+        ForbiddenIsland.getCurrentGame().setTurns(incTurns+currTotalTurns);
+        
+        ArrayList<Actor> currentActors = ForbiddenIsland.getPlayer().getActors();
+        Actor actorOne = currActors.get(0);
+        //Actor actorTwo = currActors.get(1);
+        if (actorOne.getName().equals("Pilot")){
+            ForbiddenIsland.getPlayer().getActors().get(0).setTurns(20 - incTurns);
+            System.out.println("PLAYER ONE TURNS LEFT: " +ForbiddenIsland.getPlayer().getActors().get(0).getTurns());
+        }
+        if (actorOne.getName().equals("Explorer")){
+            ForbiddenIsland.getPlayer().getActors().get(0).setTurns(20 - incTurns);
+            System.out.println("PLAYER TWO TURNS LEFT: " +ForbiddenIsland.getPlayer().getActors().get(0).getTurns());
+        }
         ArrayList<Actor> newActors = new ArrayList();
         newActors.add(0, actor2);
         newActors.add(1, actor1);
         ForbiddenIsland.getPlayer().setActors(newActors);
         newActors.get(0).setTurns(0);
+        //System.out.println("You have used " + ForbiddenIsland.getCurrentGame().getTurns()); 
+        
+        
+        //ForbiddenIsland.getPlayer().getActors().get(0).setTurns(20 - incTurns);
+        //ForbiddenIsland.getPlayer().getActors().get(1).setTurns();
+        //System.out.println("PLAYER ONE TURNS LEFT: " +ForbiddenIsland.getPlayer().getActors().get(0).getTurns());
         
        // Map floodedMap = ForbiddenIsland.getCurrentGame().getMap().getFloodLocations();
         //Map floodedMap = 
@@ -190,7 +212,6 @@ public class GameControl {
     }
 
     public static void printTreasureLocations(Location[][] locations, String filePath) throws GameControlException, FileNotFoundException, IOException {
-        System.out.println("--- saveGame() in gameControl class ---");
         FileWriter outFile = null;
 
         if (locations == null || filePath == null) {
@@ -234,7 +255,6 @@ public class GameControl {
     }
 
     public static void printTreasureStatus(Location[][] locations, String filePath) throws GameControlException, FileNotFoundException, IOException {
-        System.out.println("--- saveGame() in gameControl class ---");
         FileWriter outFile = null;
 
         if (locations == null || filePath == null) {

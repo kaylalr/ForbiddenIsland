@@ -18,7 +18,8 @@ import java.util.logging.Logger;
 
 /**
  *
- * @author DD
+ * @author DDq
+ * 
  */
 public class MoveMenuView extends View {
 
@@ -29,9 +30,13 @@ public class MoveMenuView extends View {
         //int turn = (int) Math.ceil(Math.random() * 2);
         ArrayList<Actor> currActors = ForbiddenIsland.getPlayer().getActors();
         Actor actor = currActors.get(0);
-        this.console.println(currActors.get(0)+"\n");
-        this.console.println(currActors.get(1));
+        //this.console.println(currActors.get(0)+"\n");
+        //this.console.println(currActors.get(1));
         if (actor.getName().equals("Explorer")) {
+            int getTurnsLeft = ForbiddenIsland.getPlayer().getActors().get(0).getTurns();
+            this.console.println("________________________\n"
+                    + "You have " + (3 - getTurnsLeft) + " turns left.\n"
+                            + "________________________");
             inputs[0] = this.getInput("\nWhere would you like to move?\n"
                     + "W - move up\n"
                     + "A - move left\n"
@@ -42,6 +47,10 @@ public class MoveMenuView extends View {
                     + "Z - down and to the left\n"
                     + "C - down and to the right\n");
         } else {
+            int pilotGetTurnsLeft = ForbiddenIsland.getPlayer().getActors().get(0).getTurns();
+            this.console.println("________________________\n"
+                    + "You have " + (3 - pilotGetTurnsLeft) + " turns left.\n"
+                            + "________________________");
             inputs[0] = this.getInput("\nWhere would you like to move?\n"
                     + "W - move up\n"
                     + "A - move left\n"
@@ -50,15 +59,6 @@ public class MoveMenuView extends View {
                     + "F - Fly\n");
         }
         return inputs;
-        // end test code
-        // origional code
-//        inputs[0] = this.getInput("\nWhere would you like to move?\n"
-//                    + "W - move up\n"
-//                    + "A - move left\n"
-//                    + "S - move down\n"
-//                    + "D - move right\n"
-//                    + "F - Fly\n");
-//        return inputs;
     }
 
     @Override

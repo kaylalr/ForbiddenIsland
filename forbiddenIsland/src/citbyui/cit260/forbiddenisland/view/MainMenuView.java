@@ -44,20 +44,20 @@ public class MainMenuView extends View {
             }
             switch (inputs[0]) {
                 case "N":
-                    this.console.println("Inputs = N");
+                    //this.console.println("Inputs = N");
                     this.startNewGame();
                     break;
                 case "R":
-                    this.console.println("Inputs = R");
+                    //this.console.println("Inputs = R");
                     this.restartNewGame();
                     break;
                     
                 case "L": 
-                    this.console.println("Inputs = L");
+                    //this.console.println("Inputs = L");
                     this.startSavedGame();
                     break;
                 case "H":
-                    this.console.println("Inputs = H");
+                    //this.console.println("Inputs = H");
                     this.getHelp();
                     break;
                 default:

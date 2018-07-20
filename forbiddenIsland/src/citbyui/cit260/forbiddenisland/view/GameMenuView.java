@@ -21,8 +21,7 @@ public class GameMenuView extends View {
 
     public GameMenuView() {
     }
-    
-  
+
     @Override
     public String[] getInputs() {
         String[] inputs = new String[1];
@@ -46,6 +45,13 @@ public class GameMenuView extends View {
 
     @Override
     public boolean doAction(String[] inputs) {
+//        ArrayList<Actor> currentActors = ForbiddenIsland.getPlayer().getActors();
+//        Actor actorOne = currentActors.get(0);
+//        if (actorOne.getName().equals("Pilot") || actorOne.getName().equals("Explorer")) {
+//            if (ForbiddenIsland.getPlayer().getActors().get(0).getTurns() == 0) {
+//                inputs[0] = "Q";
+//            }
+//        }
         if (inputs[0].length() > 1) {
             ErrorView.display(this.getClass().getName(), "Error: Invalid value.");
             return false;
@@ -93,20 +99,18 @@ public class GameMenuView extends View {
         ArrayList<Actor> currActors = ForbiddenIsland.getPlayer().getActors();
         Actor actor = currActors.get(0);
         int currTurns = actor.getTurns();
-            if (currTurns > 2) {
-                this.console.println("\n************************************\n"
-                        + "*        Your turn is over.        *"
-                        + "************************************\n");
-                GameControl.endTurn();
-            }
+        if (currTurns > 2) {
+            this.console.println("\n************************************\n"
+                    + "*        Your turn is over.        *"
+                    + "************************************\n");
+            GameControl.endTurn();
+        }
         return false;
     }
 
-        private void saveGame() {
+    private void saveGame() {
         SaveGameView saveGameView = new SaveGameView();
         saveGameView.display();
     }
-        
-        
-        
+
 }
