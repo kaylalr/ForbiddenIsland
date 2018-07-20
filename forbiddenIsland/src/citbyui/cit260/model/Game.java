@@ -16,6 +16,8 @@ import java.util.Objects;
 public class Game implements Serializable {
 
     private double turns;
+    private int playerOneTurns;
+    private int playerTwoTurns;
     private double score;
     private Card cardType;
     private Player player;
@@ -24,6 +26,23 @@ public class Game implements Serializable {
     public Game() {
     }
 
+    public int getPlayerOneTurns() {
+        return playerOneTurns;
+    }
+
+    public void setPlayerOneTurns(int playerOneTurns) {
+        this.playerOneTurns = playerOneTurns;
+    }
+
+    public int getPlayerTwoTurns() {
+        return playerTwoTurns;
+    }
+
+    public void setPlayerTwoTurns(int playerTwoTurns) {
+        this.playerTwoTurns = playerTwoTurns;
+    }
+
+    
     public Game(double turns, double score) {
         this.turns = turns;
         this.score = score;
@@ -70,18 +89,15 @@ public class Game implements Serializable {
     }
 
     @Override
-    public String toString() {
-        return "Game{" + "turns=" + turns + ", score=" + score + ", cardType=" + cardType + ", map=" + map + '}';
-    }
-
-    @Override
     public int hashCode() {
-        int hash = 7;
-        hash = 83 * hash + (int) (Double.doubleToLongBits(this.turns) ^ (Double.doubleToLongBits(this.turns) >>> 32));
-        hash = 83 * hash + (int) (Double.doubleToLongBits(this.score) ^ (Double.doubleToLongBits(this.score) >>> 32));
-        hash = 83 * hash + Objects.hashCode(this.cardType);
-        hash = 83 * hash + Objects.hashCode(this.player);
-        hash = 83 * hash + Objects.hashCode(this.map);
+        int hash = 3;
+        hash = 13 * hash + (int) (Double.doubleToLongBits(this.turns) ^ (Double.doubleToLongBits(this.turns) >>> 32));
+        hash = 13 * hash + this.playerOneTurns;
+        hash = 13 * hash + this.playerTwoTurns;
+        hash = 13 * hash + (int) (Double.doubleToLongBits(this.score) ^ (Double.doubleToLongBits(this.score) >>> 32));
+        hash = 13 * hash + Objects.hashCode(this.cardType);
+        hash = 13 * hash + Objects.hashCode(this.player);
+        hash = 13 * hash + Objects.hashCode(this.map);
         return hash;
     }
 
@@ -100,6 +116,12 @@ public class Game implements Serializable {
         if (Double.doubleToLongBits(this.turns) != Double.doubleToLongBits(other.turns)) {
             return false;
         }
+        if (this.playerOneTurns != other.playerOneTurns) {
+            return false;
+        }
+        if (this.playerTwoTurns != other.playerTwoTurns) {
+            return false;
+        }
         if (Double.doubleToLongBits(this.score) != Double.doubleToLongBits(other.score)) {
             return false;
         }
@@ -114,5 +136,12 @@ public class Game implements Serializable {
         }
         return true;
     }
+
+    @Override
+    public String toString() {
+        return "Game{" + "turns=" + turns + ", playerOneTurns=" + playerOneTurns + ", playerTwoTurns=" + playerTwoTurns + ", score=" + score + ", cardType=" + cardType + ", player=" + player + ", map=" + map + '}';
+    }
+
+   
 
 }

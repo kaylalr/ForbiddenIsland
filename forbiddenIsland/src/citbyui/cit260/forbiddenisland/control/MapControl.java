@@ -377,5 +377,19 @@ public class MapControl {
         }
         floodMap.setPositionInFLoodedLocations(y);
     }
+    
+    public static void findTurnsLeft(){
+        int playerOneTotalTurns = 40;
+        int playerTwoTotalTurns = 40;
+        int actionTurnsLeft = ForbiddenIsland.getPlayer().getActors().get(0).getTurns();
+        
+        
+        for (int i = 0; i < 3; i++){
+            if (i == 3){
+                i = 0;
+                playerOneTotalTurns = 40 - 3;
+            }
+        }
+    }
 
 }
