@@ -45,7 +45,6 @@ public class GiveTreasureCardView extends View {
                     wind++;
                 }
             }
-
         }
 
         inputs[0] = this.getInput("Which card(s) would you like to give?\n"
@@ -64,18 +63,40 @@ public class GiveTreasureCardView extends View {
         Actor currActor = currActors.get(0);
         Actor actorTwo = currActors.get(1);
         ArrayList<Card> actorCards = currActor.getCards();
-        
+              
         int numOfCards = parseInt(inputs[1]);
+        int earth = 0;
+        int fire = 0;
+        int water = 0;
+        int wind = 0;
+        for (Card card : actorCards) {
+            if (card.getHand() == 1) {
+                if (card.getName().equals("earth")) {
+                    earth++;
+                }
+                if (card.getName().equals("fire")) {
+                    fire++;
+                }
+                if (card.getName().equals("water")) {
+                    water++;
+                }
+                if (card.getName().equals("wind")) {
+                    wind++;
+                }
+            }
+        }
 
         boolean valid = false;
 
         switch (inputs[0]) {
             case "E":
+                if (numOfCards > earth) {
+                    return false;
+                }
                 this.console.println("You have chosen to give the Earth Stone.");
                 int y = 0;
                 int k = 0;
                 do {
-
                     if (actorCards.get(y).getName().equals("earth") && actorCards.get(y).getHand() == 1) {
                         actorTwo.getCards().add(actorCards.get(y));
                         actorCards.get(y).setHand(0);
@@ -89,6 +110,9 @@ public class GiveTreasureCardView extends View {
                 } while (valid == false);
                 break;
             case "S":
+                if (numOfCards > wind) {
+                    return false;
+                }
                 this.console.println("You have chosen to give the Statue of the Wind.");
                 y = 0;
                 k = 0;
@@ -99,7 +123,7 @@ public class GiveTreasureCardView extends View {
                         actorTwo.getCards().add(actorCards.get(y));
                         this.console.println(actorTwo.getCards());
                         k++;
-                        if (inputs[1].equals(k)) {
+                        if (k == numOfCards) {
                             valid = true;
                         }
                     }
@@ -107,6 +131,9 @@ public class GiveTreasureCardView extends View {
                 } while (valid == false);
                 break;
             case "C":
+                if (numOfCards > fire) {
+                    return false;
+                }
                 this.console.println("You have chosen to give the Crystal of Fire.");
                 y = 0;
                 k = 0;
@@ -117,7 +144,7 @@ public class GiveTreasureCardView extends View {
                         actorTwo.getCards().add(actorCards.get(y));
                         this.console.println(actorTwo.getCards());
                         k++;
-                        if (inputs[1].equals(k)) {
+                        if (k == numOfCards) {
                             valid = true;
                         }
                     }
@@ -125,6 +152,12 @@ public class GiveTreasureCardView extends View {
                 } while (valid == false);
                 break;
             case "O":
+                if (numOfCards > water) {
+                    System.out.println("*****************************************"
+                            + "You do not have that many cards to give"
+                            + "*****************************************");
+                    return false;
+                }
                 this.console.println("You have chosen to give the Ocean's Chalice.");
                 y = 0;
                 k = 0;
@@ -135,7 +168,7 @@ public class GiveTreasureCardView extends View {
                         actorTwo.getCards().add(actorCards.get(y));
                         this.console.println(actorTwo.getCards());
                         k++;
-                        if (inputs[1].equals(k)) {
+                        if (k == numOfCards) {
                             valid = true;
                         }
                     }

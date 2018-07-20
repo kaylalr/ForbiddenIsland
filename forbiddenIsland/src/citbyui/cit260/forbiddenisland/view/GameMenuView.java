@@ -8,6 +8,7 @@ package citbyui.cit260.forbiddenisland.view;
 import citbyui.cit260.forbiddenisland.control.GameControl;
 import citbyui.cit260.forbiddenisland.control.MapControl;
 import citbyui.cit260.model.Actor;
+import citbyui.cit260.model.Location;
 import forbiddenisland.ForbiddenIsland;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -96,8 +97,76 @@ public class GameMenuView extends View {
                 break;
 
         }
+        
         ArrayList<Actor> currActors = ForbiddenIsland.getPlayer().getActors();
         Actor actor = currActors.get(0);
+        Actor actor2 = currActors.get(1);
+        
+        Location[][] locations = ForbiddenIsland.getCurrentGame().getMap().getLocation();
+//        for (int i = 0; i < 5; i++) {
+//            for (int j = 0; j < 5; j++) {
+//                if (locations[i][j].getLocationType().equals("landingPad") && actor.getCoordinates().x == i && actor.getCoordinates().y == j && actor2.getCoordinates().x == i && actor2.getCoordinates().y == j) {
+//                    EndOfView endOfView = new EndOfView();
+//                    endOfView.display();
+//                    System.out.println("YOU WIN!");
+//                    return true;
+//                }
+//            }
+//        }
+
+            Location landingPad1 = new Location();
+            boolean landingPad = false;
+            boolean water = false;
+            boolean wind = false;
+            boolean earth = false;
+            boolean fire = false;
+            boolean actorOne = false;
+            boolean actorTwo = false;
+
+            for (int i = 0; i < 5; i++) {
+                for (int j = 0; j < 5; j++) {
+                    if (locations[i][j].getLocationType().equals("landingPad")) {
+                       landingPad1 = locations[i][j];
+                       landingPad1.setRow(i);
+                       landingPad1.setColumn(j);
+                        landingPad = true;
+                    }
+                    if (locations[i][j].getTreasure().getName().equals("water")) {
+                        if (locations[i][j].getTreasure().getStatus().equals("captured")) {
+                            water = true;
+                        }
+                    }
+                    if (locations[i][j].getTreasure().getName().equals("wind")) {
+                        if (locations[i][j].getTreasure().getStatus().equals("captured")) {
+                            wind = true;
+                        }
+                    }
+                    if (locations[i][j].getTreasure().getName().equals("earth")) {
+                        if (locations[i][j].getTreasure().getStatus().equals("captured")) {
+                           earth = true;
+                        }
+                    }
+                    if (locations[i][j].getTreasure().getName().equals("fire")) {
+                        if (locations[i][j].getTreasure().getStatus().equals("captured")) {
+                            fire = true;
+                        }
+                    }
+                    
+                }
+            }
+            if (actor.getCoordinates().x == landingPad1.getRow() && actor.getCoordinates().y == landingPad1.getColumn()) {
+                        actorOne = true;
+                    }
+            if (actor2.getCoordinates().x == landingPad1.getRow() && actor2.getCoordinates().y == landingPad1.getColumn()) {
+                        actorTwo = true;
+                    }
+        
+            if (landingPad == true && water == true && wind == true && earth == true && fire == true && actorOne == true && actorTwo == true) {
+                    EndOfView endOfView = new EndOfView();
+                    endOfView.display();
+                    return true;
+            }
+            
         int currTurns = actor.getTurns();
         if (currTurns > 2) {
             this.console.println("\n************************************\n"

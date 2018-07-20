@@ -51,9 +51,7 @@ public class ForbiddenIsland {
             
             StartProgramView startProgramView = new StartProgramView();
             startProgramView.display();
-        } catch (Exception ex) {
-            //   Logger.getLogger(ForbiddenIsland.class.getName()).log(Level.SEVERE, null, gce);
-            System.out.println(ex.getMessage());
+        
         } catch (Throwable te) {
             System.out.println(te.getMessage());
             te.printStackTrace();
