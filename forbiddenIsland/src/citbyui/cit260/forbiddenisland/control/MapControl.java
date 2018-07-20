@@ -346,8 +346,10 @@ public class MapControl {
         System.out.println(newLocation);
 
         if (currTurns < 4) {
-            int newTurns = currTurns++;
+            currTurns++;
+            int newTurns = currTurns;
             actor.setTurns(newTurns);
+            System.out.println("Current Turns: " + currTurns + "\nNew Turns: " + newTurns);
         }
 
         return newLocation;
