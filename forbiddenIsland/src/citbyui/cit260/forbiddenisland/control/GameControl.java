@@ -12,6 +12,8 @@ import citbyui.cit260.model.Game;
 import citbyui.cit260.model.Player;
 import citbyui.cit260.model.Actor;
 import citbyui.cit260.model.ActorType;
+import citbyui.cit260.model.Card;
+import citbyui.cit260.model.CardType;
 import citbyui.cit260.model.Location;
 import citbyui.cit260.model.Map;
 import citbyui.cit260.model.Treasure;
@@ -28,6 +30,7 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -98,7 +101,9 @@ public class GameControl {
             throw new GameControlException("Map cant be NULL");
         }
         game.setMap(map);
-
+        
+        GameControl.makeCards();
+                
         return 1;
     }
 
@@ -312,4 +317,164 @@ public class GameControl {
 
     }
 
+    public static ArrayList<Card> makeCards() {
+        
+        Card[] allCards = new Card[30];
+        ArrayList<Card> cards = new ArrayList();
+        
+        
+        Card earth = new Card();
+        earth.setDescription(CardType.earth.getDescription());
+        earth.setName(CardType.earth.getCardName());
+        earth.setType(CardType.earth.getCardType());
+        earth.setHand(1);
+        cards.add(earth);
+            try {
+                Card earth1 = (Card) earth.clone();
+                Card earth2 = (Card) earth.clone();
+                Card earth3 = (Card) earth.clone();
+                Card earth4 = (Card) earth.clone();
+                cards.add(earth1);
+                cards.add(earth2);
+                cards.add(earth3);
+                cards.add(earth4);
+            } catch (CloneNotSupportedException ex) {
+                Logger.getLogger(GameControl.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
+        Card fire = new Card();
+        fire.setDescription(CardType.fire.getDescription());
+        fire.setName(CardType.fire.getCardName());
+        fire.setType(CardType.fire.getCardType());
+        fire.setHand(1);
+        cards.add(fire);
+            try {
+                Card fire1 = (Card) fire.clone();
+                Card fire2 = (Card) fire.clone();
+                Card fire3 = (Card) fire.clone();
+                Card fire4 = (Card) fire.clone();
+                cards.add(fire1);
+                cards.add(fire2);
+                cards.add(fire3);
+                cards.add(fire4);
+            } catch (CloneNotSupportedException ex) {
+                Logger.getLogger(GameControl.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
+        Card water = new Card();
+        water.setDescription(CardType.water.getDescription());
+        water.setName(CardType.water.getCardName());
+        water.setType(CardType.water.getCardType());
+        water.setHand(1);
+        cards.add(water);
+            try {
+                Card water1 = (Card) water.clone();
+                Card water2 = (Card) water.clone();
+                Card water3 = (Card) water.clone();
+                Card water4 = (Card) water.clone();
+                cards.add(water1);
+                cards.add(water2);
+                cards.add(water3);
+                cards.add(water4);
+            } catch (CloneNotSupportedException ex) {
+                Logger.getLogger(GameControl.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
+        Card wind = new Card();
+        wind.setDescription(CardType.wind.getDescription());
+        wind.setName(CardType.wind.getCardName());
+        wind.setType(CardType.wind.getCardType());
+        wind.setHand(1);
+        cards.add(wind);
+            try {
+                Card wind1 = (Card) wind.clone();
+                Card wind2 = (Card) wind.clone();
+                Card wind3 = (Card) wind.clone();
+                Card wind4 = (Card) wind.clone();
+                cards.add(wind1);
+                cards.add(wind2);
+                cards.add(wind3);
+                cards.add(wind4);
+            } catch (CloneNotSupportedException ex) {
+                Logger.getLogger(GameControl.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
+        Card unfloodTile = new Card();
+        unfloodTile.setDescription(CardType.unfloodTile.getDescription());
+        unfloodTile.setName(CardType.unfloodTile.getCardName());
+        unfloodTile.setType(CardType.unfloodTile.getCardType());
+        unfloodTile.setHand(1);
+        cards.add(unfloodTile);
+            try {
+                Card unfloodTile1 = (Card) unfloodTile.clone();
+                Card unfloodTile2 = (Card) unfloodTile.clone();
+                Card unfloodTile3 = (Card) unfloodTile.clone();
+                Card unfloodTile4 = (Card) unfloodTile.clone();
+                cards.add(unfloodTile1);
+                cards.add(unfloodTile2);
+                cards.add(unfloodTile3);
+                cards.add(unfloodTile4);
+            } catch (CloneNotSupportedException ex) {
+                Logger.getLogger(GameControl.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
+        Card helicopter = new Card();
+        helicopter.setDescription(CardType.helicopter.getDescription());
+        helicopter.setName(CardType.helicopter.getCardName());
+        helicopter.setType(CardType.helicopter.getCardType());
+        helicopter.setHand(1);
+        cards.add(helicopter);
+            try {
+                Card helicopter1 = (Card) helicopter.clone();
+                Card helicopter2 = (Card) helicopter.clone();
+                Card helicopter3 = (Card) helicopter.clone();
+                Card helicopter4 = (Card) helicopter.clone();
+                cards.add(helicopter1);
+                cards.add(helicopter2);
+                cards.add(helicopter3);
+                cards.add(helicopter4);
+            } catch (CloneNotSupportedException ex) {
+                Logger.getLogger(GameControl.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
+        Collections.shuffle(cards);
+        
+        int y = 0;
+        for (int i = 0; i<30; i++) {
+            allCards[i] = cards.get(y);
+            y++;
+        }
+        
+        setActorsCards(cards);
+            
+        return cards;
+        
+    }
+
+    private static void setActorsCards(ArrayList<Card> cards) {
+        ArrayList<Actor> currActors = ForbiddenIsland.getPlayer().getActors();
+        Actor actorOne = currActors.get(0);
+        Actor actorTwo = currActors.get(1);
+        ArrayList<Card> actorOneCards = new ArrayList();
+        int y = 0;
+        for (int i = 0; i < 15; i++) {
+            actorOneCards.add(cards.get(y));
+            y++;
+        }
+        actorOne.setCards(actorOneCards);
+        ArrayList<Card> actorTwoCards = new ArrayList();
+        for (int i = 0; i < 15; i++) {
+            actorTwoCards.add(cards.get(y));
+            y++;
+        }
+        actorTwo.setCards(actorTwoCards);
+        System.out.println(actorOne.getCards());
+        System.out.println(actorTwo.getCards());
+    }
+    
+    private static void useCard() {
+        ArrayList<Actor> currActors = ForbiddenIsland.getPlayer().getActors();
+        Actor currActor = currActors.get(0);
+        
+    }
 }

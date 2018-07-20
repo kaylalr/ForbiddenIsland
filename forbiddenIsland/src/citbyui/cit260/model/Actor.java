@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.Objects;
 import citbyui.cit260.model.Card;
 import java.awt.Point;
+import java.util.Arrays;
 
 /**
  *
@@ -21,7 +22,7 @@ public class Actor implements Serializable {
     private Point coordinates;
     private String specialAbility;
     private Location Location;
-    private Card cards;
+    private ArrayList<Card> cards = new ArrayList();
     private int turns;
     private ArrayList<Player> player = new ArrayList<Player>();
 
@@ -74,13 +75,15 @@ public class Actor implements Serializable {
         this.Location = Location;
     }
 
-    public Card getCards() {
+    public ArrayList<Card> getCards() {
         return cards;
     }
 
-    public void setCards(Card cards) {
+    public void setCards(ArrayList<Card> cards) {
         this.cards = cards;
     }
+
+    
 
     public int getTurns() {
         return turns;
@@ -93,13 +96,13 @@ public class Actor implements Serializable {
     @Override
     public int hashCode() {
         int hash = 7;
-        hash = 43 * hash + Objects.hashCode(this.name);
-        hash = 43 * hash + Objects.hashCode(this.coordinates);
-        hash = 43 * hash + Objects.hashCode(this.specialAbility);
-        hash = 43 * hash + Objects.hashCode(this.Location);
-        hash = 43 * hash + Objects.hashCode(this.cards);
-        hash = 43 * hash + this.turns;
-        hash = 43 * hash + Objects.hashCode(this.player);
+        hash = 97 * hash + Objects.hashCode(this.name);
+        hash = 97 * hash + Objects.hashCode(this.coordinates);
+        hash = 97 * hash + Objects.hashCode(this.specialAbility);
+        hash = 97 * hash + Objects.hashCode(this.Location);
+        hash = 97 * hash + Objects.hashCode(this.cards);
+        hash = 97 * hash + this.turns;
+        hash = 97 * hash + Objects.hashCode(this.player);
         return hash;
     }
 
@@ -130,7 +133,7 @@ public class Actor implements Serializable {
         if (!Objects.equals(this.Location, other.Location)) {
             return false;
         }
-        if (this.cards != other.cards) {
+        if (!Objects.equals(this.cards, other.cards)) {
             return false;
         }
         if (!Objects.equals(this.player, other.player)) {
@@ -143,7 +146,7 @@ public class Actor implements Serializable {
     public String toString() {
         return "Actor{" + "name=" + name + ", coordinates=" + coordinates + ", specialAbility=" + specialAbility + ", Location=" + Location + ", cards=" + cards + ", turns=" + turns + ", player=" + player + '}';
     }
-    
-    
+
+   
     
 }

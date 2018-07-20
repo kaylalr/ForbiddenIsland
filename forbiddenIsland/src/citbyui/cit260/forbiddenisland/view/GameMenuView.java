@@ -95,7 +95,7 @@ public class GameMenuView extends View {
         int currTurns = actor.getTurns();
             if (currTurns > 2) {
                 this.console.println("\n************************************\n"
-                        + "*        Your turn is over.        *"
+                        + "*        Your turn is over.        *\n"
                         + "************************************\n");
                 GameControl.endTurn();
             }
